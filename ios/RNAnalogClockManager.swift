@@ -8,8 +8,6 @@
 
 import Foundation
 
-
-
 @objc(RNAnalogClockSwift)
 class RNAnalogClockManager: RCTViewManager {
   override func view() -> UIView! {

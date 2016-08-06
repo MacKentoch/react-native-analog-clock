@@ -11,14 +11,29 @@ class AnalogClock extends Component {
     const { hours, minutes, seconds, ...otherProps } = this.props;
     return (
       <RNAnalogClock
-        hours={hours}
-        minutes={minutes}
-        seconds={seconds}
+        enableShadows={true}
+        realTime={true}
+        militaryTime={true}
+        currentTime={true}
+        enableDigit={true}
+        setTimeViaTouch={true}
         {...otherProps}
       />
     );
   }
 }
+
+// self.myClock1.borderColor = [UIColor whiteColor];
+// self.myClock1.borderWidth = 3;
+// self.myClock1.faceBackgroundColor = [UIColor whiteColor];
+// self.myClock1.faceBackgroundAlpha = 0.0;
+// self.myClock1.digitFont = [UIFont fontWithName:@"HelveticaNeue-Thin" size:17];
+// self.myClock1.digitColor = [UIColor whiteColor];
+
+
+// hours={hours}
+// minutes={minutes}
+// seconds={seconds}
 
 AnalogClock.propTypes = {
   hours: PropTypes.number,

@@ -14,7 +14,16 @@ import {
 import AnalogClock from './AnalogClock';
 
 class reactNativeAnalogClock extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      hours: 12,
+      minutes: 0,
+      seconds: 0
+    };
+  }
   render() {
+    const { hours, minutes, seconds } = this.state;
     return (
       <View style={styles.container}>
         <Text style={styles.welcome}>
@@ -27,15 +36,24 @@ class reactNativeAnalogClock extends Component {
           Press Cmd+R to reload,{'\n'}
           Cmd+D or shake for dev menu
         </Text>
-        <View style={styles.clockContainer}>
-          <AnalogClock
-            style={{
-              height: 120,
-              width: 120
-            }}
-            hours={15}
-          />
-        </View>
+
+
+        <Text style={styles.instructions}>
+          {hours ? hours : '--'}
+          :
+          {minutes ? minutes : '--'}
+          :
+          {seconds ? seconds : '--'}
+        </Text>
+        <AnalogClock
+          style={{
+            height: 180,
+            width: 180
+          }}
+          hours={hours}
+          minutes={minutes}
+          seconds={seconds}
+        />
       </View>
     );
   }
