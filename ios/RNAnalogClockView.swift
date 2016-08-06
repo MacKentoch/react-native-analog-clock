@@ -10,19 +10,24 @@ import Foundation
 
 @objc(RNAnalogClockView)
 class RNAnalogClockView : BEMAnalogClockView, BEMAnalogClockDelegate {
-  let rectMin = CGRect(x: 0.0, y: 0.0, width: 100.0, height: 100.0)
+  
+  let rectMin = CGRect(
+    x: 0.0,
+    y: 0.0,
+    width: 100.0,
+    height: 100.0
+  )
+  
   required init?(coder aDecoder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }
   
   override init(frame: CGRect) {
-    super.init(frame: self.rectMin);
-    
-    self.frame = self.rectMin;
-    
+    super.init(frame: frame);
+    self.frame = frame;
     self.delegate = self;
     
-    self.debugFrame(frame: self.frame)
+    self.debugFrame(frame: frame)
   }
   
   func debugFrame(frame frame: CGRect) {

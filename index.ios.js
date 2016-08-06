@@ -29,6 +29,10 @@ class reactNativeAnalogClock extends Component {
         </Text>
         <View style={styles.clockContainer}>
           <AnalogClock
+            style={{
+              height: 120,
+              width: 120
+            }}
             hours={15}
           />
         </View>
