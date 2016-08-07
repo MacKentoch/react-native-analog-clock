@@ -8,6 +8,7 @@ import React, { Component } from 'react';
 import {
   AppRegistry,
   StyleSheet,
+  Dimensions,
   Text,
   View,
   ScrollView,
@@ -16,6 +17,7 @@ import {
 }                           from 'react-native';
 import AnalogClock          from './AnalogClock';
 
+const { width, height } = Dimensions.get('window');
 
 class reactNativeAnalogClock extends Component {
   constructor(props) {
@@ -67,6 +69,7 @@ class reactNativeAnalogClock extends Component {
           </Text>
           <AnalogClock
             style={styles.clock}
+            // PROPERTIES
             hours={hours}
             minutes={minutes}
             seconds={seconds}
@@ -75,10 +78,13 @@ class reactNativeAnalogClock extends Component {
             militaryTime={militaryTime}
             currentTime={currentTime}
             enableDigit={true}
-            borderWidth={borderWidth}
             setTimeViaTouch={setTimeViaTouch}
-            borderColor={'grey'}
+            enableGraduations={true}
             enableHub={true}
+            // CLOCK'S FACE CUSTOMIZATION
+            borderColor={'grey'}
+            borderWidth={borderWidth}
+            faceBackgroundColor={'red'}
           />
         </View>
         <ScrollView style={styles.commandsPanel}>
@@ -130,13 +136,13 @@ class reactNativeAnalogClock extends Component {
           </View>
           <View style={styles.command}>
             <Text style={styles.cmdInfo}>
-              border width:
+              border width ({borderWidth}):
             </Text>
             <Slider
+              style={styles.sliders}
               minimumValue={0}
               maximumValue={10}
               step={1}
-              style={{width: 200}}
               value={borderWidth}
               onValueChange={this.handlesBorderWidthChange}
             />
@@ -211,6 +217,9 @@ const styles = StyleSheet.create({
   cmdInfo: {
     fontSize: 14,
     fontWeight: '600'
+  },
+  sliders: {
+    width: width * 0.4
   }
 });
 
