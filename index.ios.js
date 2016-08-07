@@ -1,7 +1,7 @@
 /**
  * Sample React Native App
  * https://github.com/facebook/react-native
- *
+ * @flow
  */
 
 import React, { Component } from 'react';
@@ -13,7 +13,8 @@ import {
   View,
   ScrollView,
   Switch,
-  Slider
+  Slider,
+  TextInput
 }                           from 'react-native';
 import AnalogClock          from './AnalogClock';
 
@@ -25,7 +26,9 @@ class reactNativeAnalogClock extends Component {
     this.state = {
       hours: 0,
       minutes: 0,
-      seconds: 0
+      seconds: 0,
+
+      faceBackgroundColor: '#26A65B'
     }
   }
 
@@ -64,10 +67,56 @@ class reactNativeAnalogClock extends Component {
             borderColor={'black'}
             borderAlpha={1}
             borderWidth={0}
-            faceBackgroundColor={'#26A65B'}
+            faceBackgroundColor={this.state.faceBackgroundColor}
             faceBackgroundAlpha={0.3}
           />
         </View>
+
+        <ScrollView style={styles.commandsPanel}>
+          <View style={styles.command}>
+            <Text style={styles.cmdInfo}>
+              hours
+            </Text>
+            <TextInput
+              style={[styles.cmdInput, styles.textInput]}
+              onChangeText={(text) => this.setState({hours: parseInt(text, 10) ? parseInt(text, 10)%12 : 0})}
+              value={this.state.hours + ''}
+            />
+          </View>
+
+          <View style={styles.command}>
+            <Text style={styles.cmdInfo}>
+              minutes
+            </Text>
+            <TextInput
+              style={[styles.cmdInput, styles.textInput]}
+              onChangeText={(text) => this.setState({minutes: parseInt(text, 10) ? parseInt(text, 10)%60 : 0})}
+              value={this.state.minutes + ''}
+            />
+          </View>
+
+          <View style={styles.command}>
+            <Text style={styles.cmdInfo}>
+              seconds
+            </Text>
+            <TextInput
+              style={[styles.cmdInput, styles.textInput]}
+              onChangeText={(text) => this.setState({seconds: parseInt(text, 10) ? parseInt(text, 10)%60 : 0})}
+              value={this.state.seconds + ''}
+            />
+          </View>
+
+          <View style={styles.command}>
+            <Text style={styles.cmdInfo}>
+              faceBackgroundColor
+            </Text>
+            <TextInput
+              style={[styles.cmdInput, styles.textInput]}
+              onChangeText={(text) => this.setState({faceBackgroundColor: text})}
+              value={this.state.faceBackgroundColor}
+            />
+          </View>
+        </ScrollView>
       </View>
     );
   }
@@ -86,7 +135,7 @@ const styles = StyleSheet.create({
     margin: 10,
   },
   clockContainer: {
-    height: 240,
+    height: 300,
     alignItems: 'center',
     justifyContent: 'space-around'
   },
@@ -99,15 +148,16 @@ const styles = StyleSheet.create({
     height: 180,
     width: 180,
     backgroundColor: 'transparent',
-
     marginTop: 15,
     marginBottom: 15,
   },
+
   commandsPanel: {
     backgroundColor: '#FFF'
   },
   command: {
     marginTop: 15,
+    marginBottom: 15,
     marginLeft: 30,
     marginRight: 30,
     flexDirection: 'row',
@@ -115,8 +165,18 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between'
   },
   cmdInfo: {
+    flex: 2,
     fontSize: 14,
     fontWeight: '600'
+  },
+  cmdInput: {
+    flex: 1
+  },
+  textInput: {
+    padding: 2,
+    height: 40,
+    borderColor: '#4A4A4A',
+    borderWidth: 1
   },
   sliders: {
     width: width * 0.4

@@ -55,11 +55,27 @@
 //  RCT_EXPORT_VIEW_PROPERTY(digitOffset, CGFloat)
 
 
-  /////////////////////////////////////
-  // Custom props for bridge needs
-  /////////////////////////////////////
-  RCT_EXPORT_VIEW_PROPERTY(customBorderColor, NSNumber)
-  RCT_EXPORT_VIEW_PROPERTY(customFaceBackgroundColor, NSNumber)
+  //////////////////////////
+  //----- PROPERTIES -----//
+  //////////////////////////
+
+  /// setting the time manualy
+  RCT_EXPORT_VIEW_PROPERTY(bridgeHours, NSInteger);
+  RCT_EXPORT_VIEW_PROPERTY(bridgeMinutes, NSInteger);
+  RCT_EXPORT_VIEW_PROPERTY(bridgeSeconds, NSInteger);
+
+  //////////////////////////////////////////
+  //----- CLOCK'S FACE CUSTOMIZATION -----//
+  //////////////////////////////////////////
+  // The color of the clock's border.
+  RCT_EXPORT_VIEW_PROPERTY(bridgeBorderColor, NSNumber)
+  /// The background color of the clock's face.
+  RCT_EXPORT_VIEW_PROPERTY(bridgeFaceBackgroundColor, NSNumber)
+  /// If set to YES, the clock time can be updated via touch inputs. Default value is NO.
+  RCT_EXPORT_VIEW_PROPERTY(bridgeSetTimeViaTouch, BOOL);
+
+
+
 
 
 //  RCT_EXTERN_METHOD(addEvent:(NSString *)name location:(NSString *)location date:(nonnull NSNumber *)date)

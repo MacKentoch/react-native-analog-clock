@@ -41,9 +41,9 @@ class AnalogClock extends Component {
     return (
       <RNAnalogClock
         // PROPERTIES
-        hours={hours}
-        minutes={minutes}
-        seconds={seconds}
+        bridgeHours={hours}
+        bridgeMinutes={minutes}
+        bridgeSeconds={seconds}
         enableShadows={enableShadows}
         realTime={realTime}
         militaryTime={militaryTime}
@@ -53,10 +53,10 @@ class AnalogClock extends Component {
         enableGraduations={enableGraduations}
         enableHub={enableHub}
         // CLOCK'S FACE CUSTOMIZATION
-        customBorderColor={processColor(borderColor)}
+        bridgeBorderColor={processColor(borderColor)}
         borderAlpha={borderAlpha}
         borderWidth={borderWidth}
-        customFaceBackgroundColor={processColor(faceBackgroundColor)}
+        bridgeFaceBackgroundColor={processColor(faceBackgroundColor)}
         faceBackgroundAlpha={faceBackgroundAlpha}
         {...otherProps}
       />
