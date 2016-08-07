@@ -1,7 +1,22 @@
 {
   "name": "react-native-analog-clock",
-  "version": "0.0.1",
-  "private": true,
+  "version": "0.0.2",
+  "repository": {
+    "type" : "git",
+    "url" : "https://github.com/MacKentoch/react-native-analog-clock"
+  },
+  "description": "A nice and native alternative to traditional timepicker.",
+  "author": "Erwan DATIN (MacKentoch)",
+  "nativePackage": true,
+  "license": "MIT",
+  "homepage": "https://github.com/MacKentoch/react-native-analog-clock",
+  "keywords": [
+    "react-native",
+    "react",
+    "native",
+    "clock",
+    "timepicker"
+  ],
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start"
   },

@@ -5,7 +5,7 @@
 This component is a bridge over `native`  [BEMAnalogClock](https://github.com/Boris-Em/BEMAnalogClock)
 - Adjust the time on the clock via touch (or disable it)
 - customizable
-- native behind (*JS thread will thank you later :smile:*)
+- native behind (*JS thread will thank you later *:smile:)
 
 
 
