@@ -1,5 +1,12 @@
-import React , { Component, PropTypes } from 'react';
-import { requireNativeComponent, processColor } from 'react-native';
+import React , {
+  Component,
+  PropTypes
+}                           from 'react';
+import {
+  requireNativeComponent,
+  processColor
+}                           from 'react-native';
+
 
 const RNAnalogClock = requireNativeComponent(
   'RNAnalogClockSwift',
@@ -8,7 +15,20 @@ const RNAnalogClock = requireNativeComponent(
 
 class AnalogClock extends Component {
   render() {
-    const { hours, minutes, seconds, ...otherProps } = this.props;
+    const {
+      hours,
+      minutes,
+      seconds,
+      enableShadows,
+      realTime,
+      militaryTime,
+      currentTime,
+      enableDigit,
+      setTimeViaTouch,
+      borderColor,
+      enableHub,
+      ...otherProps } = this.props;
+
     return (
       <RNAnalogClock
         enableShadows={true}
@@ -17,6 +37,8 @@ class AnalogClock extends Component {
         currentTime={true}
         enableDigit={true}
         setTimeViaTouch={true}
+        borderColor={processColor(borderColor)}
+        enableHub={true}
         {...otherProps}
       />
     );
@@ -30,15 +52,39 @@ class AnalogClock extends Component {
 // self.myClock1.digitFont = [UIFont fontWithName:@"HelveticaNeue-Thin" size:17];
 // self.myClock1.digitColor = [UIColor whiteColor];
 
-
-// hours={hours}
-// minutes={minutes}
-// seconds={seconds}
-
 AnalogClock.propTypes = {
+  //////////////////////////
+  // Read / Write props
+  //////////////////////////
+  // manualy define hours
   hours: PropTypes.number,
+  // manualy define minutes
   minutes: PropTypes.number,
-  seconds: PropTypes.number
+  // manualy define seconds
+  seconds: PropTypes.number,
+
+  // If set to true, the clock will be set to the current time on the phone. Prioritized over setting the time manualy. Default value is false.
+  currentTime: PropTypes.bool,
+  /// If set to true, the clock will be updated in real time (the second hand will move every second, the minute hand every minute...). Default value is NO;
+  realTime: PropTypes.bool,
+  // If set to true, the clock time can be updated via touch inputs. Default value is false.
+  setTimeViaTouch: PropTypes.bool,
+  // If set to true, the clock time will suport military time. Default value is false.
+  militaryTime: PropTypes.bool,
+  // If set to true, the hands will cast a shadow. Default value is true.
+  enableShadows: PropTypes.bool,
+  // If set to true, the graduation on the clock will be visible. See the methods bellow to costumize the graduations. Default value is true.
+  enableGraduations: PropTypes.bool,
+  // If set to true, the digits (1-12) will be displayed on the face of the clock. Default value is false.
+  enableDigit: PropTypes.bool,
+  /// If set to true, a circular hub will be drawn. Default value is false
+  enableHub: PropTypes.bool,
+
+  //////////////////////////
+  // Read only props
+  //////////////////////////
+  //If set to true, the clock real time feature is activated. Read only.
+  realTimeIsActivated: PropTypes.bool
 }
 
 AnalogClock.defaultProps = {

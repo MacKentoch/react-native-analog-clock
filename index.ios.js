@@ -1,7 +1,7 @@
 /**
  * Sample React Native App
  * https://github.com/facebook/react-native
- * @flow
+ *
  */
 
 import React, { Component } from 'react';
@@ -9,9 +9,12 @@ import {
   AppRegistry,
   StyleSheet,
   Text,
-  View
-} from 'react-native';
-import AnalogClock from './AnalogClock';
+  View,
+  ScrollView,
+  Switch
+}                           from 'react-native';
+import AnalogClock          from './AnalogClock';
+
 
 class reactNativeAnalogClock extends Component {
   constructor(props) {
@@ -19,68 +22,155 @@ class reactNativeAnalogClock extends Component {
     this.state = {
       hours: 12,
       minutes: 0,
-      seconds: 0
+      seconds: 0,
+      enableShadows: true,
+      realTime: true,
+      militaryTime: true,
+      currentTime: true
     };
+    this.handlesEnableShadowsChange = this.handlesEnableShadowsChange.bind(this);
+    this.handlesRealTimeChange = this.handlesRealTimeChange.bind(this);
+    this.handlesMilitaryTimeChange = this.handlesMilitaryTimeChange.bind(this);
+    this.handlesSetCurrentTimeChange = this.handlesSetCurrentTimeChange.bind(this);
   }
+
   render() {
     const { hours, minutes, seconds } = this.state;
+    const { enableShadows, realTime, militaryTime, currentTime } = this.state;
     return (
       <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
+        <Text style={styles.title}>
+          React Native Analog Clock
         </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.ios.js
-        </Text>
-        <Text style={styles.instructions}>
-          Press Cmd+R to reload,{'\n'}
-          Cmd+D or shake for dev menu
-        </Text>
-
-
-        <Text style={styles.instructions}>
-          {hours ? hours : '--'}
-          :
-          {minutes ? minutes : '--'}
-          :
-          {seconds ? seconds : '--'}
-        </Text>
-        <AnalogClock
-          style={{
-            height: 180,
-            width: 180
-          }}
-          hours={hours}
-          minutes={minutes}
-          seconds={seconds}
-        />
+        <View style={styles.clockContainer}>
+          <Text style={styles.currentTime}>
+            current time:
+            &nbsp;
+            {hours ? hours : '--'}
+            :
+            {minutes ? minutes : '--'}
+            :
+            {seconds ? seconds : '--'}
+          </Text>
+          <AnalogClock
+            style={styles.clock}
+            hours={hours}
+            minutes={minutes}
+            seconds={seconds}
+            enableShadows={enableShadows}
+            realTime={realTime}
+            militaryTime={militaryTime}
+            currentTime={true}
+            enableDigit={true}
+            setTimeViaTouch={true}
+            borderColor={'#FFFFFF'}
+            enableHub={true}
+          />
+        </View>
+        <ScrollView style={styles.commandsPanel}>
+          <View style={styles.command}>
+            <Text style={styles.cmdInfo}>
+              Set to current time:
+            </Text>
+            <Switch
+              value={currentTime}
+              onValueChange={this.handlesSetCurrentTimeChange}
+            />
+          </View>
+          <View style={styles.command}>
+            <Text style={styles.cmdInfo}>
+              Enable shadows:
+            </Text>
+            <Switch
+              value={enableShadows}
+              onValueChange={this.handlesEnableShadowsChange}
+            />
+          </View>
+          <View style={styles.command}>
+            <Text style={styles.cmdInfo}>
+              Real time:
+            </Text>
+            <Switch
+              value={realTime}
+              onValueChange={this.handlesRealTimeChange}
+            />
+          </View>
+          <View style={styles.command}>
+            <Text style={styles.cmdInfo}>
+              Military time:
+            </Text>
+            <Switch
+              value={militaryTime}
+              onValueChange={this.handlesMilitaryTimeChange}
+            />
+          </View>
+        </ScrollView>
       </View>
     );
+  }
+
+  handlesEnableShadowsChange(newValue) {
+    this.setState({enableShadows: newValue});
+  }
+
+  handlesRealTimeChange(newValue) {
+    this.setState({realTime: newValue});
+  }
+
+  handlesMilitaryTimeChange(newValue) {
+    this.setState({militaryTime: newValue});
+  }
+  handlesSetCurrentTimeChange(newValue) {
+    this.setState({currentTime: newValue});
   }
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+    paddingTop: 20,
+    justifyContent: 'flex-start',
+    backgroundColor: '#F1F1F1',
   },
-  welcome: {
+  title: {
     fontSize: 20,
     textAlign: 'center',
     margin: 10,
   },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
   clockContainer: {
-    height: 200,
-    width: 200,
-    backgroundColor: 'red'
+    height: 220,
+    alignItems: 'center',
+    justifyContent: 'space-around'
+  },
+  currentTime: {
+    fontSize: 16,
+    textAlign: 'center'
+  },
+  clock: {
+    height: 180,
+    width: 180,
+    marginTop: 15,
+    marginBottom: 15
+  },
+  commandsPanel: {
+    backgroundColor: '#FFF'
+  },
+  command: {
+    marginTop: 15,
+    marginLeft: 30,
+    marginRight: 30,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between'
+  },
+  cmdInfo: {
+    fontSize: 14,
+    fontWeight: '600'
   }
 });
 
-AppRegistry.registerComponent('reactNativeAnalogClock', () => reactNativeAnalogClock);
+
+AppRegistry.registerComponent(
+  'reactNativeAnalogClock',
+  () => reactNativeAnalogClock
+);

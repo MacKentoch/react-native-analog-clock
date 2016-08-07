@@ -6,6 +6,15 @@
 //  Copyright © 2016 Facebook. All rights reserved.
 //
 
+
+// NOTE:
+//  "RNAnalogClock.h"
+//  AND
+//  "RNAnalogClock.h"
+//
+//  ->  is where we will tell React Native about what we need
+//      and what to call our stuff in the JavaScript world.
+
 #import "RNAnalogClock.h"
 #import "RCTViewManager.h"
 
@@ -40,17 +49,20 @@
   /// If set to YES, the digits (1-12) will be displayed on the face of the clock. Default value is NO.
   RCT_EXPORT_VIEW_PROPERTY(enableDigit, BOOL)
 
+
+  RCT_EXPORT_VIEW_PROPERTY(borderColor, UIColor)
+
+  /////////////////////////////////////
+  // Custom props for bridge needs
+  /////////////////////////////////////
+  RCT_EXPORT_VIEW_PROPERTY(customBorderColor, NSString)
+
+
+//  RCT_EXTERN_METHOD(addEvent:(NSString *)name location:(NSString *)location date:(nonnull NSNumber *)date)
+
 @end
 
 @implementation RNAnalogClock
 
 @end
 
-
-// NOTE:
-//  "RNAnalogClock.h"
-//  AND
-//  "RNAnalogClock.h"
-//
-//  ->  is where we will tell React Native about what we need
-//      and what to call our stuff in the JavaScript world.

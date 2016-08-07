@@ -11,6 +11,12 @@ import Foundation
 @objc(RNAnalogClockView)
 class RNAnalogClockView : BEMAnalogClockView, BEMAnalogClockDelegate {
   
+//  var customBorderColor: NSNumber = 0 {
+//    didSet {
+//      self.borderColor = RCTConvert.UIColor(customBorderColor)
+//    }
+//  }
+  
   required init?(coder aDecoder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }
@@ -20,6 +26,16 @@ class RNAnalogClockView : BEMAnalogClockView, BEMAnalogClockDelegate {
     
     self.frame = frame;
     self.delegate = self;
+    
   }
-
+  
+  
+//  @objc func setClockFaceBorderStyle(color: String, alpha: String, width: NSNumber) -> Void {
+//    NSLog("%@ %@ %S", name, location, date);
+//  }
+  
+//  @objc func setClockFaceBorderColor(color: String) {
+//    self.borderColor = RCTConvert.UIColor(color)
+//  }
+ 
 }

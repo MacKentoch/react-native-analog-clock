@@ -38,6 +38,7 @@
   /// If set to YES, a circular hub will be drawn. Default value is NO;
   @property (nonatomic, assign) BOOL enableHub;
 
+  @property (strong, nonatomic) UIColor *borderColor;
 
   ////////////////////////////////////
   /// READONLY PROPS
@@ -45,5 +46,9 @@
 
   /// If set to YES, the clock real time feature is activated. Read only.
   @property (readonly, nonatomic) BOOL realTimeIsActivated;
+
+
+
+  @property (nonatomic, assign) NSString* customBorderColor;
 
 @end
