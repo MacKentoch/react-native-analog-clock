@@ -11,7 +11,8 @@ import {
   Text,
   View,
   ScrollView,
-  Switch
+  Switch,
+  Slider
 }                           from 'react-native';
 import AnalogClock          from './AnalogClock';
 
@@ -26,17 +27,29 @@ class reactNativeAnalogClock extends Component {
       enableShadows: true,
       realTime: true,
       militaryTime: true,
-      currentTime: true
+      currentTime: true,
+      setTimeViaTouch: false,
+      borderWidth: 3
     };
     this.handlesEnableShadowsChange = this.handlesEnableShadowsChange.bind(this);
     this.handlesRealTimeChange = this.handlesRealTimeChange.bind(this);
     this.handlesMilitaryTimeChange = this.handlesMilitaryTimeChange.bind(this);
     this.handlesSetCurrentTimeChange = this.handlesSetCurrentTimeChange.bind(this);
+    this.handlesSetTimeViaTouchChange = this.handlesSetTimeViaTouchChange.bind(this);
+    this.handlesBorderWidthChange = this.handlesBorderWidthChange.bind(this);
   }
 
   render() {
     const { hours, minutes, seconds } = this.state;
-    const { enableShadows, realTime, militaryTime, currentTime } = this.state;
+    const {
+      enableShadows,
+      realTime,
+      militaryTime,
+      currentTime,
+      setTimeViaTouch,
+      borderWidth
+    } = this.state;
+
     return (
       <View style={styles.container}>
         <Text style={styles.title}>
@@ -60,10 +73,11 @@ class reactNativeAnalogClock extends Component {
             enableShadows={enableShadows}
             realTime={realTime}
             militaryTime={militaryTime}
-            currentTime={true}
+            currentTime={currentTime}
             enableDigit={true}
-            setTimeViaTouch={true}
-            borderColor={'#FFFFFF'}
+            borderWidth={borderWidth}
+            setTimeViaTouch={setTimeViaTouch}
+            borderColor={'grey'}
             enableHub={true}
           />
         </View>
@@ -88,11 +102,21 @@ class reactNativeAnalogClock extends Component {
           </View>
           <View style={styles.command}>
             <Text style={styles.cmdInfo}>
-              Real time:
+              Set to the current time
             </Text>
             <Switch
               value={realTime}
               onValueChange={this.handlesRealTimeChange}
+            />
+          </View>
+
+          <View style={styles.command}>
+            <Text style={styles.cmdInfo}>
+              Can be updated via touch inputs:
+            </Text>
+            <Switch
+              value={setTimeViaTouch}
+              onValueChange={this.handlesSetTimeViaTouchChange}
             />
           </View>
           <View style={styles.command}>
@@ -102,6 +126,19 @@ class reactNativeAnalogClock extends Component {
             <Switch
               value={militaryTime}
               onValueChange={this.handlesMilitaryTimeChange}
+            />
+          </View>
+          <View style={styles.command}>
+            <Text style={styles.cmdInfo}>
+              border width:
+            </Text>
+            <Slider
+              minimumValue={0}
+              maximumValue={10}
+              step={1}
+              style={{width: 200}}
+              value={borderWidth}
+              onValueChange={this.handlesBorderWidthChange}
             />
           </View>
         </ScrollView>
@@ -122,6 +159,14 @@ class reactNativeAnalogClock extends Component {
   }
   handlesSetCurrentTimeChange(newValue) {
     this.setState({currentTime: newValue});
+  }
+
+  handlesSetTimeViaTouchChange(newValue) {
+    this.setState({setTimeViaTouch: newValue});
+  }
+
+  handlesBorderWidthChange(newValue) {
+    this.setState({borderWidth: parseInt(newValue, 10)});
   }
 }
 

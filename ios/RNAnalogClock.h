@@ -38,7 +38,7 @@
   /// If set to YES, a circular hub will be drawn. Default value is NO;
   @property (nonatomic, assign) BOOL enableHub;
 
-  @property (strong, nonatomic) UIColor *borderColor;
+//  @property (strong, nonatomic) UIColor *borderColor;
 
   ////////////////////////////////////
   /// READONLY PROPS
@@ -49,6 +49,6 @@
 
 
 
-  @property (nonatomic, assign) NSString* customBorderColor;
+//  @property (nonatomic, assign) NSString* customBorderColor;
 
 @end

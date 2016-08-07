@@ -28,14 +28,4 @@ class RNAnalogClockView : BEMAnalogClockView, BEMAnalogClockDelegate {
     self.delegate = self;
     
   }
-  
-  
-//  @objc func setClockFaceBorderStyle(color: String, alpha: String, width: NSNumber) -> Void {
-//    NSLog("%@ %@ %S", name, location, date);
-//  }
-  
-//  @objc func setClockFaceBorderColor(color: String) {
-//    self.borderColor = RCTConvert.UIColor(color)
-//  }
- 
 }

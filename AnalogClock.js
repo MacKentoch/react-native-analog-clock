@@ -26,26 +26,30 @@ class AnalogClock extends Component {
       enableDigit,
       setTimeViaTouch,
       borderColor,
+      borderWidth,
       enableHub,
-      ...otherProps } = this.props;
+      enableGraduations,
+      ...otherProps
+    } = this.props;
 
     return (
       <RNAnalogClock
-        enableShadows={true}
-        realTime={true}
-        militaryTime={true}
-        currentTime={true}
-        enableDigit={true}
-        setTimeViaTouch={true}
+        enableShadows={enableShadows}
+        realTime={realTime}
+        militaryTime={militaryTime}
+        currentTime={currentTime}
+        enableDigit={enableDigit}
+        setTimeViaTouch={setTimeViaTouch}
+        enableGraduations={enableGraduations}
         borderColor={processColor(borderColor)}
-        enableHub={true}
+        borderWidth={borderWidth}
+        enableHub={enableHub}
         {...otherProps}
       />
     );
   }
 }
 
-// self.myClock1.borderColor = [UIColor whiteColor];
 // self.myClock1.borderWidth = 3;
 // self.myClock1.faceBackgroundColor = [UIColor whiteColor];
 // self.myClock1.faceBackgroundAlpha = 0.0;
@@ -62,7 +66,6 @@ AnalogClock.propTypes = {
   minutes: PropTypes.number,
   // manualy define seconds
   seconds: PropTypes.number,
-
   // If set to true, the clock will be set to the current time on the phone. Prioritized over setting the time manualy. Default value is false.
   currentTime: PropTypes.bool,
   /// If set to true, the clock will be updated in real time (the second hand will move every second, the minute hand every minute...). Default value is NO;
