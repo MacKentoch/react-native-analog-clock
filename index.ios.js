@@ -23,29 +23,14 @@ class reactNativeAnalogClock extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      hours: 12,
+      hours: 0,
       minutes: 0,
-      seconds: 0,
-      enableShadows: true,
-      realTime: true,
-      militaryTime: true,
-      currentTime: true,
-      setTimeViaTouch: true,
-      borderWidth: 3
-    };
+      seconds: 0
+    }
   }
 
   render() {
     const { hours, minutes, seconds } = this.state;
-    const {
-      enableShadows,
-      realTime,
-      militaryTime,
-      currentTime,
-      setTimeViaTouch,
-      borderWidth
-    } = this.state;
-
     return (
       <View style={styles.container}>
         <Text style={styles.title}>
@@ -67,20 +52,19 @@ class reactNativeAnalogClock extends Component {
             hours={hours}
             minutes={minutes}
             seconds={seconds}
-            enableShadows={enableShadows}
-            realTime={realTime}
-            militaryTime={militaryTime}
-            currentTime={currentTime}
+            enableShadows={true}
+            realTime={true}
+            militaryTime={true}
+            currentTime={true}
             enableDigit={true}
-            customSetTimeViaTouch={setTimeViaTouch}
-            setTimeViaTouch={setTimeViaTouch}
+            setTimeViaTouch={true}
             enableGraduations={true}
             enableHub={true}
             // CLOCK'S FACE CUSTOMIZATION
-            borderColor={'grey'}
-            borderAlpha={0.5}
-            borderWidth={borderWidth}
-            faceBackgroundColor={'red'}
+            borderColor={'black'}
+            borderAlpha={1}
+            borderWidth={0}
+            faceBackgroundColor={'#26A65B'}
             faceBackgroundAlpha={0.3}
           />
         </View>
