@@ -26,12 +26,16 @@ class AnalogClock extends Component {
       currentTime,
       enableDigit,
       setTimeViaTouch,
+      customSetTimeViaTouch,
       enableHub,
       enableGraduations,
       // CLOCK'S FACE CUSTOMIZATION
       borderColor,
+      borderAlpha,
       borderWidth,
+      customBorderWidth,
       faceBackgroundColor,
+      faceBackgroundAlpha,
 
       ...otherProps
     } = this.props;
@@ -48,13 +52,18 @@ class AnalogClock extends Component {
         currentTime={currentTime}
         enableDigit={enableDigit}
         setTimeViaTouch={setTimeViaTouch}
+        customSetTimeViaTouch={customSetTimeViaTouch}
         enableGraduations={enableGraduations}
         enableHub={enableHub}
         // CLOCK'S FACE CUSTOMIZATION
         borderColor={processColor(borderColor)}
-        borderWidth={borderWidth}
-        faceBackgroundColor={processColor(faceBackgroundColor)}
-
+        customBorderColor={processColor('black')}
+        customFaceBackgroundColor={processColor('#26A65B')}
+        borderAlpha={1}
+        borderWidth={0}
+        digitOffset={10}
+        // faceBackgroundColor={processColor(faceBackgroundColor)}
+        faceBackgroundAlpha={faceBackgroundAlpha}
         {...otherProps}
       />
     );
@@ -85,6 +94,7 @@ AnalogClock.propTypes = {
   realTime: PropTypes.bool,
   // If set to true, the clock time can be updated via touch inputs. Default value is false.
   setTimeViaTouch: PropTypes.bool,
+  customSetTimeViaTouch:PropTypes.bool,
   // If set to true, the clock time will suport military time. Default value is false.
   militaryTime: PropTypes.bool,
   // If set to true, the hands will cast a shadow. Default value is true.
@@ -100,9 +110,14 @@ AnalogClock.propTypes = {
   //----- CLOCK'S FACE CUSTOMIZATION -----//
   // The color of the clock's border.
   borderColor: PropTypes.string,
+  /// The alpha of the clock's border.
+  borderAlpha: PropTypes.number,
   /// The width of the clock's border.
   borderWidth: PropTypes.number,
-
+  /// The background color of the clock's face.
+  faceBackgroundColor: PropTypes.string,
+  /// The alpha of the clock's face.
+  faceBackgroundAlpha: PropTypes.number,
 
   //////////////////////////
   // Read only props

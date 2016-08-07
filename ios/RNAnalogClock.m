@@ -50,19 +50,20 @@
   RCT_EXPORT_VIEW_PROPERTY(enableDigit, BOOL)
 
 
-  RCT_EXPORT_VIEW_PROPERTY(borderColor, UIColor)
+  RCT_EXPORT_VIEW_PROPERTY(borderWidth, CGFloat)
+
+//  RCT_EXPORT_VIEW_PROPERTY(digitOffset, CGFloat)
+
 
   /////////////////////////////////////
   // Custom props for bridge needs
   /////////////////////////////////////
-  RCT_EXPORT_VIEW_PROPERTY(customBorderColor, NSString)
+  RCT_EXPORT_VIEW_PROPERTY(customBorderColor, NSNumber)
+  RCT_EXPORT_VIEW_PROPERTY(customFaceBackgroundColor, NSNumber)
 
 
 //  RCT_EXTERN_METHOD(addEvent:(NSString *)name location:(NSString *)location date:(nonnull NSNumber *)date)
 
 @end
 
-@implementation RNAnalogClock
-
-@end
 
