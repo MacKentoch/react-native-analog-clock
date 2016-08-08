@@ -89,7 +89,7 @@ class reactNativeAnalogClock extends Component {
             </Text>
             <TextInput
               style={[styles.cmdInput, styles.textInput]}
-              onChangeText={(text) => this.setState({hours: parseInt(text, 10) ? parseInt(text, 10)%12 : 0})}
+              onChangeText={(text) => this.setState({hours: parseInt(text, 10)%12})}
               value={this.state.hours + ''}
             />
           </View>
@@ -100,7 +100,7 @@ class reactNativeAnalogClock extends Component {
             </Text>
             <TextInput
               style={[styles.cmdInput, styles.textInput]}
-              onChangeText={(text) => this.setState({minutes: parseInt(text, 10) ? parseInt(text, 10)%60 : 0})}
+              onChangeText={(text) => this.setState({minutes: parseInt(text, 10)%60})}
               value={this.state.minutes + ''}
             />
           </View>
@@ -111,7 +111,7 @@ class reactNativeAnalogClock extends Component {
             </Text>
             <TextInput
               style={[styles.cmdInput, styles.textInput]}
-              onChangeText={(text) => this.setState({seconds: parseInt(text, 10) ? parseInt(text, 10)%60 : 0})}
+              onChangeText={(text) => this.setState({seconds: parseInt(text, 10)%60})}
               value={this.state.seconds + ''}
             />
           </View>
@@ -197,7 +197,7 @@ class reactNativeAnalogClock extends Component {
               style={styles.sliders}
               minimumValue={MIN_BORDER_WIDTH}
               maximumValue={MAX_BORDER_WIDTH}
-              onValueChange={(value) => this.setState({borderWidth: parseFloat(value) ? parseFloat(value) : 0 })}
+              onValueChange={(value) => this.setState({borderWidth: value })}
               value={this.state.borderWidth}
             />
             <Text>
