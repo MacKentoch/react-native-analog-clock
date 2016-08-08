@@ -56,7 +56,7 @@ class AnalogClock extends Component {
         // CLOCK'S FACE CUSTOMIZATION
         bridgeBorderColor={processColor(borderColor)}
         bridgeDigitOffset={parseFloat(digitOffset) ? parseFloat(digitOffset) : 0}
-        borderAlpha={borderAlpha}
+        bridgeBorderAlpha={parseFloat(borderAlpha) ? parseFloat(borderAlpha) : 0}
         bridgeBorderWidth={parseFloat(borderWidth) ? parseFloat(borderWidth) : 0}
         bridgeFaceBackgroundColor={processColor(faceBackgroundColor)}
         bridgeFaceBackgroundAlpha={parseFloat(faceBackgroundAlpha) ? parseFloat(faceBackgroundAlpha) : 0}

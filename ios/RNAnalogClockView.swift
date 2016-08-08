@@ -102,11 +102,17 @@ class RNAnalogClockView : BEMAnalogClockView, BEMAnalogClockDelegate {
   }
   
   @objc func setBridgeFaceBackgroundAlpha(alpha: CGFloat) {
-    print("setBridgeFaceBackgroundAlpha: \(alpha)")
     self.faceBackgroundAlpha = alpha
     self.reloadClock()
   }
+
   
+  @objc func setBridgeBorderAlpha(alpha: CGFloat) {
+    print("setBridgeBorderAlpha: \(alpha)")
+    self.borderAlpha = alpha
+    self.reloadClock()
+  }
+
   
   @objc func currentTimeOnClock(clock: BEMAnalogClockView!, hours: NSString!, minutes: NSString!, seconds: NSString!) {
     print("\nDEBUG; Current time: \(hours):\(minutes)\(seconds)")

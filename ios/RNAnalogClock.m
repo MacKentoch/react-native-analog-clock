@@ -55,6 +55,8 @@
   RCT_EXPORT_VIEW_PROPERTY(bridgeBorderWidth, CGFloat);
   // The color of the clock's border.
   RCT_EXPORT_VIEW_PROPERTY(bridgeBorderColor, NSNumber);
+  /// The alpha of the clock's border.
+  RCT_EXPORT_VIEW_PROPERTY(bridgeBorderAlpha, CGFloat)
   // The background color of the clock's face.
   RCT_EXPORT_VIEW_PROPERTY(bridgeFaceBackgroundColor, NSNumber);
   /// The alpha of the clock's face.

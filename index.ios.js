@@ -23,6 +23,9 @@ const { width, height } = Dimensions.get('window');
 const MIN_BORDER_WIDTH = 0;
 const MAX_BORDER_WIDTH = 20;
 
+const MIN_BORDER_ALPHA = 0.0;
+const MAX_BORDER_ALPHA = 1.0;
+
 const MIN_BRIDGE_DIGIT_OFFSET = -20;
 const MAX_BRIDGE_DIGIT_OFFSET = 20;
 
@@ -44,6 +47,7 @@ class reactNativeAnalogClock extends Component {
       enableGraduations: true,
       enableDigit: true,
       borderWidth: 0,
+      borderAlpha: 1.0,
       faceBackgroundColor: '#26A65B',
       faceBackgroundAlpha: 1.0,
       digitOffset: 5
@@ -83,7 +87,7 @@ class reactNativeAnalogClock extends Component {
             enableHub={true}
             // CLOCK'S FACE CUSTOMIZATION
             borderColor={'black'}
-            borderAlpha={1}
+            borderAlpha={this.state.borderAlpha}
             borderWidth={this.state.borderWidth}
             digitOffset={this.state.digitOffset}
             faceBackgroundColor={this.state.faceBackgroundColor}
@@ -211,6 +215,25 @@ class reactNativeAnalogClock extends Component {
             />
             <Text>
               max: {MAX_BORDER_WIDTH}
+            </Text>
+          </View>
+
+          <View style={styles.command}>
+            <Text style={styles.cmdInfo}>
+              borderAlpha
+            </Text>
+            <Text>
+              min: {MIN_BORDER_ALPHA}
+            </Text>
+            <Slider
+              style={styles.sliders}
+              minimumValue={MIN_BORDER_ALPHA}
+              maximumValue={MAX_BORDER_ALPHA}
+              onValueChange={(value) => this.setState({borderAlpha: value })}
+              value={this.state.borderAlpha}
+            />
+            <Text>
+              max: {MAX_BORDER_ALPHA}
             </Text>
           </View>
 
