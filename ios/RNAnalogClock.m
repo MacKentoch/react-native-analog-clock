@@ -20,14 +20,8 @@
 
 @interface RCT_EXTERN_MODULE(RNAnalogClockSwift, RCTViewManager)
 
-  /// If set to YES, the clock real time feature is activated. Read only.
+  /// READ ONLY : If set to YES, the clock real time feature is activated.
   RCT_EXPORT_VIEW_PROPERTY(realTimeIsActivated, BOOL)
-
-  /// If set to YES, the hands will cast a shadow. Default value is YES.
-  RCT_EXPORT_VIEW_PROPERTY(enableShadows, BOOL);
-
-  /// If set to YES, the graduation on the clock will be visible. See the methods bellow to costumize the graduations. Default value is YES.
-  RCT_EXPORT_VIEW_PROPERTY(enableGraduations, BOOL);
 
   /// If set to YES, the digits (1-12) will be displayed on the face of the clock. Default value is NO.
   RCT_EXPORT_VIEW_PROPERTY(enableDigit, BOOL);
@@ -54,6 +48,10 @@
   RCT_EXPORT_VIEW_PROPERTY(bridgeRealTime, BOOL);
   // If set to YES, the clock time will suport military time. Default value is NO.
   RCT_EXPORT_VIEW_PROPERTY(bridgeMilitaryTime, BOOL);
+  /// If set to YES, the hands will cast a shadow. Default value is YES.
+  RCT_EXPORT_VIEW_PROPERTY(bridgeEnableShadows, BOOL);
+  /// If set to YES, the graduation on the clock will be visible. See the methods bellow to costumize the graduations. Default value is YES.
+  RCT_EXPORT_VIEW_PROPERTY(bridgeEnableGraduations, BOOL);
 
   //////////////////////////////////////////
   //----- CLOCK'S FACE CUSTOMIZATION -----//

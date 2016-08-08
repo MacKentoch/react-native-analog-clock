@@ -56,8 +56,18 @@ class RNAnalogClockView : BEMAnalogClockView, BEMAnalogClockDelegate {
   }
   
   @objc func setBridgeMilitaryTime(active: Bool) {
-    print("setBridgeMilitaryTime: \(active)")
     self.militaryTime = active
+    self.reloadClock()
+  }
+  
+  @objc func setBridgeEnableShadows(active: Bool) {
+    self.enableShadows = active
+    self.reloadClock()
+  }
+  
+  @objc func setBridgeEnableGraduations(active: Bool) {
+    print("setBridgeEnableGraduations: \(active)")
+    self.enableGraduations = active
     self.reloadClock()
   }
   

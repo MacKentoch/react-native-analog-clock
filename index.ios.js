@@ -27,11 +27,12 @@ class reactNativeAnalogClock extends Component {
       hours: 0,
       minutes: 0,
       seconds: 0,
-
       setTimeViaTouch: true,
       currentTime: true,
       realTime: true,
       militaryTime: true,
+      enableShadows: true,
+      enableGraduations: true,
       faceBackgroundColor: '#26A65B'
     }
   }
@@ -59,13 +60,13 @@ class reactNativeAnalogClock extends Component {
             hours={hours}
             minutes={minutes}
             seconds={seconds}
-            enableShadows={true}
+            enableShadows={this.state.enableShadows}
             realTime={this.state.realTime}
             militaryTime={this.state.militaryTime}
             currentTime={this.state.currentTime}
             enableDigit={true}
             setTimeViaTouch={this.state.setTimeViaTouch}
-            enableGraduations={true}
+            enableGraduations={this.state.enableGraduations}
             enableHub={true}
             // CLOCK'S FACE CUSTOMIZATION
             borderColor={'black'}
@@ -147,6 +148,26 @@ class reactNativeAnalogClock extends Component {
             <Switch
               onValueChange={(value) => this.setState({militaryTime: value})}
               value={this.state.militaryTime}
+            />
+          </View>
+
+          <View style={styles.command}>
+            <Text style={styles.cmdInfo}>
+              enableShadows
+            </Text>
+            <Switch
+              onValueChange={(value) => this.setState({enableShadows: value})}
+              value={this.state.enableShadows}
+            />
+          </View>
+
+          <View style={styles.command}>
+            <Text style={styles.cmdInfo}>
+              enableGraduations
+            </Text>
+            <Switch
+              onValueChange={(value) => this.setState({enableGraduations: value})}
+              value={this.state.enableGraduations}
             />
           </View>
 
