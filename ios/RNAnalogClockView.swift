@@ -82,8 +82,13 @@ class RNAnalogClockView : BEMAnalogClockView, BEMAnalogClockDelegate {
   //----- CLOCK'S FACE CUSTOMIZATION SETTERS -----//
   //////////////////////////////////////////////////
   @objc func setBridgeBorderWidth(width: CGFloat) {
-    print("setBridgeBorderWidth: \(width)")
     self.borderWidth = width
+    self.reloadClock()
+  }
+  
+  @objc func setBridgeDigitOffset(offset: CGFloat) {
+    print("setBridgeDigitOffset: \(offset)")
+    self.digitOffset = offset
     self.reloadClock()
   }
   

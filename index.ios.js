@@ -23,6 +23,9 @@ const { width, height } = Dimensions.get('window');
 const MIN_BORDER_WIDTH = 0;
 const MAX_BORDER_WIDTH = 20;
 
+const MIN_BRIDGE_DIGIT_OFFSET = -20;
+const MAX_BRIDGE_DIGIT_OFFSET = 20;
+
 class reactNativeAnalogClock extends Component {
   constructor(props) {
     super(props);
@@ -38,7 +41,8 @@ class reactNativeAnalogClock extends Component {
       enableGraduations: true,
       enableDigit: true,
       borderWidth: 0,
-      faceBackgroundColor: '#26A65B'
+      faceBackgroundColor: '#26A65B',
+      digitOffset: 5
     }
   }
 
@@ -77,6 +81,7 @@ class reactNativeAnalogClock extends Component {
             borderColor={'black'}
             borderAlpha={1}
             borderWidth={this.state.borderWidth}
+            digitOffset={this.state.digitOffset}
             faceBackgroundColor={this.state.faceBackgroundColor}
             faceBackgroundAlpha={0.3}
           />
@@ -202,6 +207,25 @@ class reactNativeAnalogClock extends Component {
             />
             <Text>
               max: {MAX_BORDER_WIDTH}
+            </Text>
+          </View>
+
+          <View style={styles.command}>
+            <Text style={styles.cmdInfo}>
+              digitOffset
+            </Text>
+            <Text>
+              min: {MIN_BRIDGE_DIGIT_OFFSET}
+            </Text>
+            <Slider
+              style={styles.sliders}
+              minimumValue={MIN_BRIDGE_DIGIT_OFFSET}
+              maximumValue={MAX_BRIDGE_DIGIT_OFFSET}
+              onValueChange={(value) => this.setState({digitOffset: value })}
+              value={this.state.digitOffset}
+            />
+            <Text>
+              max: {MAX_BRIDGE_DIGIT_OFFSET}
             </Text>
           </View>
 

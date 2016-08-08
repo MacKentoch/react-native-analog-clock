@@ -32,6 +32,7 @@ class AnalogClock extends Component {
       borderColor,
       borderAlpha,
       borderWidth,
+      digitOffset,
       faceBackgroundColor,
       faceBackgroundAlpha,
 
@@ -54,6 +55,7 @@ class AnalogClock extends Component {
         enableHub={enableHub}
         // CLOCK'S FACE CUSTOMIZATION
         bridgeBorderColor={processColor(borderColor)}
+        bridgeDigitOffset={parseFloat(digitOffset) ? parseFloat(digitOffset) : 0}
         borderAlpha={borderAlpha}
         bridgeBorderWidth={parseFloat(borderWidth) ? parseFloat(borderWidth) : 0}
         bridgeFaceBackgroundColor={processColor(faceBackgroundColor)}
@@ -102,6 +104,8 @@ AnalogClock.propTypes = {
   borderAlpha: PropTypes.number,
   /// The width of the clock's border.
   borderWidth: PropTypes.number,
+  /// The offset for the position of the digits on the clock's face. A value >0 will make the digits appear further away from the center of the clock. A valut <0 will make them closer to the center of the clock. Default value is 0.0.
+  digitOffset: PropTypes.number,
   /// The background color of the clock's face.
   faceBackgroundColor: PropTypes.string,
   /// The alpha of the clock's face.
