@@ -56,6 +56,19 @@ const MAX_MINUTE_HAND_LENGTH = 100.0;
 const MIN_MINUTE_HAND_OFFSIDE_LENGTH = 0.0;
 const MAX_MINUTE_HAND_OFFSIDE_LENGTH = 100.0;
 
+const MIN_SECOND_HAND_ALPHA = 0.0;
+const MAX_SECOND_HAND_ALPHA = 1.0;
+
+const MIN_SECOND_HAND_WIDTH = 0.0;
+const MAX_SECOND_HAND_WIDTH = 20.0;
+
+const MIN_SECOND_HAND_LENGTH = 0.0;
+const MAX_SECOND_HAND_LENGTH = 100.0;
+
+const MIN_SECOND_HAND_OFFSIDE_LENGTH = 0.0;
+const MAX_SECOND_HAND_OFFSIDE_LENGTH = 100.0;
+
+
 class reactNativeAnalogClock extends Component {
   constructor(props) {
     super(props);
@@ -87,7 +100,12 @@ class reactNativeAnalogClock extends Component {
       minuteHandAlpha: 1.0,
       minuteHandWidth: 3.0,
       minuteHandLength: 55.0,
-      minuteHandOffsideLength: 20.0
+      minuteHandOffsideLength: 20.0,
+      secondHandColor: '#F1F1F1',
+      secondHandAlpha: 1.0,
+      secondHandWidth: 1.0,
+      secondHandLength: 60.0,
+      secondHandOffsideLength: 20.0
     }
   }
 
@@ -99,6 +117,7 @@ class reactNativeAnalogClock extends Component {
     const { faceBackgroundColor, faceBackgroundAlpha } = this.state;
     const { hourHandColor, hourHandAlpha, hourHandWidth, hourHandLength, hourHandOffsideLength } = this.state;
     const { minuteHandColor, minuteHandAlpha, minuteHandWidth, minuteHandLength, minuteHandOffsideLength } = this.state;
+    const { secondHandColor, secondHandAlpha, secondHandWidth, secondHandLength, secondHandOffsideLength } = this.state;
     return (
       <View style={styles.container}>
         <Text style={styles.title}>
@@ -148,6 +167,12 @@ class reactNativeAnalogClock extends Component {
             minuteHandWidth={minuteHandWidth}
             minuteHandLength={minuteHandLength}
             minuteHandOffsideLength={minuteHandOffsideLength}
+            // SECONDS HAND CUSTOMIZATION
+            secondHandColor={secondHandColor}
+            secondHandAlpha={secondHandAlpha}
+            secondHandWidth={secondHandWidth}
+            secondHandLength={secondHandLength}
+            secondHandOffsideLength={secondHandOffsideLength}
           />
         </View>
 
@@ -575,6 +600,101 @@ class reactNativeAnalogClock extends Component {
             />
             <Text>
               {MAX_MINUTE_HAND_OFFSIDE_LENGTH}
+            </Text>
+          </View>
+
+          {/* SECONDS HAND CUSTOMIZATION */}
+          {/* title */}
+          <View style={styles.groupCommandTitle}>
+            <Text style={styles.groupCommandText}>
+              SECONDS HAND CUSTOMIZATION
+            </Text>
+          </View>
+          {/* hourHandColor */}
+          <View style={styles.command}>
+            <Text style={styles.cmdInfo}>
+              secondHandColor
+            </Text>
+            <TextInput
+              style={[styles.cmdInput, styles.textInput]}
+              onChangeText={(text) => this.setState({secondHandColor: text})}
+              value={this.state.secondHandColor}
+            />
+          </View>
+          {/* secondHandAlpha */}
+          <View style={styles.command}>
+            <Text style={styles.cmdInfo}>
+              secondHandAlpha ({(secondHandAlpha + '').slice(0, 4)})
+            </Text>
+            <Text>
+              {MIN_SECOND_HAND_ALPHA}
+            </Text>
+            <Slider
+              style={styles.sliders}
+              minimumValue={MIN_SECOND_HAND_ALPHA}
+              maximumValue={MAX_SECOND_HAND_ALPHA}
+              onValueChange={(value) => this.setState({secondHandAlpha: value })}
+              value={this.state.secondHandAlpha}
+            />
+            <Text>
+              {MAX_SECOND_HAND_ALPHA}
+            </Text>
+          </View>
+          {/* secondHandWidth */}
+          <View style={styles.command}>
+            <Text style={styles.cmdInfo}>
+              secondHandWidth ({(secondHandWidth + '').slice(0, 4)})
+            </Text>
+            <Text>
+              {MIN_SECOND_HAND_WIDTH}
+            </Text>
+            <Slider
+              style={styles.sliders}
+              minimumValue={MIN_SECOND_HAND_WIDTH}
+              maximumValue={MAX_SECOND_HAND_WIDTH}
+              onValueChange={(value) => this.setState({secondHandWidth: value })}
+              value={this.state.secondHandWidth}
+            />
+            <Text>
+              {MAX_SECOND_HAND_WIDTH}
+            </Text>
+          </View>
+          {/* secondHandLength */}
+          <View style={styles.command}>
+            <Text style={styles.cmdInfo}>
+              secondHandLength ({(secondHandLength + '').slice(0, 4)})
+            </Text>
+            <Text>
+              {MIN_SECOND_HAND_LENGTH}
+            </Text>
+            <Slider
+              style={styles.sliders}
+              minimumValue={MIN_SECOND_HAND_LENGTH}
+              maximumValue={MAX_SECOND_HAND_LENGTH}
+              onValueChange={(value) => this.setState({secondHandLength: value })}
+              value={this.state.secondHandLength}
+            />
+            <Text>
+              {MAX_SECOND_HAND_LENGTH}
+            </Text>
+          </View>
+          {/* secondHandOffsideLength */}
+          <View style={styles.command}>
+            <Text style={styles.cmdInfo}>
+              secondHandOffsideLength ({(secondHandOffsideLength + '').slice(0, 4)})
+            </Text>
+            <Text>
+              {MIN_SECOND_HAND_OFFSIDE_LENGTH}
+            </Text>
+            <Slider
+              style={styles.sliders}
+              minimumValue={MIN_SECOND_HAND_OFFSIDE_LENGTH}
+              maximumValue={MAX_SECOND_HAND_OFFSIDE_LENGTH}
+              onValueChange={(value) => this.setState({secondHandOffsideLength: value })}
+              value={this.state.secondHandOffsideLength}
+            />
+            <Text>
+              {MAX_SECOND_HAND_OFFSIDE_LENGTH}
             </Text>
           </View>
 
