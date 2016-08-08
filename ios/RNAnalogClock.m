@@ -57,6 +57,8 @@
   RCT_EXPORT_VIEW_PROPERTY(bridgeBorderColor, NSNumber);
   // The background color of the clock's face.
   RCT_EXPORT_VIEW_PROPERTY(bridgeFaceBackgroundColor, NSNumber);
+  /// The alpha of the clock's face.
+  RCT_EXPORT_VIEW_PROPERTY(bridgeFaceBackgroundAlpha, CGFloat);
   // The offset for the position of the digits on the clock's face. A value >0 will make the digits appear further away from the center of the clock. A valut <0 will make them closer to the center of the clock. Default value is 0.0.
   RCT_EXPORT_VIEW_PROPERTY(bridgeDigitOffset, CGFloat)
 

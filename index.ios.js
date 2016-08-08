@@ -26,6 +26,9 @@ const MAX_BORDER_WIDTH = 20;
 const MIN_BRIDGE_DIGIT_OFFSET = -20;
 const MAX_BRIDGE_DIGIT_OFFSET = 20;
 
+const MIN_FACE_BACKGROUND_ALPHA = 0.0;
+const MAX_FACE_BACKGROUND_ALPHA = 1.0;
+
 class reactNativeAnalogClock extends Component {
   constructor(props) {
     super(props);
@@ -42,6 +45,7 @@ class reactNativeAnalogClock extends Component {
       enableDigit: true,
       borderWidth: 0,
       faceBackgroundColor: '#26A65B',
+      faceBackgroundAlpha: 1.0,
       digitOffset: 5
     }
   }
@@ -83,7 +87,7 @@ class reactNativeAnalogClock extends Component {
             borderWidth={this.state.borderWidth}
             digitOffset={this.state.digitOffset}
             faceBackgroundColor={this.state.faceBackgroundColor}
-            faceBackgroundAlpha={0.3}
+            faceBackgroundAlpha={this.state.faceBackgroundAlpha}
           />
         </View>
 
@@ -239,6 +243,26 @@ class reactNativeAnalogClock extends Component {
               value={this.state.faceBackgroundColor}
             />
           </View>
+
+          <View style={styles.command}>
+            <Text style={styles.cmdInfo}>
+              faceBackgroundAlpha
+            </Text>
+            <Text>
+              min: {MIN_FACE_BACKGROUND_ALPHA}
+            </Text>
+            <Slider
+              style={styles.sliders}
+              minimumValue={MIN_FACE_BACKGROUND_ALPHA}
+              maximumValue={MAX_FACE_BACKGROUND_ALPHA}
+              onValueChange={(value) => this.setState({faceBackgroundAlpha: value })}
+              value={this.state.faceBackgroundAlpha}
+            />
+            <Text>
+              max: {MAX_FACE_BACKGROUND_ALPHA}
+            </Text>
+          </View>
+
         </ScrollView>
       </View>
     );

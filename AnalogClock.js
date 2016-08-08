@@ -59,7 +59,7 @@ class AnalogClock extends Component {
         borderAlpha={borderAlpha}
         bridgeBorderWidth={parseFloat(borderWidth) ? parseFloat(borderWidth) : 0}
         bridgeFaceBackgroundColor={processColor(faceBackgroundColor)}
-        faceBackgroundAlpha={faceBackgroundAlpha}
+        bridgeFaceBackgroundAlpha={parseFloat(faceBackgroundAlpha) ? parseFloat(faceBackgroundAlpha) : 0}
         {...otherProps}
       />
     );

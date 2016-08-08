@@ -87,7 +87,6 @@ class RNAnalogClockView : BEMAnalogClockView, BEMAnalogClockDelegate {
   }
   
   @objc func setBridgeDigitOffset(offset: CGFloat) {
-    print("setBridgeDigitOffset: \(offset)")
     self.digitOffset = offset
     self.reloadClock()
   }
@@ -99,6 +98,12 @@ class RNAnalogClockView : BEMAnalogClockView, BEMAnalogClockDelegate {
   
   @objc func setBridgeFaceBackgroundColor(color: NSNumber) {
     self.faceBackgroundColor = RCTConvert.UIColor(color)
+    self.reloadClock()
+  }
+  
+  @objc func setBridgeFaceBackgroundAlpha(alpha: CGFloat) {
+    print("setBridgeFaceBackgroundAlpha: \(alpha)")
+    self.faceBackgroundAlpha = alpha
     self.reloadClock()
   }
   
