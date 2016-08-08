@@ -29,6 +29,9 @@ class reactNativeAnalogClock extends Component {
       seconds: 0,
 
       setTimeViaTouch: true,
+      currentTime: true,
+      realTime: true,
+      militaryTime: true,
       faceBackgroundColor: '#26A65B'
     }
   }
@@ -57,11 +60,11 @@ class reactNativeAnalogClock extends Component {
             minutes={minutes}
             seconds={seconds}
             enableShadows={true}
-            realTime={true}
-            militaryTime={true}
-            currentTime={true}
+            realTime={this.state.realTime}
+            militaryTime={this.state.militaryTime}
+            currentTime={this.state.currentTime}
             enableDigit={true}
-            setTimeViaTouch={true}
+            setTimeViaTouch={this.state.setTimeViaTouch}
             enableGraduations={true}
             enableHub={true}
             // CLOCK'S FACE CUSTOMIZATION
@@ -114,6 +117,36 @@ class reactNativeAnalogClock extends Component {
             <Switch
               onValueChange={(value) => this.setState({setTimeViaTouch: value})}
               value={this.state.setTimeViaTouch}
+            />
+          </View>
+
+          <View style={styles.command}>
+            <Text style={styles.cmdInfo}>
+              currentTime
+            </Text>
+            <Switch
+              onValueChange={(value) => this.setState({currentTime: value})}
+              value={this.state.currentTime}
+            />
+          </View>
+
+          <View style={styles.command}>
+            <Text style={styles.cmdInfo}>
+              realTime
+            </Text>
+            <Switch
+              onValueChange={(value) => this.setState({realTime: value})}
+              value={this.state.realTime}
+            />
+          </View>
+
+          <View style={styles.command}>
+            <Text style={styles.cmdInfo}>
+              militaryTime
+            </Text>
+            <Switch
+              onValueChange={(value) => this.setState({militaryTime: value})}
+              value={this.state.militaryTime}
             />
           </View>
 

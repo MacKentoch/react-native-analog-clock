@@ -43,16 +43,31 @@ class RNAnalogClockView : BEMAnalogClockView, BEMAnalogClockDelegate {
   @objc func setBridgeSetTimeViaTouch(active: Bool) {
     self.setTimeViaTouch = active
     self.reloadClock()
-    print("setTimeViaTouch: \(active)")
   }
   
-  @objc func setBridgeBorderColor(value: NSNumber) {
-    self.borderColor = RCTConvert.UIColor(value)
+  @objc func setBridgeCurrentTime(active: Bool) {
+    self.currentTime = active
     self.reloadClock()
   }
   
-  @objc func setBridgeFaceBackgroundColor(value: NSNumber) {
-    self.faceBackgroundColor = RCTConvert.UIColor(value)
+  @objc func setBridgeRealTime(active: Bool) {
+    self.realTime = active
+    self.reloadClock()
+  }
+  
+  @objc func setBridgeMilitaryTime(active: Bool) {
+    print("setBridgeMilitaryTime: \(active)")
+    self.militaryTime = active
+    self.reloadClock()
+  }
+  
+  @objc func setBridgeBorderColor(color: NSNumber) {
+    self.borderColor = RCTConvert.UIColor(color)
+    self.reloadClock()
+  }
+  
+  @objc func setBridgeFaceBackgroundColor(color: NSNumber) {
+    self.faceBackgroundColor = RCTConvert.UIColor(color)
     self.reloadClock()
   }
   

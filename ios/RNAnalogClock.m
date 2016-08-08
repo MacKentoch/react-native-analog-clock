@@ -20,15 +20,6 @@
 
 @interface RCT_EXTERN_MODULE(RNAnalogClockSwift, RCTViewManager)
 
-  /// If set to YES, the clock will be set to the current time on the phone. Prioritized over setting the time manualy. Default value is NO.
-  RCT_EXPORT_VIEW_PROPERTY(currentTime, BOOL);
-
-  /// If set to YES, the clock will be updated in real time (the second hand will move every second, the minute hand every minute...). Default value is NO;
-  RCT_EXPORT_VIEW_PROPERTY(realTime, BOOL);
-
-  // If set to YES, the clock time will suport military time. Default value is NO.
-  RCT_EXPORT_VIEW_PROPERTY(militaryTime, BOOL);
-
   /// If set to YES, the clock real time feature is activated. Read only.
   RCT_EXPORT_VIEW_PROPERTY(realTimeIsActivated, BOOL)
 
@@ -39,10 +30,10 @@
   RCT_EXPORT_VIEW_PROPERTY(enableGraduations, BOOL);
 
   /// If set to YES, the digits (1-12) will be displayed on the face of the clock. Default value is NO.
-  RCT_EXPORT_VIEW_PROPERTY(enableDigit, BOOL)
+  RCT_EXPORT_VIEW_PROPERTY(enableDigit, BOOL);
 
 
-  RCT_EXPORT_VIEW_PROPERTY(borderWidth, CGFloat)
+  RCT_EXPORT_VIEW_PROPERTY(borderWidth, CGFloat);
 
 //  RCT_EXPORT_VIEW_PROPERTY(digitOffset, CGFloat)
 
@@ -57,15 +48,21 @@
   RCT_EXPORT_VIEW_PROPERTY(bridgeSeconds, NSInteger);
   /// If set to YES, the clock time can be updated via touch inputs. Default value is NO.
   RCT_EXPORT_VIEW_PROPERTY(bridgeSetTimeViaTouch, BOOL);
+  /// If set to YES, the clock will be set to the current time on the phone. Prioritized over setting the time manualy. Default value is NO.
+  RCT_EXPORT_VIEW_PROPERTY(bridgeCurrentTime, BOOL);
+  /// If set to YES, the clock will be updated in real time (the second hand will move every second, the minute hand every minute...). Default value is NO;
+  RCT_EXPORT_VIEW_PROPERTY(bridgeRealTime, BOOL);
+  // If set to YES, the clock time will suport military time. Default value is NO.
+  RCT_EXPORT_VIEW_PROPERTY(bridgeMilitaryTime, BOOL);
 
   //////////////////////////////////////////
   //----- CLOCK'S FACE CUSTOMIZATION -----//
   //////////////////////////////////////////
   // The color of the clock's border.
-  RCT_EXPORT_VIEW_PROPERTY(bridgeBorderColor, NSNumber)
+  RCT_EXPORT_VIEW_PROPERTY(bridgeBorderColor, NSNumber);
   /// The background color of the clock's face.
-  RCT_EXPORT_VIEW_PROPERTY(bridgeFaceBackgroundColor, NSNumber)
- 
+  RCT_EXPORT_VIEW_PROPERTY(bridgeFaceBackgroundColor, NSNumber);
+
 
 
 
