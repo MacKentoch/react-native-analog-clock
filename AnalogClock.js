@@ -54,6 +54,9 @@ class AnalogClock extends Component {
       secondHandWidth,
       secondHandLength,
       secondHandOffsideLength,
+      // METHODS
+      startClock,
+      stopClock,
       ...otherProps
     } = this.props;
 
@@ -97,6 +100,9 @@ class AnalogClock extends Component {
         bridgeSecondHandWidth={parseFloat(secondHandWidth) ? parseFloat(secondHandWidth) : 1.0}
         bridgeSecondHandLength={parseFloat(secondHandLength) ? parseFloat(secondHandLength) : 60}
         bridgeSecondHandOffsideLength={parseFloat(secondHandOffsideLength) ? parseFloat(secondHandOffsideLength) : 20}
+        // METHODS
+        startClock={startClock}
+        stopClock={stopClock}
         {...otherProps}
       />
     );
@@ -173,9 +179,9 @@ AnalogClock.propTypes = {
   minuteHandLength: PropTypes.number,
   /// The length of the offside part of the clock's minute hand. Default value is 20.
   minuteHandOffsideLength: PropTypes.number,
-  ////////////////////////////////////////
+  //////////////////////////////////////////
   //----- SECONDS HAND CUSTOMIZATION -----//
-  ////////////////////////////////////////
+  //////////////////////////////////////////
   /// The color of the clock's second hand. Default value is whiteColor.
   secondHandColor: PropTypes.string,
   /// The alpha of the clock's second hand. Default value is 1.0.
@@ -186,6 +192,11 @@ AnalogClock.propTypes = {
   secondHandLength: PropTypes.number,
   /// The length of the offside part of the clock's second hand. Default value is 20.
   secondHandOffsideLength: PropTypes.number,
+  ///////////////////////
+  //----- METHODS -----//
+  ///////////////////////
+  startClock: PropTypes.func,
+  stopClock: PropTypes.func,
 
   //////////////////////////
   // Read only props (so no need to bridge native one)

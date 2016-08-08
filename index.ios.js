@@ -14,6 +14,7 @@ import {
   ScrollView,
   Switch,
   Slider,
+  TouchableOpacity,
   TextInput
 }                           from 'react-native';
 import AnalogClock          from './AnalogClock';
@@ -90,7 +91,7 @@ class reactNativeAnalogClock extends Component {
       faceBackgroundColor: '#26A65B',
       faceBackgroundAlpha: 1.0,
       digitColor: '#FFFFFF',
-      digitOffset: 5,
+      digitOffset: 12,
       hourHandColor: '#F1F1F1',
       hourHandAlpha: 1.0,
       hourHandWidth: 4.0,
@@ -107,6 +108,7 @@ class reactNativeAnalogClock extends Component {
       secondHandLength: 60.0,
       secondHandOffsideLength: 20.0
     }
+
   }
 
   render() {
@@ -124,9 +126,27 @@ class reactNativeAnalogClock extends Component {
           React Native Analog Clock
         </Text>
         <View style={styles.clockContainer}>
+          <View style={styles.clockCommandTopline}>
+            <TouchableOpacity
+              style={[styles.clockCommandButton, styles.startButton]}>
+              <Text style={{color: '#F1F1F1'}}>
+                START
+              </Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={[styles.clockCommandButton, styles.reloadButton]}>
+              <Text style={{color: '#F1F1F1'}}>
+                RELOAD
+              </Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={[styles.clockCommandButton, styles.stopButton]}>
+              <Text style={{color: '#F1F1F1'}}>
+                STOP
+              </Text>
+            </TouchableOpacity>
+          </View>
           <Text style={styles.currentTime}>
-            current time:
-            &nbsp;
             {hours ? hours : '--'}
             :
             {minutes ? minutes : '--'}
@@ -727,13 +747,37 @@ const styles = StyleSheet.create({
   },
   clock: {
     // minimum style suggested
-    height: 180,
-    width: 180,
+    height: 140,
+    width: 140,
     backgroundColor: 'transparent',
     marginTop: 15,
     marginBottom: 15,
   },
-
+  clockCommandTopline: {
+    marginTop: 10,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between'
+  },
+  clockCommandButton: {
+    marginLeft: 10,
+    marginRight: 10,
+    height: 20,
+    paddingLeft: 10,
+    paddingRight: 10,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: 5
+  },
+  startButton: {
+    backgroundColor: '#1E824C'
+  },
+  reloadButton: {
+    backgroundColor: '#3498DB'
+  },
+  stopButton: {
+    backgroundColor: '#CF000F'
+  },
   commandsPanel: {
     backgroundColor: '#FFF'
   },
@@ -763,8 +807,8 @@ const styles = StyleSheet.create({
   },
   textInput: {
     padding: 2,
-    height: 40,
-    borderColor: '#4A4A4A',
+    height: 30,
+    borderColor: '#ECECEC',
     borderWidth: 1
   },
   sliders: {

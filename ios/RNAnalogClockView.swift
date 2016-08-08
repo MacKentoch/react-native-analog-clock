@@ -181,9 +181,9 @@ class RNAnalogClockView : BEMAnalogClockView, BEMAnalogClockDelegate {
   }
   
   
-  ////////////////////////////////////////
+  //////////////////////////////////////////
   //----- SECONDS HAND CUSTOMIZATION -----//
-  ////////////////////////////////////////
+  //////////////////////////////////////////
   @objc func setBridgeSecondHandColor(color: NSNumber) {
     self.secondHandColor = RCTConvert.UIColor(color)
     self.reloadClock()
@@ -209,7 +209,18 @@ class RNAnalogClockView : BEMAnalogClockView, BEMAnalogClockDelegate {
     self.reloadClock()
   }
   
-  
+  ///////////////////////
+  //----- methods -----//
+  ///////////////////////
+  @objc func startClock() {
+    print("starting clock")
+    self.startRealTime()
+  }
+
+  @objc func stopClock() {
+    print("stoping clock")
+    self.startRealTime()
+  }
   
   @objc func currentTimeOnClock(clock: BEMAnalogClockView!, hours: NSString!, minutes: NSString!, seconds: NSString!) {
     print("\nDEBUG; Current time: \(hours):\(minutes)\(seconds)")

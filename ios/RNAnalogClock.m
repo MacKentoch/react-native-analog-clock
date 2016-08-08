@@ -97,9 +97,9 @@
   RCT_EXPORT_VIEW_PROPERTY(bridgeMinuteHandOffsideLength, CGFloat);
 
 
-  ////////////////////////////////////////
+  //////////////////////////////////////////
   //----- SECONDS HAND CUSTOMIZATION -----//
-  ////////////////////////////////////////
+  //////////////////////////////////////////
   /// The color of the clock's second hand. Default value is whiteColor.
   RCT_EXPORT_VIEW_PROPERTY(bridgeSecondHandColor, NSNumber);
   /// The alpha of the clock's second hand. Default value is 1.0.
@@ -112,6 +112,14 @@
   RCT_EXPORT_VIEW_PROPERTY(bridgeSecondHandOffsideLength, CGFloat);
 
 
+
+  ///////////////////////
+  //----- METHODS -----//
+  ///////////////////////
+  /// Start the real time feature. The clock will be updated in real time (the second hand will move every second, the minute one every minute and the hour one every hour).
+  RCT_EXTERN_METHOD(addEvent:(void)startClock)
+  /// Stops the real time feature. The clock will not move anymore.
+  RCT_EXTERN_METHOD(addEvent:(void)stopClock)
 
 //  RCT_EXTERN_METHOD(addEvent:(NSString *)name location:(NSString *)location date:(nonnull NSNumber *)date)
 
