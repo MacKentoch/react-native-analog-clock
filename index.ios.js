@@ -38,6 +38,9 @@ const MAX_HOUR_HAND_ALPHA = 1.0;
 const MIN_HOUR_HAND_WIDTH = 0.0;
 const MAX_HOUR_HAND_WIDTH = 20.0;
 
+const MIN_HOUR_HAND_LENGTH = 0.0;
+const MAX_HOUR_HAND_LENGTH = 100.0;
+
 class reactNativeAnalogClock extends Component {
   constructor(props) {
     super(props);
@@ -62,7 +65,8 @@ class reactNativeAnalogClock extends Component {
       digitOffset: 5,
       hourHandColor: '#F1F1F1',
       hourHandAlpha: 1.0,
-      hourHandWidth: 4.0
+      hourHandWidth: 4.0,
+      hourHandLength: 30.0
     }
   }
 
@@ -72,7 +76,7 @@ class reactNativeAnalogClock extends Component {
     const { borderColor, borderWidth, borderAlpha } = this.state;
     const { digitOffset, digitColor } = this.state;
     const { faceBackgroundColor, faceBackgroundAlpha } = this.state;
-    const { hourHandColor, hourHandAlpha, hourHandWidth } = this.state;
+    const { hourHandColor, hourHandAlpha, hourHandWidth, hourHandLength } = this.state;
     return (
       <View style={styles.container}>
         <Text style={styles.title}>
@@ -114,6 +118,7 @@ class reactNativeAnalogClock extends Component {
             hourHandColor={hourHandColor}
             hourHandAlpha={hourHandAlpha}
             hourHandWidth={hourHandWidth}
+            hourHandLength={hourHandLength}
           />
         </View>
 
@@ -410,6 +415,26 @@ class reactNativeAnalogClock extends Component {
             />
             <Text>
               {MAX_HOUR_HAND_WIDTH}
+            </Text>
+          </View>
+
+          {/* hourHandLength */}
+          <View style={styles.command}>
+            <Text style={styles.cmdInfo}>
+              hourHandLength ({(hourHandLength + '').slice(0, 4)})
+            </Text>
+            <Text>
+              {MIN_HOUR_HAND_LENGTH}
+            </Text>
+            <Slider
+              style={styles.sliders}
+              minimumValue={MIN_HOUR_HAND_LENGTH}
+              maximumValue={MAX_HOUR_HAND_LENGTH}
+              onValueChange={(value) => this.setState({hourHandLength: value })}
+              value={this.state.hourHandLength}
+            />
+            <Text>
+              {MAX_HOUR_HAND_LENGTH}
             </Text>
           </View>
 
