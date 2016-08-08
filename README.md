@@ -14,3 +14,7 @@ This component is a bridge over `native`  [BEMAnalogClock](https://github.com/Bo
 ## Getting started
 
 *coming soon*
+
+## to add/fix
+- [ ] digit font
+- [ ] dynamic digit color change throws error

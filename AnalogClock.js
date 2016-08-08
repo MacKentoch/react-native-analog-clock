@@ -36,6 +36,12 @@ class AnalogClock extends Component {
       digitOffset,
       faceBackgroundColor,
       faceBackgroundAlpha,
+      // HOURS HAND CUSTOMIZATION
+      hourHandColor,
+      hourHandAlpha,
+      hourHandWidth,
+      hourHandLength,
+      hourHandOffsideLength,
 
       ...otherProps
     } = this.props;
@@ -62,6 +68,12 @@ class AnalogClock extends Component {
         bridgeBorderWidth={parseFloat(borderWidth) ? parseFloat(borderWidth) : 0}
         bridgeFaceBackgroundColor={processColor(faceBackgroundColor)}
         bridgeFaceBackgroundAlpha={parseFloat(faceBackgroundAlpha) ? parseFloat(faceBackgroundAlpha) : 0}
+        // HOURS HAND CUSTOMIZATION
+        bridgeHourHandColor={processColor(hourHandColor)}
+        bridgeHourHandAlpha={parseFloat(hourHandAlpha) ? parseFloat(hourHandAlpha) : 1.0}
+        bridgeHourHandWidth={parseFloat(hourHandWidth) ? parseFloat(hourHandWidth) : 4.0}
+        bridgeHourHandLength={parseFloat(hourHandLength) ? parseFloat(hourHandLength) : 30}
+        bridgeHourHandOffsideLength={parseFloat(hourHandOffsideLength) ? parseFloat(hourHandOffsideLength) : 10}
         {...otherProps}
       />
     );
@@ -114,9 +126,22 @@ AnalogClock.propTypes = {
   faceBackgroundColor: PropTypes.string,
   /// The alpha of the clock's face.
   faceBackgroundAlpha: PropTypes.number,
+  ////////////////////////////////////////
+  //----- HOURS HAND CUSTOMIZATION -----//
+  ////////////////////////////////////////
+  /// The color of the clock's hour hand. Default value is whiteColor.
+  hourHandColor: PropTypes.string,
+  /// The alpha of the clock's hour hand. Default value is 1.0.
+  hourHandAlpha: PropTypes.number,
+  /// The width of the clock's hour hand. Default value is 4.0.
+  hourHandWidth: PropTypes.number,
+  /// The length of the clock's hour hand. Default value is 30.
+  hourHandLength: PropTypes.number,
+  /// The length of the offside part of the clock's hour hand. Default value is 10.
+  hourHandOffsideLength: PropTypes.number,
 
   //////////////////////////
-  // Read only props
+  // Read only props (so no need to bridge native one)
   //////////////////////////
   //If set to true, the clock real time feature is activated. Read only.
   realTimeIsActivated: PropTypes.bool

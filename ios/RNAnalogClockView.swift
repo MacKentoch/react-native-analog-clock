@@ -79,7 +79,6 @@ class RNAnalogClockView : BEMAnalogClockView, BEMAnalogClockDelegate {
   }
 
   @objc func setBridgeEnableHub(active: Bool) {
-    print("setBridgeEnableHub: \(active)")
     self.enableHub = active
     self.reloadClock()
   }
@@ -123,8 +122,43 @@ class RNAnalogClockView : BEMAnalogClockView, BEMAnalogClockDelegate {
     self.borderAlpha = alpha
     self.reloadClock()
   }
+  
+  ////////////////////////////////////////
+  //----- HOURS HAND CUSTOMIZATION -----//
+  ////////////////////////////////////////
+  @objc func setBridgeHourHandColor(color: NSNumber) {
+    print("setBridgeHourHandColor: \(color)")
+    self.hourHandColor = RCTConvert.UIColor(color)
+    self.reloadClock()
+  }
+  
+  @objc func setBridgeHourHandAlpha(alpha: CGFloat) {
+    print("setBridgeHourHandAlpha: \(alpha)")
+    self.hourHandAlpha = alpha
+    self.reloadClock()
+  }
 
+  @objc func setBridgeHourHandWidth(width: CGFloat) {
+    print("setBridgeHourHandWidth: \(width)")
+    self.hourHandWidth = width
+    self.reloadClock()
+  }
 
+  @objc func setBridgeHourHandLength(length: CGFloat) {
+    print("setBridgeHourHandLength: \(length)")
+    self.hourHandLength = length
+    self.reloadClock()
+  }
+
+  @objc func setBridgeHourHandOffsideLength(offsideLength: CGFloat) {
+    print("setBridgeHourHandOffsideLength: \(offsideLength)")
+    self.hourHandOffsideLength = offsideLength
+    self.reloadClock()
+  }
+  
+  
+  
+  
   @objc func currentTimeOnClock(clock: BEMAnalogClockView!, hours: NSString!, minutes: NSString!, seconds: NSString!) {
     print("\nDEBUG; Current time: \(hours):\(minutes)\(seconds)")
   }

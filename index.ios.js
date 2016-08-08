@@ -32,6 +32,9 @@ const MAX_BRIDGE_DIGIT_OFFSET = 20;
 const MIN_FACE_BACKGROUND_ALPHA = 0.0;
 const MAX_FACE_BACKGROUND_ALPHA = 1.0;
 
+const MIN_HOUR_HAND_ALPHA = 0.0;
+const MAX_HOUR_HAND_ALPHA = 1.0;
+
 class reactNativeAnalogClock extends Component {
   constructor(props) {
     super(props);
@@ -52,8 +55,11 @@ class reactNativeAnalogClock extends Component {
       borderAlpha: 1.0,
       faceBackgroundColor: '#26A65B',
       faceBackgroundAlpha: 1.0,
-      digitColor: 'blue',
-      digitOffset: 5
+      digitColor: '#FFFFFF',
+      digitOffset: 5,
+      hourHandColor: '#F1F1F1',
+      hourHandAlpha: 1.0,
+      hourHandWidth: 4.0
     }
   }
 
@@ -63,6 +69,7 @@ class reactNativeAnalogClock extends Component {
     const { borderColor, borderWidth, borderAlpha } = this.state;
     const { digitOffset, digitColor } = this.state;
     const { faceBackgroundColor, faceBackgroundAlpha } = this.state;
+    const { hourHandColor, hourHandAlpha } = this.state;
     return (
       <View style={styles.container}>
         <Text style={styles.title}>
@@ -100,10 +107,20 @@ class reactNativeAnalogClock extends Component {
             digitOffset={digitOffset}
             faceBackgroundColor={this.state.faceBackgroundColor}
             faceBackgroundAlpha={this.state.faceBackgroundAlpha}
+            // HOURS HAND CUSTOMIZATION
+            hourHandColor={hourHandColor}
+            hourHandAlpha={hourHandAlpha}
           />
         </View>
 
         <ScrollView style={styles.commandsPanel}>
+          {/* PROPERTIES */}
+          <View style={styles.groupCommandTitle}>
+            <Text style={styles.groupCommandText}>
+              GLOBAL PROPERTIES
+            </Text>
+          </View>
+          
           <View style={styles.command}>
             <Text style={styles.cmdInfo}>
               manual set "hours"
@@ -217,6 +234,13 @@ class reactNativeAnalogClock extends Component {
             />
           </View>
 
+          {/* CLOCK'S FACE CUSTOMIZATION */}
+          <View style={styles.groupCommandTitle}>
+            <Text style={styles.groupCommandText}>
+              CLOCKS'S FACE CUSTOMIZATION
+            </Text>
+          </View>
+
           <View style={styles.command}>
             <Text style={styles.cmdInfo}>
               digitOffset ({(digitOffset + '').slice(0, 6)})
@@ -326,6 +350,42 @@ class reactNativeAnalogClock extends Component {
             </Text>
           </View>
 
+          {/* HOURS HAND CUSTOMIZATION */}
+          <View style={styles.groupCommandTitle}>
+            <Text style={styles.groupCommandText}>
+              HOURS HAND CUSTOMIZATION
+            </Text>
+          </View>
+
+          <View style={styles.command}>
+            <Text style={styles.cmdInfo}>
+              hourHandColor
+            </Text>
+            <TextInput
+              style={[styles.cmdInput, styles.textInput]}
+              onChangeText={(text) => this.setState({hourHandColor: text})}
+              value={this.state.hourHandColor}
+            />
+          </View>
+
+          <View style={styles.command}>
+            <Text style={styles.cmdInfo}>
+              hourHandAlpha ({(hourHandAlpha + '').slice(0, 4)})
+            </Text>
+            <Text>
+              {MIN_HOUR_HAND_ALPHA}
+            </Text>
+            <Slider
+              style={styles.sliders}
+              minimumValue={MIN_HOUR_HAND_ALPHA}
+              maximumValue={MAX_HOUR_HAND_ALPHA}
+              onValueChange={(value) => this.setState({hourHandAlpha: value })}
+              value={this.state.hourHandAlpha}
+            />
+            <Text>
+              {MAX_HOUR_HAND_ALPHA}
+            </Text>
+          </View>
         </ScrollView>
       </View>
     );
@@ -364,6 +424,13 @@ const styles = StyleSheet.create({
 
   commandsPanel: {
     backgroundColor: '#FFF'
+  },
+  groupCommandTitle: {
+    marginTop: 15,
+    marginLeft: 10
+  },
+  groupCommandText: {
+    fontWeight: '800'
   },
   command: {
     marginTop: 15,

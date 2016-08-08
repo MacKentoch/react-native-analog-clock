@@ -66,11 +66,21 @@
   /// The color of the digits appearing inside the clock
   RCT_EXPORT_VIEW_PROPERTY(bridgeDigitColor, NSNumber);
   // The offset for the position of the digits on the clock's face. A value >0 will make the digits appear further away from the center of the clock. A valut <0 will make them closer to the center of the clock. Default value is 0.0.
-RCT_EXPORT_VIEW_PROPERTY(bridgeDigitOffset, CGFloat);
+  RCT_EXPORT_VIEW_PROPERTY(bridgeDigitOffset, CGFloat);
 
-
-
-
+  ////////////////////////////////////////
+  //----- HOURS HAND CUSTOMIZATION -----//
+  ////////////////////////////////////////
+  /// The color of the clock's hour hand. Default value is whiteolor.
+  RCT_EXPORT_VIEW_PROPERTY(bridgeHourHandColor, NSNumber);
+  /// The alpha of the clock's hour hand. Default value is 1.0.
+  RCT_EXPORT_VIEW_PROPERTY(bridgeHourHandAlpha, CGFloat);
+  /// The width of the clock's hour hand. Default value is 4.0.
+  RCT_EXPORT_VIEW_PROPERTY(bridgeHourHandWidth, CGFloat);
+  /// The length of the clock's hour hand. Default value is 30.
+  RCT_EXPORT_VIEW_PROPERTY(bridgeHourHandLength, CGFloat);
+  /// The length of the offside part of the clock's hour hand. Default value is 10.
+  RCT_EXPORT_VIEW_PROPERTY(bridgeHourHandOffsideLength, CGFloat);
 
 
 //  RCT_EXTERN_METHOD(addEvent:(NSString *)name location:(NSString *)location date:(nonnull NSNumber *)date)
