@@ -77,6 +77,13 @@ class RNAnalogClockView : BEMAnalogClockView, BEMAnalogClockDelegate {
     self.enableDigit = active
     self.reloadClock()
   }
+
+  @objc func setBridgeEnableHub(active: Bool) {
+    print("setBridgeEnableHub: \(active)")
+    self.enableHub = active
+    self.reloadClock()
+  }
+
   
   //////////////////////////////////////////////////
   //----- CLOCK'S FACE CUSTOMIZATION SETTERS -----//
@@ -87,7 +94,6 @@ class RNAnalogClockView : BEMAnalogClockView, BEMAnalogClockDelegate {
   }
   
   @objc func setBridgeDigitColor(color: NSNumber) {
-    print("setBridgeDigitColor: \(color)")
     self.digitColor = RCTConvert.UIColor(color)
     self.reloadClock()
   }
@@ -113,13 +119,12 @@ class RNAnalogClockView : BEMAnalogClockView, BEMAnalogClockDelegate {
     self.reloadClock()
   }
 
-  
   @objc func setBridgeBorderAlpha(alpha: CGFloat) {
     self.borderAlpha = alpha
     self.reloadClock()
   }
 
-  
+
   @objc func currentTimeOnClock(clock: BEMAnalogClockView!, hours: NSString!, minutes: NSString!, seconds: NSString!) {
     print("\nDEBUG; Current time: \(hours):\(minutes)\(seconds)")
   }

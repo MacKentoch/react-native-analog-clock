@@ -53,7 +53,7 @@ class AnalogClock extends Component {
         bridgeCurrentTime={currentTime}
         bridgeEnableDigit={enableDigit}
         bridgeEnableGraduations={enableGraduations}
-        enableHub={enableHub}
+        bridgeEnableHub={enableHub}
         // CLOCK'S FACE CUSTOMIZATION
         bridgeDigitColor={processColor(digitColor)}
         bridgeDigitOffset={parseFloat(digitOffset) ? parseFloat(digitOffset) : 0}

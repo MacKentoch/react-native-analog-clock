@@ -46,6 +46,7 @@ class reactNativeAnalogClock extends Component {
       enableShadows: true,
       enableGraduations: true,
       enableDigit: true,
+      enableHub: true,
       borderWidth: 0,
       borderColor: 'black',
       borderAlpha: 1.0,
@@ -58,7 +59,7 @@ class reactNativeAnalogClock extends Component {
 
   render() {
     const { hours, minutes, seconds } = this.state;
-    const { enableShadows, realTime, militaryTime, currentTime, enableDigit, setTimeViaTouch, enableGraduations } = this.state;
+    const { enableShadows, realTime, militaryTime, currentTime, enableDigit, setTimeViaTouch, enableGraduations, enableHub } = this.state;
     const { borderColor, borderWidth, borderAlpha } = this.state;
     const { digitOffset, digitColor } = this.state;
     const { faceBackgroundColor, faceBackgroundAlpha } = this.state;
@@ -90,7 +91,7 @@ class reactNativeAnalogClock extends Component {
             enableDigit={enableDigit}
             setTimeViaTouch={setTimeViaTouch}
             enableGraduations={enableGraduations}
-            enableHub={true}
+            enableHub={enableHub}
             // CLOCK'S FACE CUSTOMIZATION
             borderColor={borderColor}
             borderAlpha={borderAlpha}
@@ -193,6 +194,16 @@ class reactNativeAnalogClock extends Component {
             <Switch
               onValueChange={(value) => this.setState({enableGraduations: value})}
               value={this.state.enableGraduations}
+            />
+          </View>
+
+          <View style={styles.command}>
+            <Text style={styles.cmdInfo}>
+              enableHub
+            </Text>
+            <Switch
+              onValueChange={(value) => this.setState({enableHub: value})}
+              value={this.state.enableHub}
             />
           </View>
 

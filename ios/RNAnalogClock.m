@@ -46,6 +46,8 @@
   RCT_EXPORT_VIEW_PROPERTY(bridgeEnableGraduations, BOOL);
   /// If set to YES, the digits (1-12) will be displayed on the face of the clock. Default value is NO.
   RCT_EXPORT_VIEW_PROPERTY(bridgeEnableDigit, BOOL);
+  /// If set to YES, a circular hub will be drawn. Default value is NO;
+  RCT_EXPORT_VIEW_PROPERTY(bridgeEnableHub, BOOL);
 
 
   //////////////////////////////////////////
