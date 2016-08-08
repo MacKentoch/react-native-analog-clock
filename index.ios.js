@@ -57,6 +57,10 @@ class reactNativeAnalogClock extends Component {
 
   render() {
     const { hours, minutes, seconds } = this.state;
+    const { enableShadows, realTime, militaryTime, currentTime, enableDigit, setTimeViaTouch, enableGraduations } = this.state;
+    const { borderColor, borderWidth, borderAlpha } = this.state;
+    const { digitOffset } = this.state;
+    const { faceBackgroundColor, faceBackgroundAlpha } = this.state;
     return (
       <View style={styles.container}>
         <Text style={styles.title}>
@@ -78,19 +82,19 @@ class reactNativeAnalogClock extends Component {
             hours={hours}
             minutes={minutes}
             seconds={seconds}
-            enableShadows={this.state.enableShadows}
-            realTime={this.state.realTime}
-            militaryTime={this.state.militaryTime}
-            currentTime={this.state.currentTime}
-            enableDigit={this.state.enableDigit}
-            setTimeViaTouch={this.state.setTimeViaTouch}
-            enableGraduations={this.state.enableGraduations}
+            enableShadows={enableShadows}
+            realTime={realTime}
+            militaryTime={militaryTime}
+            currentTime={currentTime}
+            enableDigit={enableDigit}
+            setTimeViaTouch={setTimeViaTouch}
+            enableGraduations={enableGraduations}
             enableHub={true}
             // CLOCK'S FACE CUSTOMIZATION
-            borderColor={this.state.borderColor}
-            borderAlpha={this.state.borderAlpha}
-            borderWidth={this.state.borderWidth}
-            digitOffset={this.state.digitOffset}
+            borderColor={borderColor}
+            borderAlpha={borderAlpha}
+            borderWidth={borderWidth}
+            digitOffset={digitOffset}
             faceBackgroundColor={this.state.faceBackgroundColor}
             faceBackgroundAlpha={this.state.faceBackgroundAlpha}
           />
@@ -99,7 +103,7 @@ class reactNativeAnalogClock extends Component {
         <ScrollView style={styles.commandsPanel}>
           <View style={styles.command}>
             <Text style={styles.cmdInfo}>
-              hours
+              manual set "hours"
             </Text>
             <TextInput
               style={[styles.cmdInput, styles.textInput]}
@@ -110,7 +114,7 @@ class reactNativeAnalogClock extends Component {
 
           <View style={styles.command}>
             <Text style={styles.cmdInfo}>
-              minutes
+              manual set "minutes"
             </Text>
             <TextInput
               style={[styles.cmdInput, styles.textInput]}
@@ -121,7 +125,7 @@ class reactNativeAnalogClock extends Component {
 
           <View style={styles.command}>
             <Text style={styles.cmdInfo}>
-              seconds
+              manual set "seconds"
             </Text>
             <TextInput
               style={[styles.cmdInput, styles.textInput]}
@@ -202,10 +206,10 @@ class reactNativeAnalogClock extends Component {
 
           <View style={styles.command}>
             <Text style={styles.cmdInfo}>
-              borderWidth
+              borderWidth ({(borderWidth + '').slice(0, 6)})
             </Text>
             <Text>
-              min: {MIN_BORDER_WIDTH}
+              {MIN_BORDER_WIDTH}
             </Text>
             <Slider
               style={styles.sliders}
@@ -215,7 +219,7 @@ class reactNativeAnalogClock extends Component {
               value={this.state.borderWidth}
             />
             <Text>
-              max: {MAX_BORDER_WIDTH}
+              {MAX_BORDER_WIDTH}
             </Text>
           </View>
 
@@ -232,10 +236,10 @@ class reactNativeAnalogClock extends Component {
 
           <View style={styles.command}>
             <Text style={styles.cmdInfo}>
-              borderAlpha
+              borderAlpha ({(borderAlpha + '').slice(0, 4)})
             </Text>
             <Text>
-              min: {MIN_BORDER_ALPHA}
+              {MIN_BORDER_ALPHA}
             </Text>
             <Slider
               style={styles.sliders}
@@ -245,16 +249,16 @@ class reactNativeAnalogClock extends Component {
               value={this.state.borderAlpha}
             />
             <Text>
-              max: {MAX_BORDER_ALPHA}
+              {MAX_BORDER_ALPHA}
             </Text>
           </View>
 
           <View style={styles.command}>
             <Text style={styles.cmdInfo}>
-              digitOffset
+              digitOffset ({(digitOffset + '').slice(0, 6)})
             </Text>
             <Text>
-              min: {MIN_BRIDGE_DIGIT_OFFSET}
+              {MIN_BRIDGE_DIGIT_OFFSET}
             </Text>
             <Slider
               style={styles.sliders}
@@ -264,7 +268,7 @@ class reactNativeAnalogClock extends Component {
               value={this.state.digitOffset}
             />
             <Text>
-              max: {MAX_BRIDGE_DIGIT_OFFSET}
+              {MAX_BRIDGE_DIGIT_OFFSET}
             </Text>
           </View>
 
@@ -281,10 +285,10 @@ class reactNativeAnalogClock extends Component {
 
           <View style={styles.command}>
             <Text style={styles.cmdInfo}>
-              faceBackgroundAlpha
+              faceBackgroundAlpha ({(faceBackgroundAlpha + '').slice(0,4)})
             </Text>
             <Text>
-              min: {MIN_FACE_BACKGROUND_ALPHA}
+              {MIN_FACE_BACKGROUND_ALPHA}
             </Text>
             <Slider
               style={styles.sliders}
@@ -294,7 +298,7 @@ class reactNativeAnalogClock extends Component {
               value={this.state.faceBackgroundAlpha}
             />
             <Text>
-              max: {MAX_FACE_BACKGROUND_ALPHA}
+              {MAX_FACE_BACKGROUND_ALPHA}
             </Text>
           </View>
 
@@ -348,7 +352,7 @@ const styles = StyleSheet.create({
   },
   cmdInfo: {
     flex: 2,
-    fontSize: 14,
+    fontSize: 12,
     fontWeight: '600'
   },
   cmdInput: {
