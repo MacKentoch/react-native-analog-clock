@@ -51,6 +51,7 @@ class reactNativeAnalogClock extends Component {
       borderAlpha: 1.0,
       faceBackgroundColor: '#26A65B',
       faceBackgroundAlpha: 1.0,
+      digitColor: 'blue',
       digitOffset: 5
     }
   }
@@ -59,7 +60,7 @@ class reactNativeAnalogClock extends Component {
     const { hours, minutes, seconds } = this.state;
     const { enableShadows, realTime, militaryTime, currentTime, enableDigit, setTimeViaTouch, enableGraduations } = this.state;
     const { borderColor, borderWidth, borderAlpha } = this.state;
-    const { digitOffset } = this.state;
+    const { digitOffset, digitColor } = this.state;
     const { faceBackgroundColor, faceBackgroundAlpha } = this.state;
     return (
       <View style={styles.container}>
@@ -94,6 +95,7 @@ class reactNativeAnalogClock extends Component {
             borderColor={borderColor}
             borderAlpha={borderAlpha}
             borderWidth={borderWidth}
+            digitColor={digitColor}
             digitOffset={digitOffset}
             faceBackgroundColor={this.state.faceBackgroundColor}
             faceBackgroundAlpha={this.state.faceBackgroundAlpha}
@@ -206,6 +208,36 @@ class reactNativeAnalogClock extends Component {
 
           <View style={styles.command}>
             <Text style={styles.cmdInfo}>
+              digitOffset ({(digitOffset + '').slice(0, 6)})
+            </Text>
+            <Text>
+              {MIN_BRIDGE_DIGIT_OFFSET}
+            </Text>
+            <Slider
+              style={styles.sliders}
+              minimumValue={MIN_BRIDGE_DIGIT_OFFSET}
+              maximumValue={MAX_BRIDGE_DIGIT_OFFSET}
+              onValueChange={(value) => this.setState({digitOffset: value })}
+              value={this.state.digitOffset}
+            />
+            <Text>
+              {MAX_BRIDGE_DIGIT_OFFSET}
+            </Text>
+          </View>
+
+          <View style={styles.command}>
+            <Text style={styles.cmdInfo}>
+              digitColor
+            </Text>
+            <TextInput
+              style={[styles.cmdInput, styles.textInput]}
+              onChangeText={(text) => this.setState({digitColor: text})}
+              value={this.state.digitColor}
+            />
+          </View>
+
+          <View style={styles.command}>
+            <Text style={styles.cmdInfo}>
               borderWidth ({(borderWidth + '').slice(0, 6)})
             </Text>
             <Text>
@@ -250,25 +282,6 @@ class reactNativeAnalogClock extends Component {
             />
             <Text>
               {MAX_BORDER_ALPHA}
-            </Text>
-          </View>
-
-          <View style={styles.command}>
-            <Text style={styles.cmdInfo}>
-              digitOffset ({(digitOffset + '').slice(0, 6)})
-            </Text>
-            <Text>
-              {MIN_BRIDGE_DIGIT_OFFSET}
-            </Text>
-            <Slider
-              style={styles.sliders}
-              minimumValue={MIN_BRIDGE_DIGIT_OFFSET}
-              maximumValue={MAX_BRIDGE_DIGIT_OFFSET}
-              onValueChange={(value) => this.setState({digitOffset: value })}
-              value={this.state.digitOffset}
-            />
-            <Text>
-              {MAX_BRIDGE_DIGIT_OFFSET}
             </Text>
           </View>
 
