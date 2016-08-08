@@ -47,6 +47,7 @@ class reactNativeAnalogClock extends Component {
       enableGraduations: true,
       enableDigit: true,
       borderWidth: 0,
+      borderColor: 'black',
       borderAlpha: 1.0,
       faceBackgroundColor: '#26A65B',
       faceBackgroundAlpha: 1.0,
@@ -86,7 +87,7 @@ class reactNativeAnalogClock extends Component {
             enableGraduations={this.state.enableGraduations}
             enableHub={true}
             // CLOCK'S FACE CUSTOMIZATION
-            borderColor={'black'}
+            borderColor={this.state.borderColor}
             borderAlpha={this.state.borderAlpha}
             borderWidth={this.state.borderWidth}
             digitOffset={this.state.digitOffset}
@@ -216,6 +217,17 @@ class reactNativeAnalogClock extends Component {
             <Text>
               max: {MAX_BORDER_WIDTH}
             </Text>
+          </View>
+
+          <View style={styles.command}>
+            <Text style={styles.cmdInfo}>
+              borderColor
+            </Text>
+            <TextInput
+              style={[styles.cmdInput, styles.textInput]}
+              onChangeText={(text) => this.setState({borderColor: text})}
+              value={this.state.borderColor}
+            />
           </View>
 
           <View style={styles.command}>
