@@ -44,12 +44,12 @@ class AnalogClock extends Component {
         bridgeHours={hours}
         bridgeMinutes={minutes}
         bridgeSeconds={seconds}
+        bridgeSetTimeViaTouch={setTimeViaTouch}
         enableShadows={enableShadows}
         realTime={realTime}
         militaryTime={militaryTime}
         currentTime={currentTime}
         enableDigit={enableDigit}
-        setTimeViaTouch={setTimeViaTouch}
         enableGraduations={enableGraduations}
         enableHub={enableHub}
         // CLOCK'S FACE CUSTOMIZATION

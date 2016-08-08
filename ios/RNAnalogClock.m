@@ -20,19 +20,11 @@
 
 @interface RCT_EXTERN_MODULE(RNAnalogClockSwift, RCTViewManager)
 
-  /// setting the time manualy
-  RCT_EXPORT_VIEW_PROPERTY(hours, NSInteger);
-  RCT_EXPORT_VIEW_PROPERTY(minutes, NSInteger);
-  RCT_EXPORT_VIEW_PROPERTY(seconds, NSInteger);
-
   /// If set to YES, the clock will be set to the current time on the phone. Prioritized over setting the time manualy. Default value is NO.
   RCT_EXPORT_VIEW_PROPERTY(currentTime, BOOL);
 
   /// If set to YES, the clock will be updated in real time (the second hand will move every second, the minute hand every minute...). Default value is NO;
   RCT_EXPORT_VIEW_PROPERTY(realTime, BOOL);
-
-  /// If set to YES, the clock time can be updated via touch inputs. Default value is NO.
-  RCT_EXPORT_VIEW_PROPERTY(setTimeViaTouch, BOOL);
 
   // If set to YES, the clock time will suport military time. Default value is NO.
   RCT_EXPORT_VIEW_PROPERTY(militaryTime, BOOL);
@@ -63,6 +55,8 @@
   RCT_EXPORT_VIEW_PROPERTY(bridgeHours, NSInteger);
   RCT_EXPORT_VIEW_PROPERTY(bridgeMinutes, NSInteger);
   RCT_EXPORT_VIEW_PROPERTY(bridgeSeconds, NSInteger);
+  /// If set to YES, the clock time can be updated via touch inputs. Default value is NO.
+  RCT_EXPORT_VIEW_PROPERTY(bridgeSetTimeViaTouch, BOOL);
 
   //////////////////////////////////////////
   //----- CLOCK'S FACE CUSTOMIZATION -----//
@@ -71,8 +65,7 @@
   RCT_EXPORT_VIEW_PROPERTY(bridgeBorderColor, NSNumber)
   /// The background color of the clock's face.
   RCT_EXPORT_VIEW_PROPERTY(bridgeFaceBackgroundColor, NSNumber)
-  /// If set to YES, the clock time can be updated via touch inputs. Default value is NO.
-  RCT_EXPORT_VIEW_PROPERTY(bridgeSetTimeViaTouch, BOOL);
+ 
 
 
 

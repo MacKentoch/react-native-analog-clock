@@ -28,6 +28,7 @@ class reactNativeAnalogClock extends Component {
       minutes: 0,
       seconds: 0,
 
+      setTimeViaTouch: true,
       faceBackgroundColor: '#26A65B'
     }
   }
@@ -108,6 +109,16 @@ class reactNativeAnalogClock extends Component {
 
           <View style={styles.command}>
             <Text style={styles.cmdInfo}>
+              setTimeViaTouch
+            </Text>
+            <Switch
+              onValueChange={(value) => this.setState({setTimeViaTouch: value})}
+              value={this.state.setTimeViaTouch}
+            />
+          </View>
+
+          <View style={styles.command}>
+            <Text style={styles.cmdInfo}>
               faceBackgroundColor
             </Text>
             <TextInput
@@ -135,7 +146,7 @@ const styles = StyleSheet.create({
     margin: 10,
   },
   clockContainer: {
-    height: 300,
+    height: 220,
     alignItems: 'center',
     justifyContent: 'space-around'
   },
