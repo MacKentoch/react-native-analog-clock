@@ -41,6 +41,9 @@ const MAX_HOUR_HAND_WIDTH = 20.0;
 const MIN_HOUR_HAND_LENGTH = 0.0;
 const MAX_HOUR_HAND_LENGTH = 100.0;
 
+const MIN_HOUR_HAND_OFFSIDE_LENGTH = 0.0;
+const MAX_HOUR_HAND_OFFSIDE_LENGTH = 100.0;
+
 class reactNativeAnalogClock extends Component {
   constructor(props) {
     super(props);
@@ -66,7 +69,8 @@ class reactNativeAnalogClock extends Component {
       hourHandColor: '#F1F1F1',
       hourHandAlpha: 1.0,
       hourHandWidth: 4.0,
-      hourHandLength: 30.0
+      hourHandLength: 30.0,
+      hourHandOffsideLength: 10.0
     }
   }
 
@@ -76,7 +80,7 @@ class reactNativeAnalogClock extends Component {
     const { borderColor, borderWidth, borderAlpha } = this.state;
     const { digitOffset, digitColor } = this.state;
     const { faceBackgroundColor, faceBackgroundAlpha } = this.state;
-    const { hourHandColor, hourHandAlpha, hourHandWidth, hourHandLength } = this.state;
+    const { hourHandColor, hourHandAlpha, hourHandWidth, hourHandLength, hourHandOffsideLength } = this.state;
     return (
       <View style={styles.container}>
         <Text style={styles.title}>
@@ -119,6 +123,7 @@ class reactNativeAnalogClock extends Component {
             hourHandAlpha={hourHandAlpha}
             hourHandWidth={hourHandWidth}
             hourHandLength={hourHandLength}
+            hourHandOffsideLength={hourHandOffsideLength}
           />
         </View>
 
@@ -360,7 +365,7 @@ class reactNativeAnalogClock extends Component {
           </View>
 
           {/* HOURS HAND CUSTOMIZATION */}
-
+          {/* title */}
           <View style={styles.groupCommandTitle}>
             <Text style={styles.groupCommandText}>
               HOURS HAND CUSTOMIZATION
@@ -377,7 +382,6 @@ class reactNativeAnalogClock extends Component {
               value={this.state.hourHandColor}
             />
           </View>
-
           {/* hourHandAlpha */}
           <View style={styles.command}>
             <Text style={styles.cmdInfo}>
@@ -397,7 +401,6 @@ class reactNativeAnalogClock extends Component {
               {MAX_HOUR_HAND_ALPHA}
             </Text>
           </View>
-
           {/* hourHandWidth */}
           <View style={styles.command}>
             <Text style={styles.cmdInfo}>
@@ -417,7 +420,6 @@ class reactNativeAnalogClock extends Component {
               {MAX_HOUR_HAND_WIDTH}
             </Text>
           </View>
-
           {/* hourHandLength */}
           <View style={styles.command}>
             <Text style={styles.cmdInfo}>
@@ -437,7 +439,25 @@ class reactNativeAnalogClock extends Component {
               {MAX_HOUR_HAND_LENGTH}
             </Text>
           </View>
-
+          {/* hourHandOffsideLength */}
+          <View style={styles.command}>
+            <Text style={styles.cmdInfo}>
+              hourHandOffsideLength ({(hourHandOffsideLength + '').slice(0, 4)})
+            </Text>
+            <Text>
+              {MIN_HOUR_HAND_OFFSIDE_LENGTH}
+            </Text>
+            <Slider
+              style={styles.sliders}
+              minimumValue={MIN_HOUR_HAND_OFFSIDE_LENGTH}
+              maximumValue={MAX_HOUR_HAND_OFFSIDE_LENGTH}
+              onValueChange={(value) => this.setState({hourHandOffsideLength: value })}
+              value={this.state.hourHandOffsideLength}
+            />
+            <Text>
+              {MAX_HOUR_HAND_OFFSIDE_LENGTH}
+            </Text>
+          </View>
         </ScrollView>
       </View>
     );
