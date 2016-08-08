@@ -44,6 +44,18 @@ const MAX_HOUR_HAND_LENGTH = 100.0;
 const MIN_HOUR_HAND_OFFSIDE_LENGTH = 0.0;
 const MAX_HOUR_HAND_OFFSIDE_LENGTH = 100.0;
 
+const MIN_MINUTE_HAND_ALPHA = 0.0;
+const MAX_MINUTE_HAND_ALPHA = 1.0;
+
+const MIN_MINUTE_HAND_WIDTH = 0.0;
+const MAX_MINUTE_HAND_WIDTH = 20.0;
+
+const MIN_MINUTE_HAND_LENGTH = 0.0;
+const MAX_MINUTE_HAND_LENGTH = 100.0;
+
+const MIN_MINUTE_HAND_OFFSIDE_LENGTH = 0.0;
+const MAX_MINUTE_HAND_OFFSIDE_LENGTH = 100.0;
+
 class reactNativeAnalogClock extends Component {
   constructor(props) {
     super(props);
@@ -70,7 +82,12 @@ class reactNativeAnalogClock extends Component {
       hourHandAlpha: 1.0,
       hourHandWidth: 4.0,
       hourHandLength: 30.0,
-      hourHandOffsideLength: 10.0
+      hourHandOffsideLength: 10.0,
+      minuteHandColor: '#F1F1F1',
+      minuteHandAlpha: 1.0,
+      minuteHandWidth: 3.0,
+      minuteHandLength: 55.0,
+      minuteHandOffsideLength: 20.0
     }
   }
 
@@ -81,6 +98,7 @@ class reactNativeAnalogClock extends Component {
     const { digitOffset, digitColor } = this.state;
     const { faceBackgroundColor, faceBackgroundAlpha } = this.state;
     const { hourHandColor, hourHandAlpha, hourHandWidth, hourHandLength, hourHandOffsideLength } = this.state;
+    const { minuteHandColor, minuteHandAlpha, minuteHandWidth, minuteHandLength, minuteHandOffsideLength } = this.state;
     return (
       <View style={styles.container}>
         <Text style={styles.title}>
@@ -124,6 +142,12 @@ class reactNativeAnalogClock extends Component {
             hourHandWidth={hourHandWidth}
             hourHandLength={hourHandLength}
             hourHandOffsideLength={hourHandOffsideLength}
+            // MINUTES HAND CUSTOMIZATION
+            minuteHandColor={minuteHandColor}
+            minuteHandAlpha={minuteHandAlpha}
+            minuteHandWidth={minuteHandWidth}
+            minuteHandLength={minuteHandLength}
+            minuteHandOffsideLength={minuteHandOffsideLength}
           />
         </View>
 
@@ -458,6 +482,102 @@ class reactNativeAnalogClock extends Component {
               {MAX_HOUR_HAND_OFFSIDE_LENGTH}
             </Text>
           </View>
+
+          {/* MINUTES HAND CUSTOMIZATION */}
+          {/* title */}
+          <View style={styles.groupCommandTitle}>
+            <Text style={styles.groupCommandText}>
+              minutes HAND CUSTOMIZATION
+            </Text>
+          </View>
+          {/* minuteHandColor */}
+          <View style={styles.command}>
+            <Text style={styles.cmdInfo}>
+              minuteHandColor
+            </Text>
+            <TextInput
+              style={[styles.cmdInput, styles.textInput]}
+              onChangeText={(text) => this.setState({minuteHandColor: text})}
+              value={this.state.minuteHandColor}
+            />
+          </View>
+          {/* minuteHandAlpha */}
+          <View style={styles.command}>
+            <Text style={styles.cmdInfo}>
+              minuteHandAlpha ({(minuteHandAlpha + '').slice(0, 4)})
+            </Text>
+            <Text>
+              {MIN_MINUTE_HAND_ALPHA}
+            </Text>
+            <Slider
+              style={styles.sliders}
+              minimumValue={MIN_MINUTE_HAND_ALPHA}
+              maximumValue={MAX_MINUTE_HAND_ALPHA}
+              onValueChange={(value) => this.setState({minuteHandAlpha: value })}
+              value={this.state.minuteHandAlpha}
+            />
+            <Text>
+              {MAX_MINUTE_HAND_ALPHA}
+            </Text>
+          </View>
+          {/* minuteHandWidth */}
+          <View style={styles.command}>
+            <Text style={styles.cmdInfo}>
+              minuteHandWidth ({(minuteHandWidth + '').slice(0, 4)})
+            </Text>
+            <Text>
+              {MIN_MINUTE_HAND_WIDTH}
+            </Text>
+            <Slider
+              style={styles.sliders}
+              minimumValue={MIN_MINUTE_HAND_WIDTH}
+              maximumValue={MAX_MINUTE_HAND_WIDTH}
+              onValueChange={(value) => this.setState({minuteHandWidth: value })}
+              value={this.state.minuteHandWidth}
+            />
+            <Text>
+              {MAX_MINUTE_HAND_WIDTH}
+            </Text>
+          </View>
+          {/* minuteHandLength */}
+          <View style={styles.command}>
+            <Text style={styles.cmdInfo}>
+              minuteHandLength ({(minuteHandLength + '').slice(0, 4)})
+            </Text>
+            <Text>
+              {MIN_MINUTE_HAND_LENGTH}
+            </Text>
+            <Slider
+              style={styles.sliders}
+              minimumValue={MIN_MINUTE_HAND_LENGTH}
+              maximumValue={MAX_MINUTE_HAND_LENGTH}
+              onValueChange={(value) => this.setState({minuteHandLength: value })}
+              value={this.state.minuteHandLength}
+            />
+            <Text>
+              {MAX_MINUTE_HAND_LENGTH}
+            </Text>
+          </View>
+          {/* minuteHandOffsideLength */}
+          <View style={styles.command}>
+            <Text style={styles.cmdInfo}>
+              minuteHandOffsideLength ({(minuteHandOffsideLength + '').slice(0, 4)})
+            </Text>
+            <Text>
+              {MIN_MINUTE_HAND_OFFSIDE_LENGTH}
+            </Text>
+            <Slider
+              style={styles.sliders}
+              minimumValue={MIN_MINUTE_HAND_OFFSIDE_LENGTH}
+              maximumValue={MAX_MINUTE_HAND_OFFSIDE_LENGTH}
+              onValueChange={(value) => this.setState({minuteHandOffsideLength: value })}
+              value={this.state.minuteHandOffsideLength}
+            />
+            <Text>
+              {MAX_MINUTE_HAND_OFFSIDE_LENGTH}
+            </Text>
+          </View>
+
         </ScrollView>
       </View>
     );

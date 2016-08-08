@@ -16,6 +16,7 @@ This component is a bridge over `native`  [BEMAnalogClock](https://github.com/Bo
 *coming soon*
 
 ## to add/fix
+- [ ] add => defaultProps
 - [ ] add => `digit font`
 - [ ] fix =>  `digit color` dynamic change throws error (*only initial assignment is ok*)
 - [ ] fix =>  `hand Hand color` dynamic change throws error (*only initial assignment is ok*)

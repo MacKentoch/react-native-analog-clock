@@ -42,7 +42,18 @@ class AnalogClock extends Component {
       hourHandWidth,
       hourHandLength,
       hourHandOffsideLength,
-
+      // MINUTES HAND CUSTOMIZATION
+      minuteHandColor,
+      minuteHandAlpha,
+      minuteHandWidth,
+      minuteHandLength,
+      minuteHandOffsideLength,
+      // SECONDS HAND CUSTOMIZATION
+      secondHandColor,
+      secondHandAlpha,
+      secondHandWidth,
+      secondHandLength,
+      secondHandOffsideLength,
       ...otherProps
     } = this.props;
 
@@ -74,14 +85,23 @@ class AnalogClock extends Component {
         bridgeHourHandWidth={parseFloat(hourHandWidth) ? parseFloat(hourHandWidth) : 4.0}
         bridgeHourHandLength={parseFloat(hourHandLength) ? parseFloat(hourHandLength) : 30}
         bridgeHourHandOffsideLength={parseFloat(hourHandOffsideLength) ? parseFloat(hourHandOffsideLength) : 10}
+        // MINUTES HAND CUSTOMIZATION
+        bridgeMinuteHandColor={processColor(minuteHandColor)}
+        bridgeMinuteHandAlpha={parseFloat(minuteHandAlpha) ? parseFloat(minuteHandAlpha) : 1.0}
+        bridgeMinuteHandWidth={parseFloat(minuteHandWidth) ? parseFloat(minuteHandWidth) : 3.0}
+        bridgeMinuteHandLength={parseFloat(minuteHandLength) ? parseFloat(minuteHandLength) : 55}
+        bridgeMinuteHandOffsideLength={parseFloat(minuteHandOffsideLength) ? parseFloat(minuteHandOffsideLength) : 20}
+        // SECONDS HAND CUSTOMIZATION
+        bridgeSecondHandColor={processColor(secondHandColor)}
+        bridgeSecondHandAlpha={parseFloat(secondHandAlpha) ? parseFloat(secondHandAlpha) : 1.0}
+        bridgeSecondHandWidth={parseFloat(secondHandWidth) ? parseFloat(secondHandWidth) : 1.0}
+        bridgeSecondHandLength={parseFloat(secondHandLength) ? parseFloat(secondHandLength) : 60}
+        bridgeSecondHandOffsideLength={parseFloat(secondHandOffsideLength) ? parseFloat(secondHandOffsideLength) : 20}
         {...otherProps}
       />
     );
   }
 }
-
-// self.myClock1.digitFont = [UIFont fontWithName:@"HelveticaNeue-Thin" size:17];
-// self.myClock1.digitColor = [UIColor whiteColor];
 
 AnalogClock.propTypes = {
   //////////////////////////
@@ -139,6 +159,33 @@ AnalogClock.propTypes = {
   hourHandLength: PropTypes.number,
   /// The length of the offside part of the clock's hour hand. Default value is 10.
   hourHandOffsideLength: PropTypes.number,
+
+  ////////////////////////////////////////
+  //----- MINUTES HAND CUSTOMIZATION -----//
+  ////////////////////////////////////////
+  /// The color of the clock's minute hand. Default value is whiteColor.
+  minuteHandColor: PropTypes.string,
+  /// The alpha of the clock's minute hand. Default value is 1.0.
+  minuteHandAlpha: PropTypes.number,
+  /// The width of the clock's minute hand. Default value is 3.0.
+  minuteHandWidth: PropTypes.number,
+  /// The length of the clock's minute hand. Default value is 55.
+  minuteHandLength: PropTypes.number,
+  /// The length of the offside part of the clock's minute hand. Default value is 20.
+  minuteHandOffsideLength: PropTypes.number,
+  ////////////////////////////////////////
+  //----- SECONDS HAND CUSTOMIZATION -----//
+  ////////////////////////////////////////
+  /// The color of the clock's second hand. Default value is whiteColor.
+  secondHandColor: PropTypes.string,
+  /// The alpha of the clock's second hand. Default value is 1.0.
+  secondHandAlpha: PropTypes.number,
+  /// The width of the clock's second hand. Default value is 1.0.
+  secondHandWidth: PropTypes.number,
+  /// The length of the clock's second hand. Default value is 60.
+  secondHandLength: PropTypes.number,
+  /// The length of the offside part of the clock's second hand. Default value is 20.
+  secondHandOffsideLength: PropTypes.number,
 
   //////////////////////////
   // Read only props (so no need to bridge native one)

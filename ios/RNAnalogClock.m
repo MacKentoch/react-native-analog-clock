@@ -25,9 +25,8 @@
 
 
   //////////////////////////
-  //----- PROPERTIES -----//
+  //----- GENERAL PROPERTIES -----//
   //////////////////////////
-
   /// setting the time manualy
   RCT_EXPORT_VIEW_PROPERTY(bridgeHours, NSInteger);
   RCT_EXPORT_VIEW_PROPERTY(bridgeMinutes, NSInteger);
@@ -81,6 +80,37 @@
   RCT_EXPORT_VIEW_PROPERTY(bridgeHourHandLength, CGFloat);
   /// The length of the offside part of the clock's hour hand. Default value is 10.
   RCT_EXPORT_VIEW_PROPERTY(bridgeHourHandOffsideLength, CGFloat);
+
+
+  ////////////////////////////////////////
+  //----- MINUTES HAND CUSTOMIZATION -----//
+  ////////////////////////////////////////
+  /// The color of the clock's minute hand. Default value is whiteColor.
+  RCT_EXPORT_VIEW_PROPERTY(bridgeMinuteHandColor, NSNumber);
+  /// The alpha of the clock's minute hand. Default value is 1.0.
+  RCT_EXPORT_VIEW_PROPERTY(bridgeMinuteHandAlpha, CGFloat);
+  /// The width of the clock's minute hand. Default value is 3.0.
+  RCT_EXPORT_VIEW_PROPERTY(bridgeMinuteHandWidth, CGFloat);
+  /// The length of the clock's minute hand. Default value is 55.
+  RCT_EXPORT_VIEW_PROPERTY(bridgeMinuteHandLength, CGFloat);
+  /// The length of the offside part of the clock's minute hand. Default value is 20.
+  RCT_EXPORT_VIEW_PROPERTY(bridgeMinuteHandOffsideLength, CGFloat);
+
+
+  ////////////////////////////////////////
+  //----- SECONDS HAND CUSTOMIZATION -----//
+  ////////////////////////////////////////
+  /// The color of the clock's second hand. Default value is whiteColor.
+  RCT_EXPORT_VIEW_PROPERTY(bridgeSecondHandColor, NSNumber);
+  /// The alpha of the clock's second hand. Default value is 1.0.
+  RCT_EXPORT_VIEW_PROPERTY(bridgeSecondHandAlpha, CGFloat);
+  /// The width of the clock's second hand. Default value is 1.0.
+  RCT_EXPORT_VIEW_PROPERTY(bridgeSecondHandWidth, CGFloat);
+  /// The length of the clock's second hand. Default value is 60.
+  RCT_EXPORT_VIEW_PROPERTY(bridgeSecondHandLength, CGFloat);
+  /// The length of the offside part of the clock's second hand. Default value is 20.
+  RCT_EXPORT_VIEW_PROPERTY(bridgeSecondHandOffsideLength, CGFloat);
+
 
 
 //  RCT_EXTERN_METHOD(addEvent:(NSString *)name location:(NSString *)location date:(nonnull NSNumber *)date)
