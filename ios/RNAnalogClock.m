@@ -23,11 +23,6 @@
   /// READ ONLY : If set to YES, the clock real time feature is activated.
   RCT_EXPORT_VIEW_PROPERTY(realTimeIsActivated, BOOL)
 
-  /// If set to YES, the digits (1-12) will be displayed on the face of the clock. Default value is NO.
-  RCT_EXPORT_VIEW_PROPERTY(enableDigit, BOOL);
-
-
-  RCT_EXPORT_VIEW_PROPERTY(borderWidth, CGFloat);
 
 //  RCT_EXPORT_VIEW_PROPERTY(digitOffset, CGFloat)
 
@@ -52,10 +47,15 @@
   RCT_EXPORT_VIEW_PROPERTY(bridgeEnableShadows, BOOL);
   /// If set to YES, the graduation on the clock will be visible. See the methods bellow to costumize the graduations. Default value is YES.
   RCT_EXPORT_VIEW_PROPERTY(bridgeEnableGraduations, BOOL);
+  /// If set to YES, the digits (1-12) will be displayed on the face of the clock. Default value is NO.
+  RCT_EXPORT_VIEW_PROPERTY(bridgeEnableDigit, BOOL);
+
 
   //////////////////////////////////////////
   //----- CLOCK'S FACE CUSTOMIZATION -----//
   //////////////////////////////////////////
+  // The width of the clock's border.
+  RCT_EXPORT_VIEW_PROPERTY(bridgeBorderWidth, CGFloat);
   // The color of the clock's border.
   RCT_EXPORT_VIEW_PROPERTY(bridgeBorderColor, NSNumber);
   /// The background color of the clock's face.

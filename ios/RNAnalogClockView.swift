@@ -25,6 +25,9 @@ class RNAnalogClockView : BEMAnalogClockView, BEMAnalogClockDelegate {
     
   }
 
+  //////////////////////////////////
+  //----- PROPERTIES SETTERS -----//
+  //////////////////////////////////
   @objc func setBridgeHours(hours: Int) {
     self.hours = hours
     self.updateTimeAnimated(animated)
@@ -66,8 +69,21 @@ class RNAnalogClockView : BEMAnalogClockView, BEMAnalogClockDelegate {
   }
   
   @objc func setBridgeEnableGraduations(active: Bool) {
-    print("setBridgeEnableGraduations: \(active)")
     self.enableGraduations = active
+    self.reloadClock()
+  }
+  
+  @objc func setBridgeEnableDigit(active: Bool) {
+    self.enableDigit = active
+    self.reloadClock()
+  }
+  
+  //////////////////////////////////////////////////
+  //----- CLOCK'S FACE CUSTOMIZATION SETTERS -----//
+  //////////////////////////////////////////////////
+  @objc func setBridgeBorderWidth(width: CGFloat) {
+    print("setBridgeBorderWidth: \(width)")
+    self.borderWidth = width
     self.reloadClock()
   }
   

@@ -49,13 +49,13 @@ class AnalogClock extends Component {
         bridgeRealTime={realTime}
         bridgeMilitaryTime={militaryTime}
         bridgeCurrentTime={currentTime}
-        enableDigit={enableDigit}
+        bridgeEnableDigit={enableDigit}
         bridgeEnableGraduations={enableGraduations}
         enableHub={enableHub}
         // CLOCK'S FACE CUSTOMIZATION
         bridgeBorderColor={processColor(borderColor)}
         borderAlpha={borderAlpha}
-        borderWidth={borderWidth}
+        bridgeBorderWidth={borderWidth}
         bridgeFaceBackgroundColor={processColor(faceBackgroundColor)}
         faceBackgroundAlpha={faceBackgroundAlpha}
         {...otherProps}

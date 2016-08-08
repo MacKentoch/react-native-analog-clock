@@ -20,6 +20,9 @@ import AnalogClock          from './AnalogClock';
 
 const { width, height } = Dimensions.get('window');
 
+const MIN_BORDER_WIDTH = 0;
+const MAX_BORDER_WIDTH = 20;
+
 class reactNativeAnalogClock extends Component {
   constructor(props) {
     super(props);
@@ -33,6 +36,8 @@ class reactNativeAnalogClock extends Component {
       militaryTime: true,
       enableShadows: true,
       enableGraduations: true,
+      enableDigit: true,
+      borderWidth: 0,
       faceBackgroundColor: '#26A65B'
     }
   }
@@ -64,14 +69,14 @@ class reactNativeAnalogClock extends Component {
             realTime={this.state.realTime}
             militaryTime={this.state.militaryTime}
             currentTime={this.state.currentTime}
-            enableDigit={true}
+            enableDigit={this.state.enableDigit}
             setTimeViaTouch={this.state.setTimeViaTouch}
             enableGraduations={this.state.enableGraduations}
             enableHub={true}
             // CLOCK'S FACE CUSTOMIZATION
             borderColor={'black'}
             borderAlpha={1}
-            borderWidth={0}
+            borderWidth={this.state.borderWidth}
             faceBackgroundColor={this.state.faceBackgroundColor}
             faceBackgroundAlpha={0.3}
           />
@@ -173,6 +178,35 @@ class reactNativeAnalogClock extends Component {
 
           <View style={styles.command}>
             <Text style={styles.cmdInfo}>
+              enableDigit
+            </Text>
+            <Switch
+              onValueChange={(value) => this.setState({enableDigit: value})}
+              value={this.state.enableDigit}
+            />
+          </View>
+
+          <View style={styles.command}>
+            <Text style={styles.cmdInfo}>
+              borderWidth
+            </Text>
+            <Text>
+              min: {MIN_BORDER_WIDTH}
+            </Text>
+            <Slider
+              style={styles.sliders}
+              minimumValue={MIN_BORDER_WIDTH}
+              maximumValue={MAX_BORDER_WIDTH}
+              onValueChange={(value) => this.setState({borderWidth: parseFloat(value) ? parseFloat(value) : 0 })}
+              value={this.state.borderWidth}
+            />
+            <Text>
+              max: {MAX_BORDER_WIDTH}
+            </Text>
+          </View>
+
+          <View style={styles.command}>
+            <Text style={styles.cmdInfo}>
               faceBackgroundColor
             </Text>
             <TextInput
@@ -223,8 +257,8 @@ const styles = StyleSheet.create({
   command: {
     marginTop: 15,
     marginBottom: 15,
-    marginLeft: 30,
-    marginRight: 30,
+    marginLeft: 10,
+    marginRight: 10,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between'
@@ -244,7 +278,8 @@ const styles = StyleSheet.create({
     borderWidth: 1
   },
   sliders: {
-    width: width * 0.4
+    flex: 1
+    // width: width * 0.4
   }
 });
 
