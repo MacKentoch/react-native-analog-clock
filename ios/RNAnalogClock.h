@@ -8,8 +8,8 @@
 
 #import "RCTView.h"
 #import "BEMAnalogClockView.h"
+#import "RCTBridgeModule.h"
 
 @interface RNAnalogClock : RCTView
-
 
 @end

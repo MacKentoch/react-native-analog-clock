@@ -212,18 +212,18 @@ class RNAnalogClockView : BEMAnalogClockView, BEMAnalogClockDelegate {
   ///////////////////////
   //----- methods -----//
   ///////////////////////
-  @objc func startClock() -> Void {
+  @objc func startRealTimeClock() -> Void {
     print("starting clock")
     self.startRealTime()
   }
 
-  @objc func stopClock() -> Void {
+  @objc func stopRealTimeClock() -> Void {
     print("stoping clock")
-    self.startRealTime()
+    self.stopRealTime()
   }
   
-  @objc func currentTimeOnClock(clock: BEMAnalogClockView!, hours: NSString!, minutes: NSString!, seconds: NSString!) {
-    print("\nDEBUG; Current time: \(hours):\(minutes)\(seconds)")
-  }
+//  @objc func currentTimeOnClock(clock: BEMAnalogClockView!, hours: NSString!, minutes: NSString!, seconds: NSString!) {
+//    print("\nDEBUG; Current time: \(hours):\(minutes)\(seconds)")
+//  }
   
 }

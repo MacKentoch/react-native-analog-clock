@@ -730,7 +730,6 @@ class reactNativeAnalogClock extends Component {
 
   handlesOnStartPress(ev) {
     if (this.analogClock) {
-      // console.log('this.analogClock: ', this.analogClock);
       this.analogClock.startClock();
     }
   }

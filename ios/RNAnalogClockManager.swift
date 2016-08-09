@@ -10,7 +10,16 @@ import Foundation
 
 @objc(RNAnalogClockSwift)
 class RNAnalogClockManager: RCTViewManager {
+  
+  var _RNAnalogClockView: RNAnalogClockView!
+  
   override func view() -> UIView! {
-    return RNAnalogClockView();
+    _RNAnalogClockView = RNAnalogClockView()
+    return _RNAnalogClockView
+  }
+  
+  func startRealTimeClock() {
+    guard let _ = _RNAnalogClockView else { return }
+    self._RNAnalogClockView.startRealTimeClock();
   }
 }

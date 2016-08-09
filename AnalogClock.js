@@ -4,6 +4,7 @@ import React , {
 }                           from 'react';
 import {
   requireNativeComponent,
+  NativeModules,
   processColor
 }                           from 'react-native';
 
@@ -13,9 +14,18 @@ const RNAnalogClock = requireNativeComponent(
   AnalogClock
 );
 
+const AnalogClockManager = NativeModules.RNAnalogClockSwift;
+
 class AnalogClock extends Component {
   constructor(props) {
     super(props);
+  }
+
+  startClock() {
+    console.log('AnalogClockManager: ', AnalogClockManager);
+    console.log('typeof AnalogClockManager.startRealTimeClock: ', typeof AnalogClockManager.startRealTimeClock);
+    // AnalogClockManager.startClock();
+    AnalogClockManager.startRealTimeClock();
   }
 
   render() {
@@ -58,9 +68,9 @@ class AnalogClock extends Component {
       secondHandWidth,
       secondHandLength,
       secondHandOffsideLength,
-      // // METHODS
-      // startClock,
-      // stopClock,
+      // METHODS
+      startClock,
+      stopClock,
       ...otherProps
     } = this.props;
 
@@ -199,8 +209,8 @@ AnalogClock.propTypes = {
   // ///////////////////////
   // //----- METHODS -----//
   // ///////////////////////
-  // startClock: PropTypes.func,
-  // stopClock: PropTypes.func,
+  startClock: PropTypes.func,
+  stopClock: PropTypes.func,
 
   //////////////////////////
   // Read only props (so no need to bridge native one)
