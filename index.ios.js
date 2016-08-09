@@ -69,6 +69,11 @@ const MAX_SECOND_HAND_LENGTH = 100.0;
 const MIN_SECOND_HAND_OFFSIDE_LENGTH = 0.0;
 const MAX_SECOND_HAND_OFFSIDE_LENGTH = 100.0;
 
+const MIN_HUB_ALPHA = 0.0;
+const MAX_HUB_ALPHA = 1.0;
+
+const MIN_HUB_RADIUS = 0.0;
+const MAX_HUB_RADIUS = 20.0
 
 class reactNativeAnalogClock extends Component {
   constructor(props) {
@@ -106,8 +111,11 @@ class reactNativeAnalogClock extends Component {
       secondHandAlpha: 1.0,
       secondHandWidth: 1.0,
       secondHandLength: 60.0,
-      secondHandOffsideLength: 20.0
-    }
+      secondHandOffsideLength: 20.0,
+      hubColor: '#F1F1F1',
+      hubAlpha: 1,
+      hubRadius: 3
+    };
     this.handlesOnStartPress = this.handlesOnStartPress.bind(this);
     this.handlesOnStopPress = this.handlesOnStopPress.bind(this);
     this.handlesOnReloadPress = this.handlesOnReloadPress.bind(this);
@@ -122,6 +130,7 @@ class reactNativeAnalogClock extends Component {
     const { hourHandColor, hourHandAlpha, hourHandWidth, hourHandLength, hourHandOffsideLength } = this.state;
     const { minuteHandColor, minuteHandAlpha, minuteHandWidth, minuteHandLength, minuteHandOffsideLength } = this.state;
     const { secondHandColor, secondHandAlpha, secondHandWidth, secondHandLength, secondHandOffsideLength } = this.state;
+    const { hubColor, hubAlpha, hubRadius } = this.state;
     return (
       <View style={styles.container}>
         <Text style={styles.title}>
@@ -199,6 +208,10 @@ class reactNativeAnalogClock extends Component {
             secondHandWidth={secondHandWidth}
             secondHandLength={secondHandLength}
             secondHandOffsideLength={secondHandOffsideLength}
+            // HUB CUSTOMIZATION
+            hubColor={hubColor}
+            hubAlpha={hubAlpha}
+            hubRadius={hubRadius}
           />
         </View>
 
@@ -721,6 +734,63 @@ class reactNativeAnalogClock extends Component {
             />
             <Text>
               {MAX_SECOND_HAND_OFFSIDE_LENGTH}
+            </Text>
+          </View>
+
+          {/* HUB CUSTOMIZATION */}
+          {/* title */}
+          <View style={styles.groupCommandTitle}>
+            <Text style={styles.groupCommandText}>
+              HUB CUSTOMIZATION
+            </Text>
+          </View>
+          {/* hubColor */}
+          <View style={styles.command}>
+            <Text style={styles.cmdInfo}>
+              hubColor
+            </Text>
+            <TextInput
+              style={[styles.cmdInput, styles.textInput]}
+              onChangeText={(text) => this.setState({hubColor: text})}
+              value={this.state.hubColor}
+            />
+          </View>
+          {/* hubAlpha */}
+          <View style={styles.command}>
+            <Text style={styles.cmdInfo}>
+              hubAlpha ({(hubAlpha + '').slice(0, 4)})
+            </Text>
+            <Text>
+              {MIN_HUB_ALPHA}
+            </Text>
+            <Slider
+              style={styles.sliders}
+              minimumValue={MIN_HUB_ALPHA}
+              maximumValue={MAX_HUB_ALPHA}
+              onValueChange={(value) => this.setState({hubAlpha: value })}
+              value={this.state.hubAlpha}
+            />
+            <Text>
+              {MAX_HUB_ALPHA}
+            </Text>
+          </View>
+          {/* hubRadius */}
+          <View style={styles.command}>
+            <Text style={styles.cmdInfo}>
+              hubRadius ({(hubRadius + '').slice(0, 4)})
+            </Text>
+            <Text>
+              {MIN_HUB_RADIUS}
+            </Text>
+            <Slider
+              style={styles.sliders}
+              minimumValue={MIN_HUB_RADIUS}
+              maximumValue={MAX_HUB_RADIUS}
+              onValueChange={(value) => this.setState({hubRadius: value })}
+              value={this.state.hubRadius}
+            />
+            <Text>
+              {MAX_HUB_RADIUS}
             </Text>
           </View>
 

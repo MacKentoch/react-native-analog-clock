@@ -84,9 +84,9 @@ class AnalogClock extends Component {
     return (
       <RNAnalogClock
         // PROPERTIES
-        bridgeHours={parseInt(hours, 10) ? parseInt(hours, 10)%12 : 0}
-        bridgeMinutes={parseInt(minutes, 10) ? parseInt(minutes, 10)%60 : 0}
-        bridgeSeconds={parseInt(seconds, 10) ? parseInt(seconds, 10)%60 : 0}
+        bridgeHours={parseInt(hours, 10) ? parseInt(hours, 10)%12 : getDefaultProps().hours}
+        bridgeMinutes={parseInt(minutes, 10) ? parseInt(minutes, 10)%60 : getDefaultProps().minutes}
+        bridgeSeconds={parseInt(seconds, 10) ? parseInt(seconds, 10)%60 : getDefaultProps().seconds}
         bridgeSetTimeViaTouch={setTimeViaTouch}
         bridgeEnableShadows={enableShadows}
         bridgeRealTime={realTime}
@@ -97,7 +97,7 @@ class AnalogClock extends Component {
         bridgeEnableHub={enableHub}
         // CLOCK'S FACE CUSTOMIZATION
         bridgeDigitColor={processColor(digitColor)}
-        bridgeDigitOffset={parseFloat(digitOffset) ? parseFloat(digitOffset) : 0}
+        bridgeDigitOffset={parseFloat(digitOffset) ? parseFloat(digitOffset) : getDefaultProps().digitOffset}
         bridgeBorderColor={processColor(borderColor)}
         bridgeBorderAlpha={parseFloat(borderAlpha) ? parseFloat(borderAlpha) : 0}
         bridgeBorderWidth={parseFloat(borderWidth) ? parseFloat(borderWidth) : 0}
@@ -122,9 +122,9 @@ class AnalogClock extends Component {
         bridgeSecondHandLength={parseFloat(secondHandLength) ? parseFloat(secondHandLength) : 60}
         bridgeSecondHandOffsideLength={parseFloat(secondHandOffsideLength) ? parseFloat(secondHandOffsideLength) : 20}
         // HUB CUSTOMIZATION
-        bridgeHubColor={hubColor}
-        bridgeHubAlpha={hubAlpha}
-        bridgeHubRadius={hubRadius}
+        bridgeHubColor={processColor(hubColor)}
+        bridgeHubAlpha={parseFloat(hubAlpha) ? parseFloat(hubAlpha) : 1.0}
+        bridgeHubRadius={parseFloat(hubRadius) ? parseFloat(hubRadius) : 3.0}
         {...otherProps}
       />
     );
@@ -233,12 +233,26 @@ AnalogClock.propTypes = {
   //////////////////////////
   //If set to true, the clock real time feature is activated. Read only.
   realTimeIsActivated: PropTypes.bool
-}
+};
 
 AnalogClock.defaultProps = {
-  hours: 12,
-  minutes: 0,
-  seconds: 0
+  // PROPERTIES
+  hours: getDefaultProps().hours,
+  minutes: getDefaultProps().minutes,
+  seconds: getDefaultProps().seconds,
+  // CLOCK'S FACE CUSTOMIZATION
+  digitOffset: getDefaultProps().digitOffset
+};
+
+function getDefaultProps() {
+  return {
+    // PROPERTIES
+    hours: 0,
+    minutes: 0,
+    seconds: 0,
+    // CLOCK'S FACE CUSTOMIZATION
+    digitOffset: 8
+  }
 }
 
 export default AnalogClock;
