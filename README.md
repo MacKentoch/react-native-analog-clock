@@ -15,7 +15,12 @@ This component is a bridge over `native`  [BEMAnalogClock](https://github.com/Bo
 
 *coming soon*
 
-## to add/fix
-- [ ] add => defaultProps
-- [ ] add => `digit font`
+## to add
+- [ ] add => JS side defaultProps
+- [ ] add => `digit font` prop bridge
+- [ ] add => `graduations length` prop bridge
+- [ ] add => `graduations width` prop bridge
+- [ ] add => `graduations color` prop bridge
+
+## to fix
 - [ ] fix =>  `digit color` dynamic change throws error (*only initial assignment is ok*)
