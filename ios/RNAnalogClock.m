@@ -112,6 +112,15 @@
   /// The length of the offside part of the clock's second hand. Default value is 20.
   RCT_EXPORT_VIEW_PROPERTY(bridgeSecondHandOffsideLength, CGFloat);
 
+  /////////////////////////////////
+  //----- HUB CUSTOMIZATION -----//
+  /////////////////////////////////
+  /// The color of the hub. Default value is whiteColor.
+  RCT_EXPORT_VIEW_PROPERTY(bridgeHubColor, NSNumber);
+  /// The alpha of the clock's hub. Default value is 1.0.
+  RCT_EXPORT_VIEW_PROPERTY(bridgeHubAlpha, CGFloat);
+  /// The width of the clock's hub. Default value is 3.0.
+  RCT_EXPORT_VIEW_PROPERTY(bridgeHubRadius, CGFloat);
 
 
   ///////////////////////

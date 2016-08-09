@@ -17,6 +17,7 @@ This component is a bridge over `native`  [BEMAnalogClock](https://github.com/Bo
 
 ## to add
 - [ ] add => JS side defaultProps
+- [ ] add => `hub` customization props bridge
 - [ ] add => `digit font` prop bridge
 - [ ] add => `graduations length` prop bridge
 - [ ] add => `graduations width` prop bridge

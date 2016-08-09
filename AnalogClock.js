@@ -73,9 +73,11 @@ class AnalogClock extends Component {
       secondHandWidth,
       secondHandLength,
       secondHandOffsideLength,
-      // METHODS
-      startClock,
-      stopClock,
+      // HUB CUSTOMIZATION
+      hubColor,
+      hubAlpha,
+      hubRadius,
+
       ...otherProps
     } = this.props;
 
@@ -119,9 +121,10 @@ class AnalogClock extends Component {
         bridgeSecondHandWidth={parseFloat(secondHandWidth) ? parseFloat(secondHandWidth) : 1.0}
         bridgeSecondHandLength={parseFloat(secondHandLength) ? parseFloat(secondHandLength) : 60}
         bridgeSecondHandOffsideLength={parseFloat(secondHandOffsideLength) ? parseFloat(secondHandOffsideLength) : 20}
-        // // METHODS
-        // startClock={startClock}
-        // stopClock={stopClock}
+        // HUB CUSTOMIZATION
+        bridgeHubColor={hubColor}
+        bridgeHubAlpha={hubAlpha}
+        bridgeHubRadius={hubRadius}
         {...otherProps}
       />
     );
@@ -154,6 +157,7 @@ AnalogClock.propTypes = {
   enableGraduations: PropTypes.bool,
   /// If set to true, a circular hub will be drawn. Default value is false
   enableHub: PropTypes.bool,
+
   //////////////////////////////////////////
   //----- CLOCK'S FACE CUSTOMIZATION -----//
   //////////////////////////////////////////
@@ -171,6 +175,7 @@ AnalogClock.propTypes = {
   faceBackgroundColor: PropTypes.string,
   /// The alpha of the clock's face.
   faceBackgroundAlpha: PropTypes.number,
+
   ////////////////////////////////////////
   //----- HOURS HAND CUSTOMIZATION -----//
   ////////////////////////////////////////
@@ -198,6 +203,7 @@ AnalogClock.propTypes = {
   minuteHandLength: PropTypes.number,
   /// The length of the offside part of the clock's minute hand. Default value is 20.
   minuteHandOffsideLength: PropTypes.number,
+
   //////////////////////////////////////////
   //----- SECONDS HAND CUSTOMIZATION -----//
   //////////////////////////////////////////
@@ -211,6 +217,17 @@ AnalogClock.propTypes = {
   secondHandLength: PropTypes.number,
   /// The length of the offside part of the clock's second hand. Default value is 20.
   secondHandOffsideLength: PropTypes.number,
+
+  /////////////////////////////////
+  //----- HUB CUSTOMIZATION -----//
+  /////////////////////////////////
+  /// The color of the hub. Default value is whiteColor.
+  hubColor: PropTypes.string,
+  /// The alpha of the clock's hub. Default value is 1.0.
+  hubAlpha: PropTypes.number,
+  /// The width of the clock's hub. Default value is 3.0.
+  hubRadius: PropTypes.number,
+
   //////////////////////////
   // Read only props (so no need to bridge native one)
   //////////////////////////

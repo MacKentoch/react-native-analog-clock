@@ -162,9 +162,9 @@ class RNAnalogClockView : BEMAnalogClockView, BEMAnalogClockDelegate {
   }
   
 
-  ////////////////////////////////////////
+  //////////////////////////////////////////
   //----- MINUTES HAND CUSTOMIZATION -----//
-  ////////////////////////////////////////
+  //////////////////////////////////////////
   @objc func setBridgeMinuteHandColor(color: NSNumber) {
     self.minuteHandColor = RCTConvert.UIColor(color)
     self.reloadClock()
@@ -216,6 +216,24 @@ class RNAnalogClockView : BEMAnalogClockView, BEMAnalogClockDelegate {
   
   @objc func setBridgeSecondHandOffsideLength(offsideLength: CGFloat) {
     self.secondHandOffsideLength = offsideLength
+    self.reloadClock()
+  }
+  
+  /////////////////////////////////
+  //----- HUB CUSTOMIZATION -----//
+  /////////////////////////////////
+  @objc func setBridgeHubColor(color: NSNumber) {
+    self.hubColor = RCTConvert.UIColor(color)
+    self.reloadClock()
+  }
+  
+  @objc func setBridgeHubAlpha(alpha: CGFloat) {
+    self.hubAlpha = alpha
+    self.reloadClock()
+  }
+  
+  @objc func setBridgeHubRadius(width: CGFloat) {
+    self.hubRadius = width
     self.reloadClock()
   }
   
