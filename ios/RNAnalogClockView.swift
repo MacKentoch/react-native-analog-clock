@@ -13,6 +13,16 @@ class RNAnalogClockView : BEMAnalogClockView, BEMAnalogClockDelegate {
   
   let animated: Bool = true
   
+  // properties to customize graduations
+  var smallGraduationLength: CGFloat! = 5.0
+  var highGraduationLength: CGFloat! = 10.0
+
+  var smallGraduationWidth: CGFloat! = 1.0
+  var highGraduationWidth: CGFloat! = 2.0
+  
+  var smallGraduationColor: UIColor! = UIColor(red: 241.0, green: 241.0, blue: 241.0, alpha: 1.0)
+  var highGraduationColor: UIColor! = UIColor(red: 241.0, green: 241.0, blue: 241.0, alpha: 1.0)
+  
   required init?(coder aDecoder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }
@@ -249,5 +259,37 @@ class RNAnalogClockView : BEMAnalogClockView, BEMAnalogClockDelegate {
     print("currentTimeOnClock")
     // print("\nDEBUG; Current time: \(hours):\(minutes)\(seconds)")
   }
+  
+
+  ////////////////////////////////////
+  //----- CLOCK CUSTOMIZATIONS -----//
+  ////////////////////////////////////
+  
+  @objc func analogClock(clock: BEMAnalogClockView!, graduationLengthForIndex index: Int) -> CGFloat {
+    let modulo5: Int = (index + 1) % 5 //highGraduationLength every 5 graduations
+    if modulo5 == 1 {
+      return self.highGraduationLength
+    } else {
+      return self.smallGraduationLength
+    }
+  }
+  
+  @objc func analogClock(clock: BEMAnalogClockView!, graduationWidthForIndex index: Int) -> CGFloat {
+    let modulo5: Int = (index + 1) % 5
+    if modulo5 == 1 {
+      return self.highGraduationWidth
+    } else {
+      return self.smallGraduationWidth
+    }
+  }
+  
+//  - (UIColor *)analogClock:(BEMAnalogClockView *)clock graduationColorForIndex:(NSInteger)index {
+//  bool modulo15 = index % 15;
+//  if ((!modulo15 == 1)) { // Every 15 graduation will be blue.
+//  return [UIColor brownColor];
+//  } else {
+//  return [UIColor whiteColor];
+//  }
+//  }
   
 }

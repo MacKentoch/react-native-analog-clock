@@ -91,7 +91,7 @@ class reactNativeAnalogClock extends Component {
       faceBackgroundColor: '#26A65B',
       faceBackgroundAlpha: 1.0,
       digitColor: '#FFFFFF',
-      digitOffset: 12,
+      digitOffset: 8.0,
       hourHandColor: '#F1F1F1',
       hourHandAlpha: 1.0,
       hourHandWidth: 4.0,
