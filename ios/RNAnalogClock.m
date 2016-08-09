@@ -25,9 +25,9 @@
   RCT_EXPORT_VIEW_PROPERTY(realTimeIsActivated, BOOL)
 
 
-  //////////////////////////
+  //////////////////////////////////
   //----- GENERAL PROPERTIES -----//
-  //////////////////////////
+  //////////////////////////////////
   /// setting the time manualy
   RCT_EXPORT_VIEW_PROPERTY(bridgeHours, NSInteger);
   RCT_EXPORT_VIEW_PROPERTY(bridgeMinutes, NSInteger);
@@ -119,7 +119,10 @@
   ///////////////////////
   /// Start the real time feature. The clock will be updated in real time (the second hand will move every second, the minute one every minute and the hour one every hour).
   RCT_EXTERN_METHOD(startRealTimeClock);
-  
+  /// Stops the real time feature. The clock will not move anymore.
+  RCT_EXTERN_METHOD(stopRealTimeClock);
+  /// restart clock and (if real time is activated) FORCE to update to real time - with animation - to current time (startRealTimeClock mehtod would just resume from where it was stopped)
+  RCT_EXTERN_METHOD(reloadRealTimeClock);
 
 @end
 

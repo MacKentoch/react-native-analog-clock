@@ -22,4 +22,14 @@ class RNAnalogClockManager: RCTViewManager {
     guard let _ = _RNAnalogClockView else { return }
     self._RNAnalogClockView.startRealTimeClock();
   }
+  
+  func stopRealTimeClock() {
+    guard let _ = _RNAnalogClockView else { return }
+    self._RNAnalogClockView.stopRealTimeClock();
+  }
+  
+  func reloadRealTimeClock() {
+    guard let _ = _RNAnalogClockView else { return }
+    self._RNAnalogClockView.reloadRealTimeClock();
+  }
 }

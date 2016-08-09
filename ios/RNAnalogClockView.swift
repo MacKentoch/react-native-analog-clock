@@ -209,21 +209,45 @@ class RNAnalogClockView : BEMAnalogClockView, BEMAnalogClockDelegate {
     self.reloadClock()
   }
   
-  ///////////////////////
-  //----- methods -----//
-  ///////////////////////
+  ///////////////////////////////////////
+  //----- methods accessible in JS-----//
+  ///////////////////////////////////////
+  // (in RNAnalogClock.m) RCT_EXTERN_METHOD -> see RNAnalogClockManager.swift
   @objc func startRealTimeClock() -> Void {
-    print("starting clock")
     self.startRealTime()
   }
 
   @objc func stopRealTimeClock() -> Void {
-    print("stoping clock")
     self.stopRealTime()
   }
   
-//  @objc func currentTimeOnClock(clock: BEMAnalogClockView!, hours: NSString!, minutes: NSString!, seconds: NSString!) {
-//    print("\nDEBUG; Current time: \(hours):\(minutes)\(seconds)")
-//  }
+  @objc func reloadRealTimeClock() -> Void {
+    print("reload clock")
+    print("self.realTimeIsActivated: \(self.realTimeIsActivated)")
+    if self.realTimeIsActivated == true {
+      self.setClockToCurrentTimeAnimated(true)
+    }
+    self.startRealTime()
+  }
+  
+  
+  ////////////////////////////
+  //----- CLOCK EVENTS -----//
+  ////////////////////////////
+  @objc func clockDidBeginLoading(clock: BEMAnalogClockView!) {
+    // print("clockDidBeginLoading")
+  }
+
+  @objc func clockDidFinishLoading(clock: BEMAnalogClockView!) {
+    // print("clockDidFinishLoading")
+  }
+  
+  ////////////////////
+  //----- TIME -----//
+  ////////////////////
+  @objc func currentTimeOnClock(clock: BEMAnalogClockView!, hours: String!, minutes: String!, seconds: String!) {
+    print("currentTimeOnClock")
+    // print("\nDEBUG; Current time: \(hours):\(minutes)\(seconds)")
+  }
   
 }

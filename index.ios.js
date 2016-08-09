@@ -110,7 +110,7 @@ class reactNativeAnalogClock extends Component {
     }
     this.handlesOnStartPress = this.handlesOnStartPress.bind(this);
     this.handlesOnStopPress = this.handlesOnStopPress.bind(this);
-
+    this.handlesOnReloadPress = this.handlesOnReloadPress.bind(this);
   }
 
   render() {
@@ -137,6 +137,7 @@ class reactNativeAnalogClock extends Component {
               </Text>
             </TouchableOpacity>
             <TouchableOpacity
+              onPress={this.handlesOnReloadPress}
               style={[styles.clockCommandButton, styles.reloadButton]}>
               <Text style={{color: '#F1F1F1'}}>
                 RELOAD
@@ -730,13 +731,19 @@ class reactNativeAnalogClock extends Component {
 
   handlesOnStartPress(ev) {
     if (this.analogClock) {
-      this.analogClock.startClock();
+      this.analogClock.startRealTimeClock();
     }
   }
 
   handlesOnStopPress(ev) {
     if (this.analogClock) {
-      this.analogClock.stopClock();
+      this.analogClock.stopRealTimeClock();
+    }
+  }
+
+  handlesOnReloadPress(ev) {
+    if (this.analogClock) {
+      this.analogClock.reloadRealTimeClock();
     }
   }
 }

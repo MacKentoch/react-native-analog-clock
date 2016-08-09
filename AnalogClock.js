@@ -21,11 +21,16 @@ class AnalogClock extends Component {
     super(props);
   }
 
-  startClock() {
-    console.log('AnalogClockManager: ', AnalogClockManager);
-    console.log('typeof AnalogClockManager.startRealTimeClock: ', typeof AnalogClockManager.startRealTimeClock);
-    // AnalogClockManager.startClock();
+  startRealTimeClock() {
     AnalogClockManager.startRealTimeClock();
+  }
+
+  stopRealTimeClock() {
+    AnalogClockManager.stopRealTimeClock();
+  }
+
+  reloadRealTimeClock() {
+    AnalogClockManager.reloadRealTimeClock();
   }
 
   render() {
@@ -206,12 +211,6 @@ AnalogClock.propTypes = {
   secondHandLength: PropTypes.number,
   /// The length of the offside part of the clock's second hand. Default value is 20.
   secondHandOffsideLength: PropTypes.number,
-  // ///////////////////////
-  // //----- METHODS -----//
-  // ///////////////////////
-  startClock: PropTypes.func,
-  stopClock: PropTypes.func,
-
   //////////////////////////
   // Read only props (so no need to bridge native one)
   //////////////////////////
