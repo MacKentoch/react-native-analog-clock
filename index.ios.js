@@ -108,6 +108,8 @@ class reactNativeAnalogClock extends Component {
       secondHandLength: 60.0,
       secondHandOffsideLength: 20.0
     }
+    this.handlesOnStartPress = this.handlesOnStartPress.bind(this);
+    this.handlesOnStopPress = this.handlesOnStopPress.bind(this);
 
   }
 
@@ -128,6 +130,7 @@ class reactNativeAnalogClock extends Component {
         <View style={styles.clockContainer}>
           <View style={styles.clockCommandTopline}>
             <TouchableOpacity
+              onPress={this.handlesOnStartPress}
               style={[styles.clockCommandButton, styles.startButton]}>
               <Text style={{color: '#F1F1F1'}}>
                 START
@@ -140,6 +143,7 @@ class reactNativeAnalogClock extends Component {
               </Text>
             </TouchableOpacity>
             <TouchableOpacity
+              onPress={this.handlesOnStopPress}
               style={[styles.clockCommandButton, styles.stopButton]}>
               <Text style={{color: '#F1F1F1'}}>
                 STOP
@@ -154,6 +158,7 @@ class reactNativeAnalogClock extends Component {
             {seconds ? seconds : '--'}
           </Text>
           <AnalogClock
+            ref={(ref)=>{this.analogClock = ref;}}
             style={styles.clock}
             // PROPERTIES
             hours={hours}
@@ -721,6 +726,19 @@ class reactNativeAnalogClock extends Component {
         </ScrollView>
       </View>
     );
+  }
+
+  handlesOnStartPress(ev) {
+    if (this.analogClock) {
+      // console.log('this.analogClock: ', this.analogClock);
+      this.analogClock.startClock();
+    }
+  }
+
+  handlesOnStopPress(ev) {
+    if (this.analogClock) {
+      this.analogClock.stopClock();
+    }
   }
 }
 

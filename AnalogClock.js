@@ -14,6 +14,10 @@ const RNAnalogClock = requireNativeComponent(
 );
 
 class AnalogClock extends Component {
+  constructor(props) {
+    super(props);
+  }
+
   render() {
     const {
       // PROPERTIES
@@ -54,9 +58,9 @@ class AnalogClock extends Component {
       secondHandWidth,
       secondHandLength,
       secondHandOffsideLength,
-      // METHODS
-      startClock,
-      stopClock,
+      // // METHODS
+      // startClock,
+      // stopClock,
       ...otherProps
     } = this.props;
 
@@ -100,9 +104,9 @@ class AnalogClock extends Component {
         bridgeSecondHandWidth={parseFloat(secondHandWidth) ? parseFloat(secondHandWidth) : 1.0}
         bridgeSecondHandLength={parseFloat(secondHandLength) ? parseFloat(secondHandLength) : 60}
         bridgeSecondHandOffsideLength={parseFloat(secondHandOffsideLength) ? parseFloat(secondHandOffsideLength) : 20}
-        // METHODS
-        startClock={startClock}
-        stopClock={stopClock}
+        // // METHODS
+        // startClock={startClock}
+        // stopClock={stopClock}
         {...otherProps}
       />
     );
@@ -192,11 +196,11 @@ AnalogClock.propTypes = {
   secondHandLength: PropTypes.number,
   /// The length of the offside part of the clock's second hand. Default value is 20.
   secondHandOffsideLength: PropTypes.number,
-  ///////////////////////
-  //----- METHODS -----//
-  ///////////////////////
-  startClock: PropTypes.func,
-  stopClock: PropTypes.func,
+  // ///////////////////////
+  // //----- METHODS -----//
+  // ///////////////////////
+  // startClock: PropTypes.func,
+  // stopClock: PropTypes.func,
 
   //////////////////////////
   // Read only props (so no need to bridge native one)
