@@ -195,7 +195,6 @@ class RNAnalogClockView : BEMAnalogClockView, BEMAnalogClockDelegate {
     self.reloadClock()
   }
   
-  
   //////////////////////////////////////////
   //----- SECONDS HAND CUSTOMIZATION -----//
   //////////////////////////////////////////
@@ -255,8 +254,8 @@ class RNAnalogClockView : BEMAnalogClockView, BEMAnalogClockDelegate {
   }
   
   @objc func reloadRealTimeClock() -> Void {
-    print("reload clock")
-    print("self.realTimeIsActivated: \(self.realTimeIsActivated)")
+//    print("reload clock")
+//    print("self.realTimeIsActivated: \(self.realTimeIsActivated)")
     if self.realTimeIsActivated == true {
       self.setClockToCurrentTimeAnimated(true)
     }
@@ -278,13 +277,8 @@ class RNAnalogClockView : BEMAnalogClockView, BEMAnalogClockDelegate {
   ////////////////////
   //----- TIME -----//
   ////////////////////
-  
-  @objc func onClockTick(hours hours:Int, minutes:Int, seconds:Int) {
-    
-  }
-  
-  
-  
+
+  var onClockTick: RCTDirectEventBlock!
   
   @objc(currentTimeOnClock:Hours:Minutes:Seconds:)
   func currentTimeOnClock(clock: BEMAnalogClockView!, hours: String!, minutes: String!, seconds: String!) {
@@ -292,7 +286,6 @@ class RNAnalogClockView : BEMAnalogClockView, BEMAnalogClockDelegate {
     self.currentMinutes = Int(minutes)!
     self.currentSeconds = Int(seconds)!
     print("\nDEBUG; Current time: \(hours):\(minutes):\(seconds)")
-    self.onClockTick(hours: self.currentHours, minutes: self.currentMinutes, seconds: self.currentSeconds)
   }
   
   

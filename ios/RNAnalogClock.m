@@ -136,11 +136,9 @@
   //////////////////////////////////
   //----- TIME TICK CALLBACK -----//
   //////////////////////////////////
-  RCT_EXPORT_VIEW_PROPERTY(onClockTick, RCTDirectEventBlock)
-//
-//  RCT_EXPORT_VIEW_PROPERTY(currentHours, Int)
-//  RCT_EXPORT_VIEW_PROPERTY(currentMinutes, Int)
-//  RCT_EXPORT_VIEW_PROPERTY(currentSeconds, Int)
+  RCT_EXTERN_METHOD( testEvent:(NSString *)eventName )
+//  RCT_EXPORT_VIEW_PROPERTY(onClockTick, RCTDirectEventBlock)
+
 
 @end
 

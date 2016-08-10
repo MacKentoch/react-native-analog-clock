@@ -6,3 +6,8 @@
 #import "RCTEventDispatcher.h"
 
 #import "BEMAnalogClockView.h"
+
+
+
+#import "RCTBridge.h"
+#import "RCTEventDispatcher.h"

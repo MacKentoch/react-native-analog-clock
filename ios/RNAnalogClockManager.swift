@@ -13,6 +13,7 @@ class RNAnalogClockManager: RCTViewManager {
   
   var _RNAnalogClockView: RNAnalogClockView!
   
+  
   override func view() -> UIView! {
     _RNAnalogClockView = RNAnalogClockView()
     return _RNAnalogClockView
@@ -31,5 +32,11 @@ class RNAnalogClockManager: RCTViewManager {
   func reloadRealTimeClock() {
     guard let _ = _RNAnalogClockView else { return }
     self._RNAnalogClockView.reloadRealTimeClock();
+  }
+  
+//  var bridge: RCTBridge!
+  
+  @objc func testEvent( eventName: String ) {
+    self.bridge.eventDispatcher().sendAppEventWithName( eventName, body: "Woot!" )
   }
 }
