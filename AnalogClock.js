@@ -5,6 +5,7 @@ import React , {
 import {
   requireNativeComponent,
   NativeModules,
+  NativeAppEventEmitter,
   processColor
 }                           from 'react-native';
 
@@ -14,11 +15,23 @@ const RNAnalogClock = requireNativeComponent(
   AnalogClock
 );
 
+
 const AnalogClockManager = NativeModules.RNAnalogClockSwift;
 
 class AnalogClock extends Component {
   constructor(props) {
     super(props);
+  }
+
+  componentWillMount() {
+    this.nativeTestEvent = NativeAppEventEmitter.addListener(
+      'testEvent',
+      (message) => console.log('testEvent send to JS: ', message)
+    );
+  }
+
+  componentWillUnmount() {
+    this.nativeTestEvent.remove();
   }
 
   startRealTimeClock() {

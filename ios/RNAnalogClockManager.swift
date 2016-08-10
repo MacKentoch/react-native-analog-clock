@@ -11,7 +11,7 @@ import Foundation
 
 @objc(RNAnalogClockSwift)
 class RNAnalogClockManager: RCTViewManager, RNAnalogClockViewDelegate {
-  
+
   var _RNAnalogClockView: RNAnalogClockView!
   
   
@@ -40,11 +40,19 @@ class RNAnalogClockManager: RCTViewManager, RNAnalogClockViewDelegate {
                  hours: Int!,
                  minutes: Int!,
                  seconds: Int!) {
-      print("\nDEBUG clockTick;  Current time: \(hours):\(minutes):\(seconds)")
-    // self.testEvent("")
+    print("\nDEBUG clockTick;  Current time: \(hours):\(minutes):\(seconds)")
+    
+    self
+      .bridge
+      .eventDispatcher()
+      .sendAppEventWithName(
+        "testEvent",
+        body: [
+          "hour": hours,
+          "minutes": minutes,
+          "seconds": seconds
+        ]
+      )
   }
   
-  @objc func testEvent( eventName: String ) {
-    self.bridge.eventDispatcher().sendAppEventWithName( eventName, body: "Woot!" )
-  }
 }

@@ -288,7 +288,7 @@ class RNAnalogClockView : BEMAnalogClockView, BEMAnalogClockDelegate {
   //----- TIME -----//
   ////////////////////
 
-  // var onClockTick: RCTDirectEventBlock!
+  // var onClockTick: RCTDirectEventBlock?
   
   @objc(currentTimeOnClock:Hours:Minutes:Seconds:)
   func currentTimeOnClock(clock: BEMAnalogClockView!, hours: String!, minutes: String!, seconds: String!) {
@@ -303,9 +303,7 @@ class RNAnalogClockView : BEMAnalogClockView, BEMAnalogClockDelegate {
       minutes: self.currentMinutes,
       seconds: self.currentSeconds
     )
-
   }
-  
   
 
   ////////////////////////////////////

@@ -137,7 +137,7 @@
   //----- TIME TICK CALLBACK -----//
   //////////////////////////////////
   RCT_EXTERN_METHOD( testEvent:(NSString *)eventName )
-//  RCT_EXPORT_VIEW_PROPERTY(onClockTick, RCTDirectEventBlock)
+  RCT_EXPORT_VIEW_PROPERTY(onClockTick, RCTBubblingEventBlock)
 
 
 @end
