@@ -40,15 +40,13 @@ class RNAnalogClockManager: RCTViewManager, RNAnalogClockViewDelegate {
                  hours: Int!,
                  minutes: Int!,
                  seconds: Int!) {
-    print("\nDEBUG clockTick;  Current time: \(hours):\(minutes):\(seconds)")
-    
     self
       .bridge
       .eventDispatcher()
       .sendAppEventWithName(
-        "testEvent",
+        "clockTicked",
         body: [
-          "hour": hours,
+          "hours": hours,
           "minutes": minutes,
           "seconds": seconds
         ]

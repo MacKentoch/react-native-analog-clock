@@ -79,6 +79,9 @@ class reactNativeAnalogClock extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      currentHours: 0,
+      currentMinutes: 0,
+      currentSeconds: 0,
       hours: 0,
       minutes: 0,
       seconds: 0,
@@ -123,6 +126,7 @@ class reactNativeAnalogClock extends Component {
 
   render() {
     const { hours, minutes, seconds } = this.state;
+    const { currentHours, currentMinutes, currentSeconds } = this.state;
     const { enableShadows, realTime, militaryTime, currentTime, enableDigit, setTimeViaTouch, enableGraduations, enableHub } = this.state;
     const { borderColor, borderWidth, borderAlpha } = this.state;
     const { digitOffset, digitColor } = this.state;
@@ -161,11 +165,11 @@ class reactNativeAnalogClock extends Component {
             </TouchableOpacity>
           </View>
           <Text style={styles.currentTime}>
-            {hours ? hours : '--'}
+            {currentHours ? currentHours : '--'}
             :
-            {minutes ? minutes : '--'}
+            {currentMinutes ? currentMinutes : '--'}
             :
-            {seconds ? seconds : '--'}
+            {currentSeconds ? currentSeconds : '--'}
           </Text>
           <AnalogClock
             ref={(ref)=>{this.analogClock = ref;}}
@@ -174,6 +178,16 @@ class reactNativeAnalogClock extends Component {
             hours={hours}
             minutes={minutes}
             seconds={seconds}
+            onClockTick={(currentTime) => {
+              console.log('hours: ', currentTime.hours);
+              console.log('minutes: ', currentTime.minutes);
+              console.log('seconds: ', currentTime.seconds);
+              this.setState({
+                currentHours: currentTime.hours,
+                currentMinutes: currentTime.minutes,
+                currentSeconds: currentTime.seconds
+              });
+            }}
             enableShadows={enableShadows}
             realTime={realTime}
             militaryTime={militaryTime}

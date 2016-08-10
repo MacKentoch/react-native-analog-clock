@@ -24,9 +24,19 @@ class AnalogClock extends Component {
   }
 
   componentWillMount() {
+    const { onClockTick } = this.props;
+
     this.nativeTestEvent = NativeAppEventEmitter.addListener(
-      'testEvent',
-      (message) => console.log('testEvent send to JS: ', message)
+      'clockTicked',
+      (message) => {
+        console.log('clockTicked send to JS: ', message);
+
+        if (onClockTick)  {
+          onClockTick(message);
+        } else {
+          throw 'callback "onClockTick" was not supplied to "AnalogClock"';
+        }
+      }
     );
   }
 
@@ -93,8 +103,6 @@ class AnalogClock extends Component {
 
       ...otherProps
     } = this.props;
-
-    console.log('AnalogClockManager.currentHours: ', AnalogClockManager.currentHours);
 
     return (
       <RNAnalogClock
@@ -251,7 +259,7 @@ AnalogClock.propTypes = {
   ///////////////////////////////////////
   //----- CURRENT TIME (ReadOnly) -----//
   ///////////////////////////////////////
-
+  onClockTick: PropTypes.func
 };
 
 AnalogClock.defaultProps = {

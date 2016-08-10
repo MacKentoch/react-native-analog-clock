@@ -288,15 +288,13 @@ class RNAnalogClockView : BEMAnalogClockView, BEMAnalogClockDelegate {
   //----- TIME -----//
   ////////////////////
 
-  // var onClockTick: RCTDirectEventBlock?
-  
   @objc(currentTimeOnClock:Hours:Minutes:Seconds:)
   func currentTimeOnClock(clock: BEMAnalogClockView!, hours: String!, minutes: String!, seconds: String!) {
     self.currentHours =  Int(hours)!
     self.currentMinutes = Int(minutes)!
     self.currentSeconds = Int(seconds)!
-    print("\nDEBUG currentTimeOnClock;  Current time: \(hours):\(minutes):\(seconds)")
-    
+//    print("\nDEBUG currentTimeOnClock;  Current time: \(hours):\(minutes):\(seconds)")
+//    
     analogClockViewDelegate?.clockTick(
       self,
       hours: self.currentHours,

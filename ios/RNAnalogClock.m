@@ -133,12 +133,6 @@
   /// restart clock and (if real time is activated) FORCE to update to real time - with animation - to current time (startRealTimeClock mehtod would just resume from where it was stopped)
   RCT_EXTERN_METHOD(reloadRealTimeClock);
 
-  //////////////////////////////////
-  //----- TIME TICK CALLBACK -----//
-  //////////////////////////////////
-  RCT_EXTERN_METHOD( testEvent:(NSString *)eventName )
-  RCT_EXPORT_VIEW_PROPERTY(onClockTick, RCTBubblingEventBlock)
-
 
 @end
 
