@@ -15,7 +15,7 @@ class RNAnalogClockView : BEMAnalogClockView, BEMAnalogClockDelegate {
   
   // currentTime (see currentTimeOnClock method below)
   var currentHours: Int = 0;
-  var currentMiniutes: Int = 0;
+  var currentMinutes: Int = 0;
   var currentSeconds: Int = 0;
   
   // properties to customize graduations
@@ -278,32 +278,23 @@ class RNAnalogClockView : BEMAnalogClockView, BEMAnalogClockDelegate {
   ////////////////////
   //----- TIME -----//
   ////////////////////
-  var bridge: RCTBridge!  // this is synthesized
+  
+  @objc func onClockTick(hours hours:Int, minutes:Int, seconds:Int) {
+    
+  }
+  
+  
+  
   
   @objc(currentTimeOnClock:Hours:Minutes:Seconds:)
   func currentTimeOnClock(clock: BEMAnalogClockView!, hours: String!, minutes: String!, seconds: String!) {
     self.currentHours =  Int(hours)!
-    self.currentMiniutes = Int(minutes)!
+    self.currentMinutes = Int(minutes)!
     self.currentSeconds = Int(seconds)!
     print("\nDEBUG; Current time: \(hours):\(minutes):\(seconds)")
-    
-//    let currentTime =  [
-//      "hours": hours,
-//      "minutes": minutes,
-//      "seconds" : seconds
-//    ]
-//    let event: RCTEvent = RCTEvent()
-//    event.eventName = "clockTick"
-//    event.arguments() = [[
-//      "hours": hours,
-//      "minutes": minutes,
-//      "seconds": seconds
-//    ]]
-//    self.bridge.eventDispatcher().sendEvent(event!)
-////      "clockTick",
-////      body: currentTime
-////    )
+    self.onClockTick(hours: self.currentHours, minutes: self.currentMinutes, seconds: self.currentSeconds)
   }
+  
   
 
   ////////////////////////////////////

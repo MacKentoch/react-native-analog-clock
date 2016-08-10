@@ -3,5 +3,6 @@
 //
 #import "RCTViewManager.h"
 #import "RCTConvert.h"
+#import "RCTEventDispatcher.h"
 
 #import "BEMAnalogClockView.h"
