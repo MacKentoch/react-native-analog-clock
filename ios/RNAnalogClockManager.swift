@@ -8,14 +8,16 @@
 
 import Foundation
 
+
 @objc(RNAnalogClockSwift)
-class RNAnalogClockManager: RCTViewManager {
+class RNAnalogClockManager: RCTViewManager, RNAnalogClockViewDelegate {
   
   var _RNAnalogClockView: RNAnalogClockView!
   
   
   override func view() -> UIView! {
     _RNAnalogClockView = RNAnalogClockView()
+    _RNAnalogClockView.analogClockViewDelegate = self
     return _RNAnalogClockView
   }
   
@@ -34,7 +36,13 @@ class RNAnalogClockManager: RCTViewManager {
     self._RNAnalogClockView.reloadRealTimeClock();
   }
   
-//  var bridge: RCTBridge!
+  func clockTick(analogClock: RNAnalogClockView!,
+                 hours: Int!,
+                 minutes: Int!,
+                 seconds: Int!) {
+      print("\nDEBUG clockTick;  Current time: \(hours):\(minutes):\(seconds)")
+    // self.testEvent("")
+  }
   
   @objc func testEvent( eventName: String ) {
     self.bridge.eventDispatcher().sendAppEventWithName( eventName, body: "Woot!" )

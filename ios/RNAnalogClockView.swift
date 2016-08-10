@@ -8,8 +8,18 @@
 
 import Foundation
 
+protocol RNAnalogClockViewDelegate:
+class {
+  func clockTick(analogClock: RNAnalogClockView!,
+                 hours: Int!,
+                 minutes: Int!,
+                 seconds: Int!)
+}
+
 @objc(RNAnalogClockView)
 class RNAnalogClockView : BEMAnalogClockView, BEMAnalogClockDelegate {
+  
+  var analogClockViewDelegate: RNAnalogClockViewDelegate?
   
   let animated: Bool = true
   
@@ -278,14 +288,22 @@ class RNAnalogClockView : BEMAnalogClockView, BEMAnalogClockDelegate {
   //----- TIME -----//
   ////////////////////
 
-  var onClockTick: RCTDirectEventBlock!
+  // var onClockTick: RCTDirectEventBlock!
   
   @objc(currentTimeOnClock:Hours:Minutes:Seconds:)
   func currentTimeOnClock(clock: BEMAnalogClockView!, hours: String!, minutes: String!, seconds: String!) {
     self.currentHours =  Int(hours)!
     self.currentMinutes = Int(minutes)!
     self.currentSeconds = Int(seconds)!
-    print("\nDEBUG; Current time: \(hours):\(minutes):\(seconds)")
+    print("\nDEBUG currentTimeOnClock;  Current time: \(hours):\(minutes):\(seconds)")
+    
+    analogClockViewDelegate?.clockTick(
+      self,
+      hours: self.currentHours,
+      minutes: self.currentMinutes,
+      seconds: self.currentSeconds
+    )
+
   }
   
   
