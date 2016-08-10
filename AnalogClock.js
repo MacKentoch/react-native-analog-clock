@@ -81,6 +81,8 @@ class AnalogClock extends Component {
       ...otherProps
     } = this.props;
 
+    console.log('AnalogClockManager.currentHours: ', AnalogClockManager.currentHours);
+
     return (
       <RNAnalogClock
         // PROPERTIES
@@ -228,11 +230,15 @@ AnalogClock.propTypes = {
   /// The width of the clock's hub. Default value is 3.0.
   hubRadius: PropTypes.number,
 
-  //////////////////////////
-  // Read only props (so no need to bridge native one)
-  //////////////////////////
+  ///////////////////////////////////////////////////////
+  // Read only props (so no need to bridge native one) //
+  ///////////////////////////////////////////////////////
   //If set to true, the clock real time feature is activated. Read only.
-  realTimeIsActivated: PropTypes.bool
+  realTimeIsActivated: PropTypes.bool,
+  ///////////////////////////////////////
+  //----- CURRENT TIME (ReadOnly) -----//
+  ///////////////////////////////////////
+
 };
 
 AnalogClock.defaultProps = {

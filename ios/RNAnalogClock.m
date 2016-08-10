@@ -133,6 +133,13 @@
   /// restart clock and (if real time is activated) FORCE to update to real time - with animation - to current time (startRealTimeClock mehtod would just resume from where it was stopped)
   RCT_EXTERN_METHOD(reloadRealTimeClock);
 
+  ///////////////////////////////////////
+  //----- CURRENT TIME (ReadOnly) -----//
+  ///////////////////////////////////////
+  RCT_EXPORT_VIEW_PROPERTY(currentHours, Int)
+  RCT_EXPORT_VIEW_PROPERTY(currentMinutes, Int)
+  RCT_EXPORT_VIEW_PROPERTY(currentSeconds, Int)
+
 @end
 
 
