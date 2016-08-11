@@ -165,11 +165,11 @@ class reactNativeAnalogClock extends Component {
             </TouchableOpacity>
           </View>
           <Text style={styles.currentTime}>
-            {currentHours ? currentHours : '--'}
+            {currentHours >= 0 ? currentHours : '--'}
             :
-            {currentMinutes ? currentMinutes : '--'}
+            {currentMinutes >= 0 ? currentMinutes : '--'}
             :
-            {currentSeconds ? currentSeconds : '--'}
+            {currentSeconds >= 0 ? currentSeconds : '--'}
           </Text>
           <AnalogClock
             ref={(ref)=>{this.analogClock = ref;}}

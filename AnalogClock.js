@@ -32,7 +32,11 @@ class AnalogClock extends Component {
         console.log('clockTicked send to JS: ', message);
 
         if (onClockTick)  {
-          onClockTick(message);
+          onClockTick({
+            hours: this.formatInto2Digits(message.hours),
+            minutes: this.formatInto2Digits(message.minutes),
+            seconds: this.formatInto2Digits(message.seconds)
+          });
         } else {
           throw 'callback "onClockTick" was not supplied to "AnalogClock"';
         }
@@ -42,18 +46,6 @@ class AnalogClock extends Component {
 
   componentWillUnmount() {
     this.nativeTestEvent.remove();
-  }
-
-  startRealTimeClock() {
-    AnalogClockManager.startRealTimeClock();
-  }
-
-  stopRealTimeClock() {
-    AnalogClockManager.stopRealTimeClock();
-  }
-
-  reloadRealTimeClock() {
-    AnalogClockManager.reloadRealTimeClock();
   }
 
   render() {
@@ -151,6 +143,26 @@ class AnalogClock extends Component {
         {...otherProps}
       />
     );
+  }
+
+  startRealTimeClock() {
+    AnalogClockManager.startRealTimeClock();
+  }
+
+  stopRealTimeClock() {
+    AnalogClockManager.stopRealTimeClock();
+  }
+
+  reloadRealTimeClock() {
+    AnalogClockManager.reloadRealTimeClock();
+  }
+
+  formatInto2Digits(num) {
+    if (parseInt(num, 10)) {
+      return ("0" + num).slice(-2);
+    } else {
+      return -1;
+    }
   }
 }
 
