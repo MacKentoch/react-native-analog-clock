@@ -8,35 +8,30 @@
 
 import Foundation
 
-protocol RNAnalogClockViewDelegate:
-class {
-  func clockTick(analogClock: RNAnalogClockView!,
-                 hours: Int!,
-                 minutes: Int!,
-                 seconds: Int!)
-}
-
 @objc(RNAnalogClockView)
 class RNAnalogClockView : BEMAnalogClockView, BEMAnalogClockDelegate {
   
-  var analogClockViewDelegate: RNAnalogClockViewDelegate?
-  
   let animated: Bool = true
-  
-  // currentTime (see currentTimeOnClock method below)
+  // current time callback to JS (see currentTimeOnClock method below)
+  var onClockTick: RCTBubblingEventBlock?
+  // currentTime values (see currentTimeOnClock method below)
   var currentHours: Int = 0;
   var currentMinutes: Int = 0;
   var currentSeconds: Int = 0;
-  
   // properties to customize graduations
   var smallGraduationLength: CGFloat! = 5.0
   var highGraduationLength: CGFloat! = 10.0
-
   var smallGraduationWidth: CGFloat! = 1.0
   var highGraduationWidth: CGFloat! = 2.0
+  var smallGraduationColor: UIColor! = UIColor(red: 241.0,
+                                               green: 241.0,
+                                               blue: 241.0,
+                                               alpha: 1.0)
+  var highGraduationColor: UIColor! = UIColor(red: 241.0,
+                                              green: 241.0,
+                                              blue: 241.0,
+                                              alpha: 1.0)
   
-  var smallGraduationColor: UIColor! = UIColor(red: 241.0, green: 241.0, blue: 241.0, alpha: 1.0)
-  var highGraduationColor: UIColor! = UIColor(red: 241.0, green: 241.0, blue: 241.0, alpha: 1.0)
   
   required init?(coder aDecoder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
@@ -264,8 +259,6 @@ class RNAnalogClockView : BEMAnalogClockView, BEMAnalogClockDelegate {
   }
   
   @objc func reloadRealTimeClock() -> Void {
-//    print("reload clock")
-//    print("self.realTimeIsActivated: \(self.realTimeIsActivated)")
     if self.realTimeIsActivated == true {
       self.setClockToCurrentTimeAnimated(true)
     }
@@ -273,37 +266,6 @@ class RNAnalogClockView : BEMAnalogClockView, BEMAnalogClockDelegate {
   }
   
   
-  ////////////////////////////
-  //----- CLOCK EVENTS -----//
-  ////////////////////////////
-  @objc func clockDidBeginLoading(clock: BEMAnalogClockView!) {
-    // print("clockDidBeginLoading")
-  }
-
-  @objc func clockDidFinishLoading(clock: BEMAnalogClockView!) {
-    // print("clockDidFinishLoading")
-  }
-  
-  ////////////////////
-  //----- TIME -----//
-  ////////////////////
-
-  @objc(currentTimeOnClock:Hours:Minutes:Seconds:)
-  func currentTimeOnClock(clock: BEMAnalogClockView!, hours: String!, minutes: String!, seconds: String!) {
-    self.currentHours =  Int(hours)!
-    self.currentMinutes = Int(minutes)!
-    self.currentSeconds = Int(seconds)!
-//    print("\nDEBUG currentTimeOnClock;  Current time: \(hours):\(minutes):\(seconds)")
-//    
-    analogClockViewDelegate?.clockTick(
-      self,
-      hours: self.currentHours,
-      minutes: self.currentMinutes,
-      seconds: self.currentSeconds
-    )
-  }
-  
-
   ////////////////////////////////////
   //----- CLOCK CUSTOMIZATIONS -----//
   ////////////////////////////////////
@@ -326,13 +288,44 @@ class RNAnalogClockView : BEMAnalogClockView, BEMAnalogClockDelegate {
     }
   }
   
-//  - (UIColor *)analogClock:(BEMAnalogClockView *)clock graduationColorForIndex:(NSInteger)index {
-//  bool modulo15 = index % 15;
-//  if ((!modulo15 == 1)) { // Every 15 graduation will be blue.
-//  return [UIColor brownColor];
-//  } else {
-//  return [UIColor whiteColor];
-//  }
-//  }
+  //  - (UIColor *)analogClock:(BEMAnalogClockView *)clock graduationColorForIndex:(NSInteger)index {
+  //  bool modulo15 = index % 15;
+  //  if ((!modulo15 == 1)) { // Every 15 graduation will be blue.
+  //  return [UIColor brownColor];
+  //  } else {
+  //  return [UIColor whiteColor];
+  //  }
+  //  }
   
+  ////////////////////////////
+  //----- CLOCK EVENTS -----//
+  ////////////////////////////
+  @objc func clockDidBeginLoading(clock: BEMAnalogClockView!) {
+    // print("clockDidBeginLoading")
+  }
+
+  @objc func clockDidFinishLoading(clock: BEMAnalogClockView!) {
+    // print("clockDidFinishLoading")
+  }
+  
+  /////////////////////////////////
+  //----- CURRENT TIME TICK -----//
+  /////////////////////////////////
+  @objc(currentTimeOnClock:Hours:Minutes:Seconds:)
+  func currentTimeOnClock(clock: BEMAnalogClockView!, hours: String!, minutes: String!, seconds: String!) {
+    self.currentHours =  Int(hours)!
+    self.currentMinutes = Int(minutes)!
+    self.currentSeconds = Int(seconds)!
+    
+
+    if let _ =  self.onClockTick {
+      self.onClockTick!(
+        [
+          "hours": hours,
+          "minutes": minutes,
+          "seconds": seconds
+        ]
+      )
+    }
+  }
 }

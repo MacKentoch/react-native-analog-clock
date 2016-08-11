@@ -6,7 +6,7 @@
 #import "RCTEventDispatcher.h"
 
 #import "BEMAnalogClockView.h"
-
+#import "RCTEventEmitter.h"
 
 
 #import "RCTBridge.h"

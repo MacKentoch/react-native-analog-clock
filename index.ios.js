@@ -178,16 +178,15 @@ class reactNativeAnalogClock extends Component {
             hours={hours}
             minutes={minutes}
             seconds={seconds}
-            onClockTick={(currentTime) => {
-              console.log('hours: ', currentTime.hours);
-              console.log('minutes: ', currentTime.minutes);
-              console.log('seconds: ', currentTime.seconds);
-              this.setState({
-                currentHours: currentTime.hours,
-                currentMinutes: currentTime.minutes,
-                currentSeconds: currentTime.seconds
-              });
-            }}
+            onTimeChange={
+              ({hours, minutes, seconds}) => {
+                this.setState({
+                  currentHours: hours,
+                  currentMinutes: minutes,
+                  currentSeconds: seconds
+                });
+              }
+            }
             enableShadows={enableShadows}
             realTime={realTime}
             militaryTime={militaryTime}

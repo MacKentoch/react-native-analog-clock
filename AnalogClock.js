@@ -12,7 +12,12 @@ import {
 
 const RNAnalogClock = requireNativeComponent(
   'RNAnalogClockSwift',
-  AnalogClock
+  AnalogClock,
+  {
+    nativeOnly: {
+      onClockTick: true
+    }
+  }
 );
 
 
@@ -21,31 +26,7 @@ const AnalogClockManager = NativeModules.RNAnalogClockSwift;
 class AnalogClock extends Component {
   constructor(props) {
     super(props);
-  }
-
-  componentWillMount() {
-    const { onClockTick } = this.props;
-
-    this.nativeTestEvent = NativeAppEventEmitter.addListener(
-      'clockTicked',
-      (message) => {
-        console.log('clockTicked send to JS: ', message);
-
-        if (onClockTick)  {
-          onClockTick({
-            hours: this.formatInto2Digits(message.hours),
-            minutes: this.formatInto2Digits(message.minutes),
-            seconds: this.formatInto2Digits(message.seconds)
-          });
-        } else {
-          throw 'callback "onClockTick" was not supplied to "AnalogClock"';
-        }
-      }
-    );
-  }
-
-  componentWillUnmount() {
-    this.nativeTestEvent.remove();
+    this.handlesOnClockTick = this.handlesOnClockTick.bind(this);
   }
 
   render() {
@@ -96,8 +77,10 @@ class AnalogClock extends Component {
       ...otherProps
     } = this.props;
 
+
     return (
       <RNAnalogClock
+        onClockTick={this.handlesOnClockTick}
         // PROPERTIES
         bridgeHours={parseInt(hours, 10) ? parseInt(hours, 10)%12 : getDefaultProps().hours}
         bridgeMinutes={parseInt(minutes, 10) ? parseInt(minutes, 10)%60 : getDefaultProps().minutes}
@@ -145,6 +128,16 @@ class AnalogClock extends Component {
     );
   }
 
+  handlesOnClockTick(event) {
+    const { onTimeChange } = this.props;
+    const { nativeEvent: { hours, minutes, seconds } } = event;
+    onTimeChange({
+      hours: this.formatInto2Digits(hours),
+      minutes: this.formatInto2Digits(minutes),
+      seconds: this.formatInto2Digits(seconds)
+    });
+  }
+
   startRealTimeClock() {
     AnalogClockManager.startRealTimeClock();
   }
@@ -159,7 +152,7 @@ class AnalogClock extends Component {
 
   formatInto2Digits(num) {
     if (parseInt(num, 10)) {
-      return ("0" + num).slice(-2);
+      return ('0' + num).slice(-2);
     } else {
       return -1;
     }
@@ -269,9 +262,9 @@ AnalogClock.propTypes = {
   //If set to true, the clock real time feature is activated. Read only.
   realTimeIsActivated: PropTypes.bool,
   ///////////////////////////////////////
-  //----- CURRENT TIME (ReadOnly) -----//
+  //----- CURRENT TIME CALLBACK -----//
   ///////////////////////////////////////
-  onClockTick: PropTypes.func
+  onTimeChange: PropTypes.func
 };
 
 AnalogClock.defaultProps = {
