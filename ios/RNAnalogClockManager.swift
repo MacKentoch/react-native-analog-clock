@@ -9,7 +9,7 @@
 import Foundation
 
 
-@objc(RNAnalogClockSwift)
+@objc(AnalogClock)
 class RNAnalogClockManager: RCTViewManager {
 
   var _RNAnalogClockView: RNAnalogClockView!

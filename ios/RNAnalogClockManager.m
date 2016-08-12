@@ -15,11 +15,11 @@
 //  ->  is where we will tell React Native about what we need
 //      and what to call our stuff in the JavaScript world.
 
-#import "RNAnalogClock.h"
+#import "RNAnalogClockManager.h"
 #import "RCTViewManager.h"
 #import "RCTEventDispatcher.h"
 
-@interface RCT_EXTERN_MODULE(RNAnalogClockSwift, RCTViewManager)
+@interface RCT_EXTERN_MODULE(AnalogClock, RCTViewManager)
 
   /// READ ONLY : If set to YES, the clock real time feature is activated.
   RCT_EXPORT_VIEW_PROPERTY(realTimeIsActivated, BOOL)

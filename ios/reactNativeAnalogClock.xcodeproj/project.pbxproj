@@ -16,7 +16,7 @@
 		0DC64BBA1D55AD18006BE993 /* BEMAnalogClockView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DC64BB71D55AD18006BE993 /* BEMAnalogClockView.m */; };
 		0DC64BBB1D55AD18006BE993 /* KSMHand.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DC64BB91D55AD18006BE993 /* KSMHand.m */; };
 		0DC64BC01D55B1A3006BE993 /* RNAnalogClockManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC64BBF1D55B1A2006BE993 /* RNAnalogClockManager.swift */; };
-		0DC64BC31D55B267006BE993 /* RNAnalogClock.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DC64BC21D55B267006BE993 /* RNAnalogClock.m */; };
+		0DC64BC31D55B267006BE993 /* RNAnalogClockManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DC64BC21D55B267006BE993 /* RNAnalogClockManager.m */; };
 		0DC64BC51D55BB25006BE993 /* RNAnalogClockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC64BC41D55BB25006BE993 /* RNAnalogClockView.swift */; };
 		133E29F31AD74F7200F7D852 /* libRCTLinking.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 78C398B91ACF4ADC00677621 /* libRCTLinking.a */; };
 		139105C61AF99C1200B5F7CC /* libRCTSettings.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 139105C11AF99BAD00B5F7CC /* libRCTSettings.a */; };
@@ -126,8 +126,8 @@
 		0DC64BB91D55AD18006BE993 /* KSMHand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSMHand.m; sourceTree = "<group>"; };
 		0DC64BBC1D55AD46006BE993 /* reactNativeAnalogClock-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "reactNativeAnalogClock-Bridging-Header.h"; sourceTree = "<group>"; };
 		0DC64BBF1D55B1A2006BE993 /* RNAnalogClockManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNAnalogClockManager.swift; sourceTree = "<group>"; };
-		0DC64BC11D55B267006BE993 /* RNAnalogClock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNAnalogClock.h; sourceTree = "<group>"; };
-		0DC64BC21D55B267006BE993 /* RNAnalogClock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNAnalogClock.m; sourceTree = "<group>"; };
+		0DC64BC11D55B267006BE993 /* RNAnalogClockManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNAnalogClockManager.h; sourceTree = "<group>"; };
+		0DC64BC21D55B267006BE993 /* RNAnalogClockManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNAnalogClockManager.m; sourceTree = "<group>"; };
 		0DC64BC41D55BB25006BE993 /* RNAnalogClockView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNAnalogClockView.swift; sourceTree = "<group>"; };
 		139105B61AF99BAD00B5F7CC /* RCTSettings.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTSettings.xcodeproj; path = "../node_modules/react-native/Libraries/Settings/RCTSettings.xcodeproj"; sourceTree = "<group>"; };
 		139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTWebSocket.xcodeproj; path = "../node_modules/react-native/Libraries/WebSocket/RCTWebSocket.xcodeproj"; sourceTree = "<group>"; };
@@ -267,9 +267,9 @@
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				13B07FB11A68108700A75B9A /* LaunchScreen.xib */,
 				13B07FB71A68108700A75B9A /* main.m */,
-				0DC64BC11D55B267006BE993 /* RNAnalogClock.h */,
-				0DC64BC21D55B267006BE993 /* RNAnalogClock.m */,
 				0DC64BC41D55BB25006BE993 /* RNAnalogClockView.swift */,
+				0DC64BC11D55B267006BE993 /* RNAnalogClockManager.h */,
+				0DC64BC21D55B267006BE993 /* RNAnalogClockManager.m */,
 				0DC64BBF1D55B1A2006BE993 /* RNAnalogClockManager.swift */,
 				0DC64BBC1D55AD46006BE993 /* reactNativeAnalogClock-Bridging-Header.h */,
 			);
@@ -578,7 +578,7 @@
 			files = (
 				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
-				0DC64BC31D55B267006BE993 /* RNAnalogClock.m in Sources */,
+				0DC64BC31D55B267006BE993 /* RNAnalogClockManager.m in Sources */,
 				0DC64BC01D55B1A3006BE993 /* RNAnalogClockManager.swift in Sources */,
 				0DC64BBB1D55AD18006BE993 /* KSMHand.m in Sources */,
 				0DC64BC51D55BB25006BE993 /* RNAnalogClockView.swift in Sources */,

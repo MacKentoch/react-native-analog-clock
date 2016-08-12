@@ -10,7 +10,7 @@ import {
 }                           from 'react-native';
 
 const RNAnalogClock = requireNativeComponent(
-  'RNAnalogClockSwift',
+  'AnalogClock',
   AnalogClock,
   {
     nativeOnly: {
@@ -20,7 +20,7 @@ const RNAnalogClock = requireNativeComponent(
 );
 
 
-const AnalogClockManager = NativeModules.RNAnalogClockSwift;
+const AnalogClockManager = NativeModules.RNAnalogClock;
 
 class AnalogClock extends Component {
   constructor(props) {

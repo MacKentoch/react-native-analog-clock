@@ -39,8 +39,9 @@ class RNAnalogClockView : BEMAnalogClockView, BEMAnalogClockDelegate {
   
   override init(frame: CGRect) {
     super.init(frame: frame);
-
+  
     self.frame = frame;
+    
     self.delegate = self;
     
   }
