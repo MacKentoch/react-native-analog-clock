@@ -846,7 +846,7 @@ const styles = StyleSheet.create({
     margin: 10,
   },
   clockContainer: {
-    height: 220,
+    height: 240,
     alignItems: 'center',
     justifyContent: 'space-around'
   },
@@ -855,10 +855,11 @@ const styles = StyleSheet.create({
     textAlign: 'center'
   },
   clock: {
-    // minimum style suggested
-    // height: 140,
-    // width: 140,
+    // minimum style suggested -->
+    height: 140,
+    width: 140,
     backgroundColor: 'transparent',
+    // <-- minimum style suggested
     marginTop: 15,
     marginBottom: 15,
   },

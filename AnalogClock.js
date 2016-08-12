@@ -31,8 +31,6 @@ class AnalogClock extends Component {
   render() {
     const {
       // PROPERTIES
-      width,
-      height,
       hours,
       minutes,
       seconds,
@@ -81,10 +79,6 @@ class AnalogClock extends Component {
 
     return (
     <RNAnalogClock
-      style={{
-        width: width,
-        height: height
-      }}
       onClockTick={this.handlesOnClockTick}
       // PROPERTIES
       bridgeHours={parseInt(hours, 10) ? parseInt(hours, 10)%12 : getDefaultProps().hours}
@@ -168,10 +162,6 @@ AnalogClock.propTypes = {
   //////////////////////////
   //----- PROPERTIES -----//
   //////////////////////////
-  // style width
-  width: PropTypes.number,
-  // style height
-  height: PropTypes.number,
   // manualy define hours
   hours: PropTypes.number,
   // manualy define minutes
@@ -278,8 +268,6 @@ AnalogClock.propTypes = {
 
 AnalogClock.defaultProps = {
   // PROPERTIES
-  width: getDefaultProps().width,
-  height: getDefaultProps().height,
   hours: getDefaultProps().hours,
   minutes: getDefaultProps().minutes,
   seconds: getDefaultProps().seconds,
@@ -290,8 +278,6 @@ AnalogClock.defaultProps = {
 function getDefaultProps() {
   return {
     // PROPERTIES
-    width: 140,
-    height: 140,
     hours: 0,
     minutes: 0,
     seconds: 0,
