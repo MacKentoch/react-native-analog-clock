@@ -5,10 +5,9 @@ import React , {
 import {
   requireNativeComponent,
   NativeModules,
-  NativeAppEventEmitter,
-  processColor
+  processColor,
+  View
 }                           from 'react-native';
-
 
 const RNAnalogClock = requireNativeComponent(
   'RNAnalogClockSwift',
@@ -32,6 +31,8 @@ class AnalogClock extends Component {
   render() {
     const {
       // PROPERTIES
+      width,
+      height,
       hours,
       minutes,
       seconds,
@@ -79,52 +80,56 @@ class AnalogClock extends Component {
 
 
     return (
-      <RNAnalogClock
-        onClockTick={this.handlesOnClockTick}
-        // PROPERTIES
-        bridgeHours={parseInt(hours, 10) ? parseInt(hours, 10)%12 : getDefaultProps().hours}
-        bridgeMinutes={parseInt(minutes, 10) ? parseInt(minutes, 10)%60 : getDefaultProps().minutes}
-        bridgeSeconds={parseInt(seconds, 10) ? parseInt(seconds, 10)%60 : getDefaultProps().seconds}
-        bridgeSetTimeViaTouch={setTimeViaTouch}
-        bridgeEnableShadows={enableShadows}
-        bridgeRealTime={realTime}
-        bridgeMilitaryTime={militaryTime}
-        bridgeCurrentTime={currentTime}
-        bridgeEnableDigit={enableDigit}
-        bridgeEnableGraduations={enableGraduations}
-        bridgeEnableHub={enableHub}
-        // CLOCK'S FACE CUSTOMIZATION
-        bridgeDigitColor={processColor(digitColor)}
-        bridgeDigitOffset={parseFloat(digitOffset) ? parseFloat(digitOffset) : getDefaultProps().digitOffset}
-        bridgeBorderColor={processColor(borderColor)}
-        bridgeBorderAlpha={parseFloat(borderAlpha) ? parseFloat(borderAlpha) : 0}
-        bridgeBorderWidth={parseFloat(borderWidth) ? parseFloat(borderWidth) : 0}
-        bridgeFaceBackgroundColor={processColor(faceBackgroundColor)}
-        bridgeFaceBackgroundAlpha={parseFloat(faceBackgroundAlpha) ? parseFloat(faceBackgroundAlpha) : 0}
-        // HOURS HAND CUSTOMIZATION
-        bridgeHourHandColor={processColor(hourHandColor)}
-        bridgeHourHandAlpha={parseFloat(hourHandAlpha) ? parseFloat(hourHandAlpha) : 1.0}
-        bridgeHourHandWidth={parseFloat(hourHandWidth) ? parseFloat(hourHandWidth) : 4.0}
-        bridgeHourHandLength={parseFloat(hourHandLength) ? parseFloat(hourHandLength) : 30}
-        bridgeHourHandOffsideLength={parseFloat(hourHandOffsideLength) ? parseFloat(hourHandOffsideLength) : 10}
-        // MINUTES HAND CUSTOMIZATION
-        bridgeMinuteHandColor={processColor(minuteHandColor)}
-        bridgeMinuteHandAlpha={parseFloat(minuteHandAlpha) ? parseFloat(minuteHandAlpha) : 1.0}
-        bridgeMinuteHandWidth={parseFloat(minuteHandWidth) ? parseFloat(minuteHandWidth) : 3.0}
-        bridgeMinuteHandLength={parseFloat(minuteHandLength) ? parseFloat(minuteHandLength) : 55}
-        bridgeMinuteHandOffsideLength={parseFloat(minuteHandOffsideLength) ? parseFloat(minuteHandOffsideLength) : 20}
-        // SECONDS HAND CUSTOMIZATION
-        bridgeSecondHandColor={processColor(secondHandColor)}
-        bridgeSecondHandAlpha={parseFloat(secondHandAlpha) ? parseFloat(secondHandAlpha) : 1.0}
-        bridgeSecondHandWidth={parseFloat(secondHandWidth) ? parseFloat(secondHandWidth) : 1.0}
-        bridgeSecondHandLength={parseFloat(secondHandLength) ? parseFloat(secondHandLength) : 60}
-        bridgeSecondHandOffsideLength={parseFloat(secondHandOffsideLength) ? parseFloat(secondHandOffsideLength) : 20}
-        // HUB CUSTOMIZATION
-        bridgeHubColor={processColor(hubColor)}
-        bridgeHubAlpha={parseFloat(hubAlpha) ? parseFloat(hubAlpha) : 1.0}
-        bridgeHubRadius={parseFloat(hubRadius) ? parseFloat(hubRadius) : 3.0}
-        {...otherProps}
-      />
+    <RNAnalogClock
+      style={{
+        width: width,
+        height: height
+      }}
+      onClockTick={this.handlesOnClockTick}
+      // PROPERTIES
+      bridgeHours={parseInt(hours, 10) ? parseInt(hours, 10)%12 : getDefaultProps().hours}
+      bridgeMinutes={parseInt(minutes, 10) ? parseInt(minutes, 10)%60 : getDefaultProps().minutes}
+      bridgeSeconds={parseInt(seconds, 10) ? parseInt(seconds, 10)%60 : getDefaultProps().seconds}
+      bridgeSetTimeViaTouch={setTimeViaTouch}
+      bridgeEnableShadows={enableShadows}
+      bridgeRealTime={realTime}
+      bridgeMilitaryTime={militaryTime}
+      bridgeCurrentTime={currentTime}
+      bridgeEnableDigit={enableDigit}
+      bridgeEnableGraduations={enableGraduations}
+      bridgeEnableHub={enableHub}
+      // CLOCK'S FACE CUSTOMIZATION
+      bridgeDigitColor={processColor(digitColor)}
+      bridgeDigitOffset={parseFloat(digitOffset) ? parseFloat(digitOffset) : getDefaultProps().digitOffset}
+      bridgeBorderColor={processColor(borderColor)}
+      bridgeBorderAlpha={parseFloat(borderAlpha) ? parseFloat(borderAlpha) : 0}
+      bridgeBorderWidth={parseFloat(borderWidth) ? parseFloat(borderWidth) : 0}
+      bridgeFaceBackgroundColor={processColor(faceBackgroundColor)}
+      bridgeFaceBackgroundAlpha={parseFloat(faceBackgroundAlpha) ? parseFloat(faceBackgroundAlpha) : 0}
+      // HOURS HAND CUSTOMIZATION
+      bridgeHourHandColor={processColor(hourHandColor)}
+      bridgeHourHandAlpha={parseFloat(hourHandAlpha) ? parseFloat(hourHandAlpha) : 1.0}
+      bridgeHourHandWidth={parseFloat(hourHandWidth) ? parseFloat(hourHandWidth) : 4.0}
+      bridgeHourHandLength={parseFloat(hourHandLength) ? parseFloat(hourHandLength) : 30}
+      bridgeHourHandOffsideLength={parseFloat(hourHandOffsideLength) ? parseFloat(hourHandOffsideLength) : 10}
+      // MINUTES HAND CUSTOMIZATION
+      bridgeMinuteHandColor={processColor(minuteHandColor)}
+      bridgeMinuteHandAlpha={parseFloat(minuteHandAlpha) ? parseFloat(minuteHandAlpha) : 1.0}
+      bridgeMinuteHandWidth={parseFloat(minuteHandWidth) ? parseFloat(minuteHandWidth) : 3.0}
+      bridgeMinuteHandLength={parseFloat(minuteHandLength) ? parseFloat(minuteHandLength) : 55}
+      bridgeMinuteHandOffsideLength={parseFloat(minuteHandOffsideLength) ? parseFloat(minuteHandOffsideLength) : 20}
+      // SECONDS HAND CUSTOMIZATION
+      bridgeSecondHandColor={processColor(secondHandColor)}
+      bridgeSecondHandAlpha={parseFloat(secondHandAlpha) ? parseFloat(secondHandAlpha) : 1.0}
+      bridgeSecondHandWidth={parseFloat(secondHandWidth) ? parseFloat(secondHandWidth) : 1.0}
+      bridgeSecondHandLength={parseFloat(secondHandLength) ? parseFloat(secondHandLength) : 60}
+      bridgeSecondHandOffsideLength={parseFloat(secondHandOffsideLength) ? parseFloat(secondHandOffsideLength) : 20}
+      // HUB CUSTOMIZATION
+      bridgeHubColor={processColor(hubColor)}
+      bridgeHubAlpha={parseFloat(hubAlpha) ? parseFloat(hubAlpha) : 1.0}
+      bridgeHubRadius={parseFloat(hubRadius) ? parseFloat(hubRadius) : 3.0}
+      {...otherProps}
+    />
     );
   }
 
@@ -154,7 +159,7 @@ class AnalogClock extends Component {
     if (parseInt(num, 10)) {
       return ('0' + num).slice(-2);
     } else {
-      return -1;
+      return '00';
     }
   }
 }
@@ -163,6 +168,10 @@ AnalogClock.propTypes = {
   //////////////////////////
   //----- PROPERTIES -----//
   //////////////////////////
+  // style width
+  width: PropTypes.number,
+  // style height
+  height: PropTypes.number,
   // manualy define hours
   hours: PropTypes.number,
   // manualy define minutes
@@ -269,6 +278,8 @@ AnalogClock.propTypes = {
 
 AnalogClock.defaultProps = {
   // PROPERTIES
+  width: getDefaultProps().width,
+  height: getDefaultProps().height,
   hours: getDefaultProps().hours,
   minutes: getDefaultProps().minutes,
   seconds: getDefaultProps().seconds,
@@ -279,6 +290,8 @@ AnalogClock.defaultProps = {
 function getDefaultProps() {
   return {
     // PROPERTIES
+    width: 140,
+    height: 140,
     hours: 0,
     minutes: 0,
     seconds: 0,

@@ -174,6 +174,8 @@ class reactNativeAnalogClock extends Component {
           <AnalogClock
             ref={(ref)=>{this.analogClock = ref;}}
             style={styles.clock}
+            width={160}
+            height={160}
             // PROPERTIES
             hours={hours}
             minutes={minutes}
@@ -854,8 +856,8 @@ const styles = StyleSheet.create({
   },
   clock: {
     // minimum style suggested
-    height: 140,
-    width: 140,
+    // height: 140,
+    // width: 140,
     backgroundColor: 'transparent',
     marginTop: 15,
     marginBottom: 15,

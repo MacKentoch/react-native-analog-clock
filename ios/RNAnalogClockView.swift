@@ -317,7 +317,6 @@ class RNAnalogClockView : BEMAnalogClockView, BEMAnalogClockDelegate {
     self.currentMinutes = Int(minutes)!
     self.currentSeconds = Int(seconds)!
     
-
     if let _ =  self.onClockTick {
       self.onClockTick!(
         [
