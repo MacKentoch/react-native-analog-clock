@@ -7,7 +7,7 @@ This component is a bridge over `native`  [BEMAnalogClock](https://github.com/Bo
 - customizable
 - native behind (*JS thread will thank you later *:smile:)
 
-
+> NOTE: Swift bridge version
 
 *__IMPORTANT__* : Work in progress (*at early stage*), stay tuned!
 
