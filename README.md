@@ -22,7 +22,7 @@ This component is a bridge over `native`  [BEMAnalogClock](https://github.com/Bo
 
 ## Why this Swift version when the published one is in Objective-C
 
-> just wanted to experiment `native component bridge` in both `Objective-C` and `Swift`.
+> I just wanted to experiment `native component bridge` in both `Objective-C` and `Swift`.
 
 Despite I prefer Swift in native projects, I realized it is a better bet to bridge in Objective-C:
 - the first choice of React Native team
