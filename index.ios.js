@@ -1,14 +1,13 @@
 /**
  * Sample React Native App
  * https://github.com/facebook/react-native
- * @flow
+ * @flow-disabled
  */
 
 import React, { Component } from 'react';
 import {
   AppRegistry,
   StyleSheet,
-  Dimensions,
   Text,
   View,
   ScrollView,
@@ -19,7 +18,6 @@ import {
 }                           from 'react-native';
 import AnalogClock          from './AnalogClock';
 
-const { width, height } = Dimensions.get('window');
 
 const MIN_BORDER_WIDTH = 0;
 const MAX_BORDER_WIDTH = 20;
@@ -73,7 +71,7 @@ const MIN_HUB_ALPHA = 0.0;
 const MAX_HUB_ALPHA = 1.0;
 
 const MIN_HUB_RADIUS = 0.0;
-const MAX_HUB_RADIUS = 20.0
+const MAX_HUB_RADIUS = 20.0;
 
 class reactNativeAnalogClock extends Component {
   constructor(props) {
@@ -203,8 +201,8 @@ class reactNativeAnalogClock extends Component {
             borderWidth={borderWidth}
             digitColor={digitColor}
             digitOffset={digitOffset}
-            faceBackgroundColor={this.state.faceBackgroundColor}
-            faceBackgroundAlpha={this.state.faceBackgroundAlpha}
+            faceBackgroundColor={faceBackgroundColor}
+            faceBackgroundAlpha={faceBackgroundAlpha}
             // HOURS HAND CUSTOMIZATION
             hourHandColor={hourHandColor}
             hourHandAlpha={hourHandAlpha}

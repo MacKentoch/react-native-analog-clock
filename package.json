@@ -14,8 +14,14 @@
     "react-native",
     "react",
     "native",
+    "analog",
     "clock",
-    "timepicker"
+    "time",
+    "picker",
+    "timepicker",
+    "bridge",
+    "ios",
+    "swift"
   ],
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start"
@@ -23,5 +29,11 @@
   "dependencies": {
     "react": "15.2.1",
     "react-native": "0.31.0"
+  },
+  "devDependencies": {
+    "babel-eslint": "6.1.2",
+    "eslint": "3.3.0",
+    "eslint-plugin-react": "6.1.0",
+    "eslint-plugin-react-native": "2.0.0"
   }
 }
