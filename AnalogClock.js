@@ -20,7 +20,7 @@ const RNAnalogClock = requireNativeComponent(
   }
 );
 
-const AnalogClockManager = NativeModules.RNAnalogClock;
+const AnalogClockManager = NativeModules.AnalogClock;
 
 class AnalogClock extends Component {
   constructor(props) {
