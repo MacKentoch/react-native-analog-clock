@@ -12,7 +12,7 @@ This component is a bridge over `native`  [BEMAnalogClock](https://github.com/Bo
 - customizable
 - native behind
 
-> NOTE: this native bridge is an `Swift` bridge. An `Objective-C` bridge version — *__published__* — **is available [here](https://github.com/MacKentoch/react-native-analog-clock)**
+> NOTE: this native bridge is a `Swift` bridge. An `Objective-C` bridge version — *__published__* — **is available [here](https://github.com/MacKentoch/react-native-analog-clock)**
 
 <img src="https://raw.githubusercontent.com/MacKentoch/rn-analog-clock/master/images/previewFromExample.gif" alt="preview" width="320px"></img>
 
