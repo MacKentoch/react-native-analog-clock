@@ -1,27 +1,31 @@
-# React Native AnalogClock
+[![license](https://img.shields.io/github/license/mashape/apistatus.svg?maxAge=2592000)](https://github.com/MacKentoch/rn-analog-clock)
+# react-native-analog-clock
+
+
+*__IMPORTANT__* : **Work in progress** (*at early stage*), stay tuned!
+
 
 ##### React native analog clock as a nice alternative to traditional timepicker.
 
 This component is a bridge over `native`  [BEMAnalogClock](https://github.com/Boris-Em/BEMAnalogClock)
 - Adjust the time on the clock via touch (or disable it)
 - customizable
-- native behind (*JS thread will thank you later *:smile:)
+- native behind
 
-> NOTE: Swift bridge version
+> NOTE: this native bridge is an `Swift` bridge. An `Objective-C` bridge version — *__published__* — **is available [here](https://github.com/MacKentoch/react-native-analog-clock)**
 
-*__IMPORTANT__* : Work in progress (*at early stage*), stay tuned!
+<img src="https://raw.githubusercontent.com/MacKentoch/rn-analog-clock/master/images/previewFromExample.gif" alt="preview" width="320px"></img>
 
 ## Getting started
 
-*coming soon*
+[Follow instruction from the npm published version](https://github.com/MacKentoch/rn-analog-clock#getting-started)
 
-## to add
-- [ ] add => JS side defaultProps
-- [x] add => `hub` customization props bridge
-- [ ] add => `digit font` prop bridge
-- [ ] add => `graduations length` prop bridge
-- [ ] add => `graduations width` prop bridge
-- [ ] add => `graduations color` prop bridge
+## Why this Swift version when the published one is in Objective-C
 
-## to fix
-- [ ] fix =>  `digit color` dynamic change throws error (*only initial assignment is ok*)
+> just wanted to experiment `native component bridge` in both `Objective-C` and `Swift`.
+
+Despite I prefer Swift in native projects, I realized it is a better bet to bridge in Objective-C:
+- the first choice of React Native team
+- MACROS
+- can target static libraries
+- *Bridging in Swift* finally *adds more complexity* then in Objective-C (*more files* since Swift was added later in React Native)
