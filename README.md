@@ -28,4 +28,4 @@ Despite I prefer Swift in native projects, I realized it is a better bet to brid
 - the first choice of React Native team
 - MACROS
 - can target static libraries
-- *Bridging in Swift* finally *adds more complexity* then in Objective-C (*more files* since Swift was added later in React Native)
+- *Bridging in Swift* finally *adds more complexity* than in Objective-C (*more files* since Swift was added later in React Native)
